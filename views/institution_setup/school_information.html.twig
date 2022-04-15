@@ -17,19 +17,22 @@
                         <th>Initials</th>
                         <th>Cellphone1</th>
                         <th>Email</th>
+                        <th>City</th>
                         <th>No of levels (classes)</th>
                         <th>No of streams (per class)</th>
                         <th class="no-content">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for employee in emp %}
+                    {% for model in schools %}
                         <tr>
-                            <td>{{ employee.Salutation }} {{ employee.FirstName }} {{ employee.LastName }}</td>
-                            <td>{{ employee.Email }}</td>
-                            <td>{{ employee.Designation }}</td>
-                            <td>{{ employee.IsEmployee }}</td>
-                            <td>{{ employee.IsVerified }}</td>
+                            <td>{{ model.Name }} </td>
+                            <td>{{ model.IDInitials}}</td>
+                            <td>{{ model.CellPhone1 }}</td>
+                            <td>{{ model.Email}}</td>
+                            <td>{{ model.City}}</td>
+                            <td>{{ model.NoOfLevels}}</td>
+                            <td>{{ model.NoOfStreamsPerLevel}}</td>
                             <td>
                                 <a>edit</a>
                                 <a>delete</a>

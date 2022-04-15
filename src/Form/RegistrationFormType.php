@@ -17,27 +17,47 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
-            ->add('Email')
-            ->add('FirstName')
-            ->add('Salutation')
-            ->add('Designation')
-            ->add('IsVerified',CheckboxType::class)
-            //->add('roles')
-            ->add('EmployeeNumber')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
+            ->add('username',null,[
+                'attr' =>[ 'class' => 'form-control'],
+                'label' =>false
+            ])
+            ->add('Email',null,[
+                'attr' =>[ 'class' => 'form-control'],
+                'label' =>false
+            ])
+            ->add('FirstName',null,[
+                'attr' =>[ 'class' => 'form-control'],
+                'label' =>false
+            ])
+            ->add('LastName',null,[
+                'attr' =>[ 'class' => 'form-control'],
+                'label' =>false
+            ])
+            ->add('Salutation',null,[
+                'attr' =>[ 'class' => 'form-control-sm'],
+                'label' =>false
+            ])
+            ->add('Designation',null,[
+                'attr' =>[ 'class' => 'form-control-sm'],
+                'label' =>false
+            ])
+            ->add('EmployeeNumber',null,[
+                'attr' =>[ 'class' => 'form-control-sm'],
+                'label' =>false
+            ])
+            ->add('IsVerified',CheckboxType::class,[
+                'attr' =>[ 'class' => '']
+            ])
+            ->add('IsEmployee',CheckboxType::class,[
+                'attr' =>[ 'class' => '']
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'label'=>false,
+                'attr' => ['autocomplete' => 'new-password',
+                    'class' => 'form-control'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',

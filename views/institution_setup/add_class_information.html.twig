@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+{% block page_level_css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/assets/css/scrollspyNav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/assets/css/components/tabs-accordian/custom-tabs.css') }}">
+{% endblock %}
+{% block title %}Class Information{% endblock %}
+
+{% block body %}
+    <div class="row layout-top-spacing">
+        {{ include('feedback_flash_messages.html.twig') }}
+        <div class="col-lg-1 col-1 layout-spacing"></div>
+        <div class="col-lg-10 col-10 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            <h4>Enter Class Details</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content widget-content-area border-top-tab">
+                    <ul class="nav nav-tabs mb-3 mt-3" id="borderTop" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="border-top-home-tab" data-toggle="tab"
+                               href="#border-top-home" role="tab" aria-controls="border-top-home"
+                               aria-selected="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Class Info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="border-top-profile-tab" data-toggle="tab" href="#border-top-profile"
+                               role="tab" aria-controls="border-top-profile" aria-selected="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-user">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Section/Stream Info</a>
+                        </li>
+                    </ul>
+                    {{ form_start(classForm) }}
+                    <div class="tab-content" id="borderTopContent">
+                        <div class="tab-pane fade show active" id="border-top-home" role="tabpanel"
+                             aria-labelledby="border-top-home-tab">
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    {{ form_label(classForm.ClassName,"Class Name") }}
+                                    {{ form_row(classForm.ClassName) }}
+                                </div>
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    {{ form_label(classForm.MaximumStudentCapacity,"Max Capacity") }}
+                                    {{ form_row(classForm.MaximumStudentCapacity) }}
+                                </div>
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    {{ form_label(classForm.MinimumStudentCapacity,"Min Capacity") }}
+                                    {{ form_row(classForm.MinimumStudentCapacity) }}
+                                </div>
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    {{ form_row(classForm.HasStreams) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="border-top-profile" role="tabpanel"
+                             aria-labelledby="border-top-profile-tab">
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    {{ form_label(classForm.SectionID,"Stream/Section Name") }}
+                                    {{ form_row(classForm.SectionID) }}
+                                </div>
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    {{ form_label(classForm.MaxStudents,"Max Student") }}
+                                    {{ form_row(classForm.MaxStudents) }}
+                                </div>
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    {{ form_label(classForm.MinStudents,"Min Student") }}
+                                    {{ form_row(classForm.MinStudents) }}
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Class</button>
+                    </div>
+                    {{ form_row(classForm._token) }}
+                    {{ form_end(classForm,{'render_rest': false}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block page_level_script %}
+<script src="{{ asset('theme/assets/js/scrollspyNav.js') }}"></script>
+{% endblock %}

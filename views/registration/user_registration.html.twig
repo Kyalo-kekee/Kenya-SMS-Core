@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block title %} Employee Registration {% endblock %}
+{% block page_title %} Employee Registration{% endblock %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div id="flFormsGrid" class="col-lg-8 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            <h4>Enter Registration Details Bellow</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content widget-content-area">
+                    {{ form_start(registrationForm) }}
+                        <div class="form-row ">
+                            <div class="form-group col-md-4">
+                                {{ form_label(registrationForm.FirstName,"First Name") }}
+                                {{ form_row(registrationForm.FirstName) }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                {{ form_label(registrationForm.LastName,"LastName") }}
+                                {{ form_row(registrationForm.LastName) }}
+                            </div>
+                        </div>
+                        <div class="form-row mb-4">
+
+                            <div class="form-group col-md-4">
+                                {{ form_label(registrationForm.username,"Username") }}
+                                {{ form_row(registrationForm.username) }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                {{ form_label(registrationForm.Email,"Email") }}
+                                {{ form_row(registrationForm.Email) }}
+                            </div>
+
+                        </div>
+                        <div class="form-row mb-4">
+                            <div class="form-group col-md-4">
+                                {{ form_label(registrationForm.plainPassword,"Password") }}
+                                {{ form_row(registrationForm.plainPassword) }}
+                            </div>
+                        </div>
+                        <div class="form-row mb-4">
+                            <div class="form-group mb-2 col-md-4">
+                                {{ form_label(registrationForm.Salutation,"Salutation") }}
+                                {{ form_row(registrationForm.Salutation) }}
+                            </div>
+                            <div class="form-group mb-4 col-md-4">
+                                {{ form_label(registrationForm.Designation,"Designation") }}
+                                {{ form_row(registrationForm.Designation) }}
+                            </div>
+                        </div>
+                        <div class="form-row mb-4">
+                            <div class="form-group mb-4 col-md-4">
+                                {{ form_label(registrationForm.EmployeeNumber,"EmployeeNumber") }}
+                                {{ form_row(registrationForm.EmployeeNumber) }}
+                            </div>
+                        </div>
+
+                        <div class="form-row mb-4">
+                            <div class="form-group col-md-4">
+                                {{ form_row(registrationForm.IsEmployee) }}
+                                {{ form_row(registrationForm.IsVerified) }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Sign in</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

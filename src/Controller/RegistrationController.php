@@ -35,15 +35,13 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
             $user->setDesignation($form->get('Designation')->getData());
             $user->setSalutation($form->get('Salutation')->getData());
             $user->setFirstName($form->get('FirstName')->getData());
             $user->setEmail($form->get('Email')->getData());
             $user->setEmployeeNumber($form->get('EmployeeNumber')->getData());
             $user->setIsVerified($form->get('IsVerified')->getData());
-           // $user->setRoles($form->get('roles')->getData());
-
+            $user->setIsEmployee($form->get('IsEmployee')->getData());
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
@@ -64,14 +62,15 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-            return $userAuthenticator->authenticateUser(
+            /*return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
-            );
+            );*/
+            $this ->addFlash('success',"Registration Success, This user can now access parts of the system");
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('registration/user_registration.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

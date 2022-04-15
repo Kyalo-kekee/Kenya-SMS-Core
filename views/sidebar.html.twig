@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </a>
-                <div class="tooltip"><span>Apps</span></div>
+                <div class="tooltip"><span>Student Management</span></div>
             </li>
 
             <li class="menu">
@@ -121,44 +121,20 @@
 
         <div class="submenu" id="app">
             <div class="menu-title">
-                <h3>Apps</h3>
+                <h3>Student</h3>
             </div>
             <ul class="submenu-list" data-parent-element="#app">
                 <li>
-                    <a href="apps_chat.html"> Chat </a>
-                </li>
-                <li>
-                    <a href="apps_mailbox.html"> Mailbox </a>
-                </li>
-                <li>
-                    <a href="apps_todoList.html"> Todo List </a>
-                </li>
-                <li>
-                    <a href="apps_notes.html"> Notes</a>
-                </li>
-                <li>
-                    <a href="apps_scrumboard.html"> Scrumboard</a>
-                </li>
-                <li>
-                    <a href="apps_contacts.html"> Contacts</a>
-                </li>
-                <li>
-                    <a href="apps_calendar.html"> Calendar</a>
-                </li>
                 <li class="sub-submenu">
-                    <a role="menu" class="collapsed" data-toggle="collapse" data-target="#appInvoice" aria-expanded="true"><div>Invoice</div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                    <a role="menu" class="collapsed" data-toggle="collapse" data-target="#appInvoice" aria-expanded="true">
+                        <div>Student Center</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
                     <ul id="appInvoice" class="collapse show" data-parent="#compact_submenuSidebar">
                         <li>
-                            <a href="apps_invoice-list.html"> List </a>
+                            <a href="apps_invoice-list.html"> All Students </a>
                         </li>
                         <li>
-                            <a href="apps_invoice-preview.html"> Preview </a>
-                        </li>
-                        <li>
-                            <a href="apps_invoice-add.html"> Add </a>
-                        </li>
-                        <li>
-                            <a href="apps_invoice-edit.html"> Edit </a>
+                            <a href="apps_invoice-preview.html">Enroll Student</a>
                         </li>
                     </ul>
                 </li>
@@ -174,7 +150,10 @@
                     <a role="menu" class="collapsed" data-toggle="collapse" data-target="#users" aria-expanded="false"><div> Users</div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
                     <ul id="users" class="collapse" data-parent="#compact_submenuSidebar">
                         <li>
-                            <a href="{{ path('app_register') }}">System Users </a>
+                            <a href="{{ path('app_employee_header') }}">System Users </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_register') }}">Register Employee</a>
                         </li>
                         <li>
                             <a href="user_account_setting.html">Account Settings </a>
@@ -183,19 +162,20 @@
                 </li>
 
                 <li class="sub-submenu">
-                    <a role="menu" class="collapsed" data-toggle="collapse" data-target="#starter-kit" aria-expanded="false"><div>Starter Kit</div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+                    <a role="menu" class="collapsed" data-toggle="collapse" data-target="#starter-kit" aria-expanded="false">
+                        <div>Institution Setup</div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
                     <ul id="starter-kit" class="collapse" data-parent="#compact_submenuSidebar">
                         <li>
-                            <a href="starter_kit_blank_page.html"> Blank Page </a>
+                            <a href="{{ path('app_school_information') }}"> School Information </a>
                         </li>
                         <li>
-                            <a href="starter_kit_breadcrumb.html"> Breadcrumb </a>
+                            <a href="{{ path('app_class_header') }}"> Classes</a>
                         </li>
                         <li>
-                            <a href="starter_kit_boxed.html"> Boxed </a>
+                            <a href=""> Hostels</a>
                         </li>
                         <li>
-                            <a href="starter_kit_single_click_menu.html">Single Click Menu</a>
+                            <a href="">School Assets</a>
                         </li>
                     </ul>
                 </li>

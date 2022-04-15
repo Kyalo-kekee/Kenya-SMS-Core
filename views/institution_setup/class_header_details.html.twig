@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block page_level_css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/assets/css/widgets/modules-widgets.css') }}">
+{% endblock %}
+{% block title %}Class Header Details{% endblock %}
+{% block page_title %}Class Dashboard{% endblock %}
+{% block body %}
+<div class="row layout-top-spacing" id="cancel-row">
+    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 layout-spacing">
+
+        <div class="widget widget-account-invoice-three">
+
+            <div class="widget-heading">
+                <div class="wallet-usr-info">
+                    <div class="usr-name">
+                        <span> {{ classHeader.ClassName }}</span>
+                    </div>
+                    <div class="add">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
+                    </div>
+                </div>
+                <div class="wallet-balance">
+                    <p>Total Number of Students</p>
+                    <h5 class=""><span class="w-currency"></span>0</h5>
+                </div>
+            </div>
+
+            <div class="widget-amount">
+
+                <div class="w-a-info funds-received">
+                    <span>Last Mean Score <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></span>
+                    <p>7.1</p>
+                </div>
+
+                <div class="w-a-info funds-spent">
+                    <span>Current Mean score <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <p>6.0</p>
+                </div>
+            </div>
+
+            <div class="widget-content">
+
+                <div class="bills-stats">
+                    <span>C+</span>
+                </div>
+
+                <div class="invoice-list">
+
+                    {#<div class="inv-detail">
+                        <div class="info-detail-1">
+                            <p>Netflix</p>
+                            <p><span class="w-currency">$</span> <span class="bill-amount">13.85</span></p>
+                        </div>
+                        <div class="info-detail-2">
+                            <p>BlueHost VPN</p>
+                            <p><span class="w-currency">$</span> <span class="bill-amount">15.66</span></p>
+                        </div>
+                    </div>#}
+
+                    <div class="inv-action">
+                        <a href="javascript:void(0);" class="btn btn-outline-primary view-details">View Students</a>
+                        <a href="javascript:void(0);" class="btn btn-outline-primary pay-now">View Performance</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_level_script %}
+    <script src="{{ asset('theme/assets/js/widgets/modules-widgets.js') }}"></script>
+{% endblock %}
+
+

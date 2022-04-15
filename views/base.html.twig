@@ -4,12 +4,15 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('enterprise/favicon_io/favicon.ico') }}">
+        <link href="{{ asset('theme/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
+        <script src="{{ asset('theme/assets/js/loader.js') }}"></script>
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
         <link href="{{asset ('theme/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('theme/assets/css/plugins.css') }}" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
 
+        {% block page_level_css %} {% endblock %}
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -31,7 +34,20 @@
     </div>
     {#<!--  END LOADER -->#}
     {#<!--  BEGIN TOP NAVBAR  -->#}
-    {{ include('top_navbar.html.twig') }}
+    <div class="header-container fixed-top" style="border-bottom:2px solid #ffe8a1">
+        <header class="header navbar navbar-expand-sm">
+            <ul class="navbar-item flex-row">
+                <li class="nav-item align-self-center page-heading">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h3>{% block page_title %}{% endblock %}</h3>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+                 {{ include('top_navbar.html.twig') }}
+        </header>
+    </div>
     {# END TOP NAVBAR#}
 
       {#BEGIN MAIN CONTAINER#}
@@ -63,6 +79,6 @@
     </script>
     <script src="{{ asset('theme/assets/js/custom.js') }}"></script>
          {#END GLOBAL MANDATORY SCRIPTS#}
-    {% block pagelevelScript %}{% endblock %}
+    {% block page_level_script %}{% endblock %}
     </body>
 </html>

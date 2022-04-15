@@ -16,7 +16,7 @@ class ClassHeaderDetails
     #[ORM\Column(type: 'string', length: 255)]
     private $ClassID;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255,unique: true)]
     private $SectionID;
 
     #[ORM\Column(type: 'integer')]
@@ -25,7 +25,7 @@ class ClassHeaderDetails
     #[ORM\Column(type: 'integer')]
     private $MinStudents;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255,nullable: true)]
     private $ClassPrefect;
 
     public function getId(): ?int
