@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block page_level_css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+{% endblock %}
+{% block title %}Users!{% endblock %}
+{% block page_title %}School Information{% endblock %}
+{% block body %}
+    <div class="row layout-top-spacing" id="cancel-row">
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+            <div class="widget-content widget-content-area br-6">
+                <table id="zero-config" class="table table-striped" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Initials</th>
+                        <th>Cellphone1</th>
+                        <th>Email</th>
+                        <th>No of levels (classes)</th>
+                        <th>No of streams (per class)</th>
+                        <th class="no-content">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for employee in emp %}
+                        <tr>
+                            <td>{{ employee.Salutation }} {{ employee.FirstName }} {{ employee.LastName }}</td>
+                            <td>{{ employee.Email }}</td>
+                            <td>{{ employee.Designation }}</td>
+                            <td>{{ employee.IsEmployee }}</td>
+                            <td>{{ employee.IsVerified }}</td>
+                            <td>
+                                <a>edit</a>
+                                <a>delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
