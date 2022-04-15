@@ -3,7 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="icon" href="{{ asset('enterprise/favicon_io/favicon.ico') }}">
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
+        <link href="{{asset ('theme/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('theme/assets/css/plugins.css') }}" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -13,7 +19,50 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="dashboard-analytics">
+
+    {#<!-- BEGIN LOADER -->#}
+    <div id="load_screen">
+        <div class="loader">
+            <div class="loader-content">
+                <div class="spinner-grow align-self-center"></div>
+            </div>
+        </div>
+    </div>
+    {#<!--  END LOADER -->#}
+    {#<!--  BEGIN TOP NAVBAR  -->#}
+    {{ include('top_navbar.html.twig') }}
+    {# END TOP NAVBAR#}
+
+      {#BEGIN MAIN CONTAINER#}
+    <div class="main-container" id="container">
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+        {{ include('sidebar.html.twig') }}
+          {#BEGIN CONTENT AREA#}
+        <div id="content" class="main-content">
+            <div class="layout-px-spacing">
+                {% block body %}{% endblock %}
+            </div>
+            {{ include('footer.html.twig') }}
+        </div>
+            {#END CONTENT AREA#}
+    </div>
+
+         {#BEGIN GLOBAL MANDATORY SCRIPTS#}
+    <script src="{{ asset('theme/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('theme/bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('theme/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('theme/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('theme/assets/js/app.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    <script src="{{ asset('theme/assets/js/custom.js') }}"></script>
+         {#END GLOBAL MANDATORY SCRIPTS#}
+    {% block pagelevelScript %}{% endblock %}
     </body>
 </html>

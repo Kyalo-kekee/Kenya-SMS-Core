@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="{{ asset('enterprise/favicon_io/favicon.ico') }}">
+         {#BEGIN GLOBAL MANDATORY STYLES#}
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
+    <link href="{{ asset ('theme/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('theme/assets/css/plugins.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('theme/assets/css/authentication/form-2.css') }}" rel="stylesheet" type="text/css" />
+        {#END GLOBAL MANDATORY STYLES#}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/assets/css/forms/theme-checkbox-radio.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/assets/css/forms/switches.css') }}">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body class="form">
+
+            {% block body %}{% endblock %}
+
+{#BEGIN GLOBAL MANDATORY SCRIPTS#}
+<script src="{{ asset('theme/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('theme/bootstrap/js/popper.min.js') }}"></script>
+<script src="{{ asset('theme/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('theme/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('theme/assets/js/app.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        App.init();
+    });
+</script>
+<script src="{{ asset('theme/assets/js/custom.js') }}"></script>
+{#END GLOBAL MANDATORY SCRIPTS#}
+{% block pagelevelScript %}{% endblock %}
+</body>
+</html>
