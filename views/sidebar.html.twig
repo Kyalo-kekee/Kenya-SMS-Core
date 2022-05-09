@@ -33,7 +33,7 @@
             </li>
 
             <li class="menu">
-                <a href="#more" data-active="false" class="menu-toggle">
+                <a href="#SYSTEM-MANAGEMENT" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
@@ -62,8 +62,8 @@
                             <div class="media mx-auto">
                                 <img src="{{ asset('enterprise/user.png') }}" class="img-fluid mr-2" alt="avatar">
                                 <div class="media-body">
-                                    <h5>{{ app.user.FirstName }}( {{ app.user.username }})</h5>
-                                    <p>{{ app.user.Designation}}</p>
+                                   {# <h5>{{ app.user.FirstName }}( {{ app.user.username }})</h5>
+                                    <p>{{ app.user.Designation}}</p>#}
                                 </div>
                             </div>
                         </div>
@@ -140,11 +140,11 @@
                 </li>
             </ul>
         </div>
-        <div class="submenu" id="more">
+        <div class="submenu" id="SYSTEM-MANAGEMENT">
             <div class="menu-title">
                 <h6>System Management</h6>
             </div>
-            <ul class="submenu-list" data-parent-element="#more">
+            <ul class="submenu-list" data-parent-element="#SYSTEM-MANAGEMENT">
 
                 <li class="sub-submenu">
                     <a role="menu" class="collapsed" data-toggle="collapse" data-target="#users" aria-expanded="false"><div> Users</div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
