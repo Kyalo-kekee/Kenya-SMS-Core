@@ -27,7 +27,8 @@ class ClassHeaderType extends AbstractType
             ])
             ->add('HasStreams',CheckboxType::class,[
 
-                'attr'=>['class'=>'pl-2']
+
+                'attr'=>['class'=>'pl-2','checked'=>false]
             ])
             ->add('ClassTeacher',null,[
                 'label'=>false,
