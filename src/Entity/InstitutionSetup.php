@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InstitutionSetupRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InstitutionSetupRepository::class)]
@@ -48,6 +50,14 @@ class InstitutionSetup
 
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
     private $State;
+
+    #[ORM\OneToMany(mappedBy: 'SchoolID', targetEntity: StudentInformation::class)]
+    private $StudentsInfo;
+
+    public function __construct()
+    {
+        $this->StudentsInfo = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -194,6 +204,36 @@ class InstitutionSetup
     public function setState(?string $State): self
     {
         $this->State = $State;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StudentInformation>
+     */
+    public function getStudentsInfo(): Collection
+    {
+        return $this->StudentsInfo;
+    }
+
+    public function addStudentsInfo(StudentInformation $studentsInfo): self
+    {
+        if (!$this->StudentsInfo->contains($studentsInfo)) {
+            $this->StudentsInfo[] = $studentsInfo;
+            $studentsInfo->setSchoolID($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStudentsInfo(StudentInformation $studentsInfo): self
+    {
+        if ($this->StudentsInfo->removeElement($studentsInfo)) {
+            // set the owning side to null (unless already changed)
+            if ($studentsInfo->getSchoolID() === $this) {
+                $studentsInfo->setSchoolID(null);
+            }
+        }
 
         return $this;
     }

@@ -1,7 +1,20 @@
 vich_uploader:
     db_driver: orm
+    twig: true            # set to false to disable twig integration
+    form: true            # set to false to disable form integration
+    storage: file_system  # or gaufrette or flysystem
+    metadata:
+        auto_detection: true
+        cache: file
+        type: attribute
 
-    #mappings:
-    #    products:
-    #        uri_prefix: /images/products
-    #        upload_destination: '%kernel.project_dir%/public/images/products'
+    mappings:
+        student_information:
+            uri_prefix: /uploads/courses
+            upload_destination: '%kernel.project_dir%/public/uploads/student_information/'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        school_information:
+            uri_prefix: /uploads/assignment
+            upload_destination: '%kernel.project_dir%/public/uploads/school_information'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

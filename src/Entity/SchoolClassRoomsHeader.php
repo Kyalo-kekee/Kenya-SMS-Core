@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SchoolClassRoomsHeaderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SchoolClassRoomsHeaderRepository::class)]
@@ -25,6 +27,14 @@ class SchoolClassRoomsHeader
 
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $HasBothGenders;
+
+    #[ORM\OneToMany(mappedBy: 'ClassRoomID', targetEntity: StudentInformation::class)]
+    private $ClassRoomStudents;
+
+    public function __construct()
+    {
+        $this->ClassRoomStudents = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +85,36 @@ class SchoolClassRoomsHeader
     public function setHasBothGenders(?bool $HasBothGenders): self
     {
         $this->HasBothGenders = $HasBothGenders;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StudentInformation>
+     */
+    public function getClassRoomStudents(): Collection
+    {
+        return $this->ClassRoomStudents;
+    }
+
+    public function addClassRoomStudent(StudentInformation $classRoomStudent): self
+    {
+        if (!$this->ClassRoomStudents->contains($classRoomStudent)) {
+            $this->ClassRoomStudents[] = $classRoomStudent;
+            $classRoomStudent->setClassRoomID($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClassRoomStudent(StudentInformation $classRoomStudent): self
+    {
+        if ($this->ClassRoomStudents->removeElement($classRoomStudent)) {
+            // set the owning side to null (unless already changed)
+            if ($classRoomStudent->getClassRoomID() === $this) {
+                $classRoomStudent->setClassRoomID(null);
+            }
+        }
 
         return $this;
     }
