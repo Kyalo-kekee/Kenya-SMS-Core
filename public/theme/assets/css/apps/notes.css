@@ -71,7 +71,7 @@
     margin-bottom: 25px;
 }
 .tab-title .nav-pills .nav-link.active, .tab-title .nav-pills .show>.nav-link {
-    background-color: rgb(198, 211, 253);
+    background-color: #ddf5f0;
     color: #3b3f5c;
     font-weight: 600;
 }
@@ -243,7 +243,7 @@
     font-weight: 600;
     margin-bottom: 10px;
     font-size: 14px;
-    color: rgb(119, 135, 204);
+    color: #515365;
     display: inline-block;
     border-radius: 4px;
 }
@@ -253,7 +253,7 @@
     margin-bottom: 0;
     letter-spacing: 0px;
     word-wrap: break-word;
-    color: #515365;
+    color: #888ea8;
 }
 .note-container.note-grid .note-item .note-inner-content .note-action { display: inline-block; }
 .note-container.note-grid .note-item .note-inner-content .note-action .fav-note,
@@ -436,17 +436,17 @@
 
 @media (min-width: 1200px) {
     .note-container.note-grid .note-item {
-        -ms-flex: 0 0 25%;
-        flex: 0 0 25%;
-        max-width: 25%;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 }
 
 @media (min-width: 1920px) {
     .note-container.note-grid .note-item {
-        -ms-flex: 0 0 16.666667%;
-        flex: 0 0 16.666667%;
-        max-width: 16.666667%;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
     }
 }
 
@@ -482,10 +482,11 @@
     .note-sidebar-scroll { height: 100%; }
     .app-hamburger-container {
         text-align: right;
+        height: 22px;
     }
     .hamburger {
         position: relative;
-        top: -13px;
+        top: -33px;
         padding: 6px 9px 6px 9px;
         font-size: 20px;
         color: #fff;

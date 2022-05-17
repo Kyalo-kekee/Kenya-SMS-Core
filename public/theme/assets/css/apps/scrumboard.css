@@ -214,8 +214,8 @@
 .connect-sorting {
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid #e0e6ed;
-    background: rgb(226, 230, 234);
+    border: 1px solid #d3d3d3;
+        background: #fff;
 }
 .connect-sorting .task-container-header {
     display: flex;

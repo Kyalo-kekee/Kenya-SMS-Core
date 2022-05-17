@@ -12,9 +12,7 @@
     transform: translate(-50%, 0);
 }
 .chat-system { display: flex; box-shadow: rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px;
-    height: calc(100vh - 135px);
-    margin-bottom: 10px;
-    border-radius: 6px;
+    height: calc(100vh - 145px);
 }
 body.minimal .chat-system {
     border: 1px solid #e0e6ed!important;
@@ -23,7 +21,7 @@ body.minimal .chat-system {
 }
 .chat-system .hamburger { display: none; }
  .chat-system .user-list-box {
-    width: 30%;
+    width: 35%;
     max-width: 400px;
     border-right: 1px solid #ebedf2;
     border-bottom-left-radius: 6px;
@@ -42,6 +40,7 @@ body.minimal .chat-system {
     color: #bfc9d4;
     top: 25px;
     left: 30px;
+    stroke-width: 1.6;
  }
  .chat-system .user-list-box input {
     border-radius: 4px;
@@ -63,7 +62,7 @@ body.minimal .chat-system {
     margin: auto;
     width: 100%;
     overflow: auto;
-    height: calc(100vh - 208px);
+    height: calc(100vh - 218px);
 }
 .chat-system .user-list-box .people .person {
     position: relative;
@@ -95,7 +94,7 @@ body.minimal .chat-system {
  .chat-system .user-list-box .people .person .user-info .f-body .meta-info .user-meta-time {
     font-size: 12px;
     position: absolute;
-    top: 16px;
+    bottom: 8px;
     right: 11px;
     color: #888ea8;
     font-weight: 700;
@@ -126,7 +125,7 @@ body.minimal .chat-system {
     background-image: url(../../img/bg.png);
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
-    height: calc(100vh - 135px);
+    height: calc(100vh - 145px);
 }
 .chat-system .chat-box .chat-not-selected {
     display: flex;
@@ -150,18 +149,21 @@ body.minimal .chat-system {
     color: #888ea8;
 }
 .chat-system .chat-box .overlay-phone-call.phone-call-show {
+    /* display: block; */
     opacity: 1;
     z-index: 4;
+    /* transition: all 0.3s ease-in-out; */
 }
 .chat-system .chat-box .overlay-phone-call {
     display: none;
     position: absolute;
     width: 100%;
-    height: calc(100vh - 135px);
+    height: calc(100vh - 145px);
     z-index: -1;
     opacity: 0;
     transition: all 0.4s ease-in-out;
     background-color: rgb(3 3 5 / 66%);
+    /* background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%232b50ed' cx='50' cy='0' r='50'/%3E%3Cg fill='%233154ea' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%233658e8' cx='50' cy='100' r='50'/%3E%3Cg fill='%233c5be5' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23415fe2' cx='50' cy='200' r='50'/%3E%3Cg fill='%234662df' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%234b66dc' cx='50' cy='300' r='50'/%3E%3Cg fill='%235069d9' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23546cd5' cx='50' cy='400' r='50'/%3E%3Cg fill='%23596fd2' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%235e72cf' cx='50' cy='500' r='50'/%3E%3Cg fill='%236275cb' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%236678c8' cx='50' cy='600' r='50'/%3E%3Cg fill='%236b7bc4' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%236f7ec0' cx='50' cy='700' r='50'/%3E%3Cg fill='%237381bc' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%237783b8' cx='50' cy='800' r='50'/%3E%3Cg fill='%237c86b4' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%238089b0' cx='50' cy='900' r='50'/%3E%3Cg fill='%23848bac' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23888ea8' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E); */
     background-attachment: fixed;
     background-size: contain;
     -webkit-backdrop-filter: blur(12px);
@@ -177,18 +179,11 @@ body.minimal .chat-system {
     padding: 20px 16px;
 }
 .chat-system .chat-box .overlay-phone-call > div .calling-user-info svg {
-    font-size: 25px;
-    border-radius: 50%;
-    padding: 11px;
-    background: rgb(21 21 22 / 28%);
-    margin-bottom: 23px;
+    font-size: 28px;
+    margin-right: 12px;
     color: #fff;
+    vertical-align: middle;
     cursor: pointer;
-    width: 48px;
-    height: 46px;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-    box-shadow: 0px 0px 20px rgb(0 0 0 / 67%);
 }
 .chat-system .chat-box .overlay-phone-call > div .calling-user-info .user-name {
     font-size: 20px;
@@ -225,7 +220,7 @@ body.minimal .chat-system {
     font-size: 25px;
     border-radius: 50%;
     padding: 11px;
-    background: #2196f3;
+    background: rgb(21 21 22 / 28%);
     margin-bottom: 23px;
     color: #fff;
     cursor: pointer;
@@ -233,6 +228,7 @@ body.minimal .chat-system {
     height: 46px;
     -webkit-transition: all 0.35s ease;
     transition: all 0.35s ease;
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 67%);
 }
 .chat-system .chat-box .overlay-phone-call > div .calling-options svg:hover {
     -webkit-transform: translateY(-5px) scale(1.02);
@@ -257,16 +253,18 @@ body.minimal .chat-system {
 .chat-system .chat-box .overlay-video-call.video-call-show {
     opacity: 1;
     z-index: 4;
+    /* transition: all 0.3s ease-in-out; */
 }
 .chat-system .chat-box .overlay-video-call {
     display: none;
     position: absolute;
     width: 100%;
-    height: calc(100vh - 135px);
+    height: calc(100vh - 145px);
     z-index: -1;
     opacity: 0;
     transition: all 0.4s ease-in-out;
     background-color: rgb(3 3 5 / 66%);
+    /* background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%232b50ed' cx='50' cy='0' r='50'/%3E%3Cg fill='%233154ea' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%233658e8' cx='50' cy='100' r='50'/%3E%3Cg fill='%233c5be5' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23415fe2' cx='50' cy='200' r='50'/%3E%3Cg fill='%234662df' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%234b66dc' cx='50' cy='300' r='50'/%3E%3Cg fill='%235069d9' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23546cd5' cx='50' cy='400' r='50'/%3E%3Cg fill='%23596fd2' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%235e72cf' cx='50' cy='500' r='50'/%3E%3Cg fill='%236275cb' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%236678c8' cx='50' cy='600' r='50'/%3E%3Cg fill='%236b7bc4' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%236f7ec0' cx='50' cy='700' r='50'/%3E%3Cg fill='%237381bc' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%237783b8' cx='50' cy='800' r='50'/%3E%3Cg fill='%237c86b4' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%238089b0' cx='50' cy='900' r='50'/%3E%3Cg fill='%23848bac' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23888ea8' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E); */
     background-attachment: fixed;
     background-size: contain;
     -webkit-backdrop-filter: blur(12px);
@@ -283,8 +281,8 @@ body.minimal .chat-system {
     position: absolute;
     height: 112px;
     width: 173px;
-    bottom: 8px;
-    right: 8px;
+    bottom: 83px;
+    right: 0;
 }
 .chat-system .chat-box .overlay-video-call > div {
     display: flex;
@@ -296,18 +294,10 @@ body.minimal .chat-system {
     padding: 20px 16px;
 }
 .chat-system .chat-box .overlay-video-call > div .calling-user-info svg {
-    font-size: 25px;
-    border-radius: 50%;
-    padding: 11px;
-    background: rgb(21 21 22 / 56%);
-    margin-bottom: 23px;
+    font-size: 28px;
+    margin-right: 12px;
     color: #fff;
     cursor: pointer;
-    width: 48px;
-    height: 46px;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-    box-shadow: 0px 0px 20px rgb(0 0 0 / 67%);
 }
 .chat-system .chat-box .overlay-video-call > div .calling-user-info .user-name {
     font-size: 20px;
@@ -335,16 +325,18 @@ body.minimal .chat-system {
 }
 .chat-system .chat-box .overlay-video-call > div .calling-options { text-align: center; }
 .chat-system .chat-box .overlay-video-call > div .calling-options svg {
+    font-size: 25px;
     border-radius: 50%;
-    padding: 10px;
-    background: #2196f3;
+    padding: 11px;
+    background: rgb(21 21 22 / 56%);
     margin-bottom: 23px;
     color: #fff;
     cursor: pointer;
+    width: 48px;
+    height: 46px;
     -webkit-transition: all 0.35s ease;
     transition: all 0.35s ease;
-    width: 47px;
-    height: 48px;
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 67%);
 }
 .chat-system .chat-box .overlay-video-call > div .calling-options svg:hover {
     -webkit-transform: translateY(-5px) scale(1.02);
@@ -420,12 +412,13 @@ body.minimal .chat-system {
 }
 .chat-system .chat-box .chat-box-inner .chat-meta-user.chat-active .chat-action-btn .dropdown-menu {
     box-shadow: rgba(113, 106, 202, 0.2) 0px 0px 15px 1px;
-    top: 15px !important;
+    /* top: 15px !important; */
     padding: 10px;
     border-width: initial;
     border-style: none;
     border-color: initial;
     border-image: initial;
+    transform: translate3d(-134px, 0, 0px);
 }
 .chat-system .chat-box .chat-box-inner .chat-meta-user.chat-active .chat-action-btn .dropdown-menu.show {
     top: 35px !important;
@@ -449,14 +442,14 @@ body.minimal .chat-system {
     background-color: transparent;
 }
 .chat-system .chat-box .chat-box-inner .chat-meta-user.chat-active .chat-action-btn .dropdown-menu a:hover svg {
-    color: #4361ee;
+    color: #2196f3;
     fill: rgba(27, 85, 226, 0.23921568627450981);
 }
 .chat-system .chat-box .chat-box-inner .chat-conversation-box {
     position: relative;
     margin: auto;
     width: 100%;
-    height: calc(100% - 80px);
+    height: calc(100% - 90px);
     overflow: auto;
 }
 .chat-system .chat-box .chat-box-inner .chat-conversation-box .chat-conversation-box-scroll { }
@@ -549,7 +542,7 @@ body.minimal .chat-system {
     left: 11px;
     top: 12px;
     fill: rgba(0, 23, 55, 0.08);
-    stroke-width: 1.6;
+    stroke-width: 1.2;
 }
 .chat-system .chat-box .chat-input input {
     font-size: 16px;
@@ -601,8 +594,8 @@ body.minimal .chat-system {
 }
  .chat-system .chat-box .bubble.you {
      float: left;
-     color: #4361ee;
-     background-color: #f6f6f6;
+     color: #2196f3;
+     background-color: #fdfdfd;
      -webkit-align-self: flex-start;
      align-self: flex-start;
      -moz-animation-name: slideFromLeft;
@@ -618,7 +611,7 @@ body.minimal .chat-system {
  .chat-system .chat-box .bubble.me {
     float: right;
     color: #fff;
-    background-color: #4361ee;
+    background-color: #009688;
     -webkit-align-self: flex-end;
     align-self: flex-end;
     -moz-animation-name: slideFromRight;
@@ -629,7 +622,7 @@ body.minimal .chat-system {
 }
  .chat-system .chat-box .bubble.me:before {
      right: -3px;
-     background-color: #4361ee;
+     background-color: #009688;
 }
  .chat-system .chat-box .conversation-start {
      position: relative;
@@ -709,7 +702,7 @@ body.minimal .chat-system {
 }
 @media (max-width: 1199px) {
     .chat-system .user-list-box { width: 40%; }
-    .chat-system .chat-box { width: 60%; }
+    .chat-system .chat-box { width: 66%; }
     .chat-system .chat-box .overlay-video-call .video-caller {
         height: 68px;
         width: 68px;
@@ -717,8 +710,8 @@ body.minimal .chat-system {
 }
 @media (max-width: 991px) {
     .chat-system .chat-box .overlay-video-call .video-caller {
-        height: 67px;
-        width: 83px;
+        height: 107px;
+        width: 147px;
     }
     .chat-system .chat-box {
         border-radius: 6px;

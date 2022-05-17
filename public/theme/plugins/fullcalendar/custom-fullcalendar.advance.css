@@ -11,7 +11,7 @@
     height: calc(100vh - 312px);
 }
 #calendar {
-    height: calc(100vh - 257px);
+    height: calc(100vh - 263px);
 }
 .popover {
     border: none;
@@ -137,10 +137,10 @@ a.bg-primary:hover, a.bg-success:hover, a.bg-warning:hover, a.bg-danger:hover {
     background-color: inherit!important;
     border-width: 2px!important;
 }
-.fc-scroller { height: 100%!important;  position: relative; height: calc(100vh - 311px)!important; }
+.fc-scroller { height: 100%!important;  position: relative; height: calc(100vh - 319px)!important; }
 .fc-scroller.fc-time-grid-container { height: calc(100vh - 420px)!important; }
-.fc-agendaWeek-view .fc-scroller.fc-time-grid-container { height: calc(100vh - 360px)!important; }
-.fc-agendaDay-view .fc-scroller.fc-time-grid-container { height: calc(100vh - 360px)!important; }
+.fc-agendaWeek-view .fc-scroller.fc-time-grid-container { height: calc(100vh - 364px)!important; }
+.fc-agendaDay-view .fc-scroller.fc-time-grid-container { height: calc(100vh - 364px)!important; }
 /*
     Modal
 */
@@ -192,10 +192,10 @@ input[readonly] { color: #3b3f5c; }
 }
 #addEventsModal .modal-footer .btn { box-shadow: none; }
 #addEventsModal .modal-footer #add-e {
-    background-color: #4361ee;
+    background-color: #2196f3;
     color: #fff;
     font-weight: 600;
-    border: 1px solid #4361ee;
+    border: 1px solid #2196f3;
     padding: 10px 25px;
 }
 #addEventsModal .modal-footer #edit-event {
@@ -257,6 +257,11 @@ td.fc-today.fc-state-highlight span {
     animation-name: fadeIn;
  }
 
+
+ @media (min-width: 1200px) and (max-width: 1239px)  {
+    .fc-scroller { height: 100%!important;  position: relative; height: calc(100vh - 354px)!important; }
+ }
+ 
 @media (max-width: 767px) {
     #calendar .fc-event { margin: 0; }
     #calendar {

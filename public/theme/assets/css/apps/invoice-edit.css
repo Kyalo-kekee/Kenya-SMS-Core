@@ -373,6 +373,7 @@
     background-color: #fff;
     border: 1px solid #e0e6ed;
     border-radius: 6px;
+    margin-top: 25px;
 }
 
 .invoice-actions label {
@@ -529,11 +530,11 @@
 }
 .invoice-actions-btn .invoice-action-btn a.btn-send {
     width: 100%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 .invoice-actions-btn .invoice-action-btn a.btn-preview {
     width: 100%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 .invoice-actions-btn .invoice-action-btn a.btn-download {
     width: 100%;

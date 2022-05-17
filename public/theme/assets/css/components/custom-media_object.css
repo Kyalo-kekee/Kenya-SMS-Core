@@ -89,6 +89,9 @@
   font-size: 18px;
   float: right;
 }
+.m-o-dropdown-list .media .media-heading div.dropdown-list .dropdown-menu {
+  transition: none;
+}
 .m-o-dropdown-list .media .media-heading div.dropdown-list a.dropdown-item span { align-self: center; }
 .m-o-dropdown-list .media .media-heading div.dropdown-list a.dropdown-item svg {
     color: #888ea8;

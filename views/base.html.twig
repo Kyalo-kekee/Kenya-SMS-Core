@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="{{ asset('enterprise/favicon_io/favicon.ico') }}">
-    <link href="{{ asset('theme/assets/css/loader.css') }}" rel="stylesheet" type="text/css"/>
-    <script src="{{ asset('theme/assets/js/loader.js') }}"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>CORK Admin Template - Analytics Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('theme/assets/img/favicon.ico')}}"/>
+    <link href="{{asset('theme/assets/css/loader.css')}}" rel="stylesheet" type="text/css" />
+    <script src="{{asset('theme/assets/js/loader.js')}}"></script>
+
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
-    <link href="{{ asset ('theme/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('theme/assets/css/plugins.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('theme/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('theme/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('theme/assets/css/structure.css')}}" rel="stylesheet" type="text/css" class="structure" />
     <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="{{asset('theme/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('theme/assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" class="dashboard-analytics" />
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     {% block page_level_css %} {% endblock %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
@@ -20,61 +31,112 @@
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>
-<body class="dashboard-analytics">
+<body class="dashboard-analytics admin-header">
 
-{# <!-- BEGIN LOADER --> #}
-<div id="load_screen">
-    <div class="loader">
-        <div class="loader-content">
+<!-- BEGIN LOADER -->
+<div id="load_screen"> <div class="loader"> <div class="loader-content">
             <div class="spinner-grow align-self-center"></div>
-        </div>
-    </div>
-</div>
-{# <!--  END LOADER --> #}
-{# <!--  BEGIN TOP NAVBAR  --> #}
-<div class="header-container fixed-top" style="border-bottom:2px solid #ffe8a1">
-    <header class="header navbar navbar-expand-sm">
-        <ul class="navbar-item flex-row">
-            <li class="nav-item align-self-center page-heading">
-                <div class="page-header">
-                    <div class="page-title">
-                        <h3>{% block page_title %}{% endblock %}</h3>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        {{ include('top_navbar.html.twig') }}
-    </header>
-</div>
-{# END TOP NAVBAR #}
-{# BEGIN MAIN CONTAINER #}
+        </div></div></div>
+<!--  END LOADER -->
+
+<!--  BEGIN MAIN CONTAINER  -->
 <div class="main-container" id="container">
+
     <div class="overlay"></div>
     <div class="search-overlay"></div>
-    {{ include('sidebar.html.twig') }}
-    {# BEGIN CONTENT AREA #}
+
+    <!--  BEGIN SIDEBAR  -->
+    {{include('menu/menu.html.twig')}}
+    <!--  END SIDEBAR  -->
+
+    <!--  BEGIN CONTENT AREA  -->
     <div id="content" class="main-content">
         <div class="layout-px-spacing">
-            {% block body %}{% endblock %}
-        </div>
-        {{ include('footer.html.twig') }}
-    </div>
-    {# END CONTENT AREA #}
-</div>
 
-{# BEGIN GLOBAL MANDATORY SCRIPTS #}
-<script src="{{ asset('theme/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
-<script src="{{ asset('theme/bootstrap/js/popper.min.js') }}"></script>
-<script src="{{ asset('theme/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('theme/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-<script src="{{ asset('theme/assets/js/app.js') }}"></script>
+            <div class="content-container">
+
+                <div class="col-left layout-top-spacing">
+                    <div class="col-left-content">
+
+                        <div class="header-container" style=" box-shadow: 0 4px 2px -2px gray ; padding: 1px ">
+                            <header class="header navbar navbar-expand-sm">
+                                <div class="d-flex">
+                                    <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
+                                        <div class="bt-menu-trigger">
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                    <div class="page-header">
+                                        <div class="page-title">
+                                            <h3>{{title}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="header-actions">
+                                    <div class="nav-item dropdown language-dropdown more-dropdown">
+                                        <div class="dropdown custom-dropdown-icon">
+                                            <a class="dropdown-toggle btn" href="#" role="button" id="customDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/img/flag-ca2.svg" class="flag-width" alt="flag"><span>English</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="customDropdown">
+                                                <a class="dropdown-item" data-img-value="flag-de3" data-value="German" href="javascript:void(0);"><img src="assets/img/flag-de3.svg" class="flag-width" alt="flag"> German</a>
+                                                <a class="dropdown-item" data-img-value="flag-sp" data-value="Spanish" href="javascript:void(0);"><img src="assets/img/flag-sp.svg" class="flag-width" alt="flag"> Spanish</a>
+                                                <a class="dropdown-item" data-img-value="flag-fr3" data-value="French" href="javascript:void(0);"><img src="assets/img/flag-fr3.svg" class="flag-width" alt="flag"> French</a>
+                                                <a class="dropdown-item" data-img-value="flag-ca2" data-value="English" href="javascript:void(0);"><img src="assets/img/flag-ca2.svg" class="flag-width" alt="flag"> English</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="toggle-notification-bar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+
+                        <div class="admin-data-content layout-top-spacing">
+                            {{include('feedback_flash_messages.html.twig')}}
+                            {% block body %}{% endblock %}
+                        </div>
+                        <div class="footer-wrapper col-xl-12">
+                            <div class="footer-section f-section-1">
+                                <p class="">© 2021 <a target="_blank" href="https://designreset.com/">DesignReset</a></p>
+                            </div>
+                            <div class="footer-section f-section-2">
+                                <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <!--  END CONTENT AREA  -->
+</div>
+<!-- END MAIN CONTAINER -->
+
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+<script src="{{asset('theme/assets/js/libs/jquery-3.1.1.min.js')}}"></script>
+<script src="{{asset('theme/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{asset('theme/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('theme/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script src="{{asset('theme/assets/js/app.js')}}"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         App.init();
     });
 </script>
-<script src="{{ asset('theme/assets/js/custom.js') }}"></script>
-{# END GLOBAL MANDATORY SCRIPTS #}
-{% block page_level_script %}{% endblock %}
+<script src="{{asset('theme/assets/js/custom.js')}}"></script>
+<!-- END GLOBAL MANDATORY SCRIPTS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+<script src="{{asset('theme/plugins/apex/apexcharts.min.js')}}"></script>
+<script src="{{asset('theme/assets/js/dashboard/dash_1.js')}}"></script>
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
 </body>
+
 </html>

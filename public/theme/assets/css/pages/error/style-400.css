@@ -20,24 +20,25 @@ body.error404 > .error-content {
     font-size: 33px;
     font-weight: 700;
     margin-bottom: 0;
-    color: #4361ee;
+    color: #fff;
 }
 .error404 .img-cartoon { width: 170px; height: 170px; }
 .error404 .error-number {
   font-size: 170px;
-  color: #fff;
   font-weight: 600;
   margin-bottom: 5px;
   margin-top: 15px;
   text-shadow: 0px 5px 4px rgba(31, 45, 61, 0.10196078431372549);
+  color: #506690;
 }
 .error404 .error-text { font-size: 18px; color: #3b3f5c; font-weight: 600; }
 .error404 a.btn {
     width: 134px;
     padding: 6px;
     font-size: 17px;
-    background-image: linear-gradient(135deg, #4361ee 0%, #805dca 100%);
     border: none;
     letter-spacing: 2px;
+    background: #506690!important;
+    color: #fff!important;
 }
-.error404 a.btn:hover, .error404 a.btn:not(:disabled):not(.disabled):active { background-image: linear-gradient(to right, #4361ee 0%, #805dca 100%); }
+.error404 a.btn:hover, .error404 a.btn:not(:disabled):not(.disabled):active { background-image: linear-gradient(-229deg, #517281 0%, #3b5d70 27%, #4d5c82 72%, #5d647f 100%); }

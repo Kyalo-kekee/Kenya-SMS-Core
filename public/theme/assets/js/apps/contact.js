@@ -259,6 +259,15 @@ editContact();
 
 })
 
+const searchableItem = new PerfectScrollbar('.searchable-items', {
+  wheelSpeed:.5,
+  swipeEasing:!0,
+  minScrollbarLength:40,
+  maxScrollbarLength:100,
+  suppressScrollY: true
+
+});
+
 
 // Validation Process
 

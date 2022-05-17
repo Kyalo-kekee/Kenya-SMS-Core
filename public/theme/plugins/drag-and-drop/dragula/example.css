@@ -35,7 +35,8 @@ ul {
  */
 .dragula > div,
 .gu-mirror {
-    margin: 10px;
+    /* margin: 10px; */
+    margin-bottom: 10px;
     padding: 10px;
     transition: opacity 0.4s ease-in-out;
 }
@@ -79,10 +80,8 @@ ul {
     margin-top: -8px;
     line-height: 16px;
 }
-.parent.ex-1 {
-}
 .parent.ex-1 .dragula {
-    padding: 15px;
+    /* padding: 15px; */
 }
 .parent.ex-1 .dragula .media,
 body.gu-unselectable .media.el-drag-ex-1 {
@@ -166,29 +165,25 @@ body.gu-unselectable .media.el-drag-ex-2 .media-body p {
 .parent.ex-2 #left-events .f-icon-fill,
 body.gu-unselectable .media.el-drag-ex-2 .f-icon-fill {
     display: none!important;
-    color: #e7515a;
-    fill: rgba(231, 81, 90, 0.4196078431372549);
+    color: #e2a03f;
 }
 .parent.ex-2 #left-events .f-icon-line,
 body.gu-unselectable .media.el-drag-ex-2 .f-icon-line {
     display: block!important;
-    color: #e2a03f;
+    color: #888ea8;
     width: 17px;
-    fill: rgba(226, 160, 63, 0.4196078431372549);
 }
 .parent.ex-2 #right-events .f-icon-fill,
 body.gu-unselectable .media.el-drag-ex-2 .f-icon-fill {
     display: block!important;
-    color: #e7515a;
-    fill: rgba(231, 81, 90, 0.4196078431372549);
+    color: #e2a03f;
     display: block!important;
     width: 17px;
 }
 .parent.ex-2 #right-events .f-icon-line,
 body.gu-unselectable .media.el-drag-ex-2 .f-icon-line {
     display: none!important;
-    color: #e7515a;
-    fill: rgba(231, 81, 90, 0.4196078431372549);
+    color: #e2a03f;
 }
 
 .parent.ex-3 {

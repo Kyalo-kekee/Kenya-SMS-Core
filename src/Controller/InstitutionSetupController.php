@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Entity\ClassHeader;
 use App\Entity\ClassHeaderDetails;
+use App\Entity\SchoolClassHeader;
 use App\Form\ClassHeaderType;
+use App\Form\SchoolHeaderFormType;
 use App\Repository\ClassHeaderRepository;
 use App\Repository\InstitutionSetupRepository;
+use App\Repository\SchoolClassHeaderRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,39 +28,35 @@ class InstitutionSetupController extends AbstractController
         ]);
     }
 
-    #[Route('/school-setup/add-class',name: 'app_add_class')]
-    public function createSchoolClass(Request $request, EntityManagerInterface $entityManager)
+    #[Route('/school-setup/{action}/{id}',name: 'app_add_class')]
+    public function createSchoolClass(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        SchoolClassHeaderRepository $classHeaderRepository,
+        string $action = 'add_class',
+        string $id = null
+
+    ): Response
     {
-        $classModel = new ClassHeader();
-        $classModelDetail = new ClassHeaderDetails();
-        $form= $this ->createForm(ClassHeaderType::class,$classModel);
+       $classModel = match ($action){
+           'add_class' => new SchoolClassHeader(),
+           'edit'=> $classHeaderRepository ->find($id)
+       };
+        $form= $this ->createForm(SchoolHeaderFormType::class,$classModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $classModel->setClassName($form->get('ClassName')->getData());
-            $classModel->setMaximumStudentCapacity($form->get('MaximumStudentCapacity')->getData());
-            $classModel->setMinimumStudentCapacity($form->get('MinimumStudentCapacity')->getData());
-            $classModel->setHasStreams($form->get('HasStreams')->getData());
+            $classModel ->setClassName($form ->get('ClassName')->getData());
+            $classModel ->setClassColorID($form->get('ClassColorID')->getData());
+            $classModel ->setCreatedBy($this->getUser()->getUserIdentifier());
+            $classModel ->setLevelID($form->get('LevelID')->getData());
+            $classModel ->setRemarks($form->get('Remarks')->getData());
+            $classModel ->setStatus($form->get('Status')->getData());
 
             try {
-                $entityManager->persist($classModel);
-                $entityManager->flush();
 
+                $entityManager ->commit($classModel);
+                $entityManager ->flush();
 
-
-            /*
-             * add class sections/streams
-             * Get ID of the class to add a stream
-             * */
-
-            $classId = $classModel ->getId();
-
-            $classModelDetail ->setClassID($classId);
-            $classModelDetail->setSectionID($form->get('SectionID')->getData());
-            $classModelDetail ->setMaxStudents($form->get('MaxStudents')->getData());
-            $classModelDetail ->setMinStudents($form->get('MinStudents')->getData());
-            //$classModelDetail ->setClassPrefect($form->get('ClassPrefect')->getData());
-            $entityManager->persist($classModelDetail);
-            $entityManager->flush();
             $this->addFlash('success','Class Added successfully');
             }catch (\Exception $e)
             {

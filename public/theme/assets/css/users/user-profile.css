@@ -1,5 +1,8 @@
-.widget-content-area {     border: 1px solid #e0e6ed;
-    box-shadow: 0 0 40px 0 rgba(94,92,154,.06);}
+.widget-content-area { 
+    -webkit-box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
+    -moz-box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
+    box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
+}
 .layout-spacing {
     padding-bottom: 25px;
 }
@@ -284,7 +287,9 @@ body.minimal .widget-content-area {
     z-index: 7;
     position: relative;
 }
-.education .widget-content-area .timeline-alter .item-timeline .t-meta-date { padding: 10px; }
+.education .widget-content-area .timeline-alter .item-timeline .t-meta-date { padding: 10px;
+    padding-right: 0;
+    padding-left: 0; }
 .education .widget-content-area .timeline-alter .item-timeline .t-meta-date p {
     margin: 0;
     min-width: 100px;
@@ -388,7 +393,9 @@ body.minimal .widget-content-area {
     z-index: 7;
     position: relative;
 }
-.work-experience .widget-content-area .timeline-alter .item-timeline .t-meta-date { padding: 10px; }
+.work-experience .widget-content-area .timeline-alter .item-timeline .t-meta-date { padding: 10px;
+    padding-right: 0;
+    padding-left: 0; }
 .work-experience .widget-content-area .timeline-alter .item-timeline .t-meta-date p {
     margin: 0;
     min-width: 100px;
@@ -411,6 +418,15 @@ body.minimal .widget-content-area {
     color: #2196f3;
     font-weight: 600;
 }
+@media (max-width: 1399px) and (min-width: 1200px) {
+    .col-xl-5, .col-xl-7 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        /* margin-bottom: 13px!important; */
+    }
+}
+
 @media (max-width: 575px) {
     .work-experience .widget-content-area .timeline-alter .item-timeline {
         display: block; 

@@ -1,5 +1,6 @@
-.section {     border: 1px solid #e0e6ed;
-    box-shadow: 0 0 40px 0 rgba(94,92,154,.06); }
+.section { -webkit-box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
+    -moz-box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
+    box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01); }
 body.minimal .section {
     border: 1px solid rgba(92, 26, 195, 0.14);
     -webkit-box-shadow: none;
@@ -327,7 +328,7 @@ body.minimal .section {
 .account-settings-footer {
     position: fixed;
     bottom: 0;
-    width: calc(100% - 105px);
+    width: calc(100% - 649px);
     background: #191e3a;
     padding: 12px 20px;
     -webkit-box-shadow: -2px -9px 20px rgba(126,142,177,0.12);
@@ -336,19 +337,39 @@ body.minimal .section {
     border-top: 1px solid #f1f2f3;
     border-radius: 6px 6px 0 0;
     z-index: 5;
+    max-width: 1599px
 }
 .sidebar-closed .account-settings-footer {
-    width: calc(100% - 40px);
+    width: calc(100% - 394px);
 }
 .account-settings-footer .as-footer-container {
     display: flex;
     justify-content: space-between;
 }
 
-@media(max-width: 991px) {
+@media(max-width: 1599px) and (min-width: 1200px) {
+
+    #general-info .col-xl-2 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    #general-info .col-xl-10 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .general-info .info .upload {
+        border: none;
+    }
+
+}
+
+@media(max-width: 1199px) {
     .account-settings-container .account-content { width: 100%; padding: 0; }
     .sidebar-closed .account-settings-footer, .account-settings-footer {
-        width: calc(100% - 40px);
+        width: calc(100% - 45px);
     }
 }
 @media(max-width: 767px) {
