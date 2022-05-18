@@ -7,6 +7,7 @@ use App\Entity\ClassHeaderDetails;
 use App\Entity\InstitutionSetup;
 use App\Entity\SchoolClassHeader;
 use App\Form\ClassHeaderType;
+use App\Form\SchoolClassHeaderFormType;
 use App\Form\SchoolHeaderFormType;
 use App\Form\SchoolInformationFormType;
 use App\Repository\ClassHeaderRepository;
@@ -30,7 +31,7 @@ class InstitutionSetupController extends AbstractController
         ]);
     }
 
-    #[Route('/school-setup/{action}/{id}', name: 'app_school_edit_school_information')]
+    #[Route('/school-setup/school/{action}/{id}', name: 'app_school_edit_school_information')]
     public function addSchoolInformation(
         Request                    $request,
         InstitutionSetupRepository $institutionSetupRepository,
@@ -81,21 +82,21 @@ class InstitutionSetupController extends AbstractController
             ]);
     }
 
-    #[Route('/school-setup/{action}/{id}', name: 'app_add_class')]
+    #[Route('/school-setup/class/{action}/{id}', name: 'app_add_class')]
     public function createSchoolClass(
         Request                     $request,
         EntityManagerInterface      $entityManager,
-        SchoolClassHeaderRepository $classHeaderRepository,
-        string                      $action = 'add_class',
+        SchoolClassHeaderRepository $schoolClassHeaderRepository,
+        string                      $action,
         string                      $id = null
 
     ): Response
     {
         $classModel = match ($action) {
             'add_class' => new SchoolClassHeader(),
-            'edit' => $classHeaderRepository->find($id)
+            'edit' => $schoolClassHeaderRepository->find($id)
         };
-        $form = $this->createForm(SchoolHeaderFormType::class, $classModel);
+        $form = $this->createForm(SchoolClassHeaderFormType::class, $classModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $classModel->setClassName($form->get('ClassName')->getData());
@@ -109,15 +110,16 @@ class InstitutionSetupController extends AbstractController
 
                 $entityManager->persist($classModel);
                 $entityManager->flush();
+                $feedback = match ($action) {
+                    'add_class' => 'Class created',
+                    'edit' => 'Class updated'
+                };
+                $this->addFlash('success', $feedback);
             } catch (\Exception $e) {
                 $this->addFlash("fail", $e->getMessage());
             }
 
-            $feedback = match ($action) {
-                'add_class' => 'Class created',
-                'edit' => 'Class updated'
-            };
-            $this->addFlash('success', $feedback);
+
         }
         return $this->render('institution_setup/add_class_information.html.twig', [
             'classForm' => $form->createView()
@@ -125,10 +127,10 @@ class InstitutionSetupController extends AbstractController
     }
 
     #[Route('/institution-setup/class-header', name: 'app_class_header')]
-    public function classHeader(ClassHeaderRepository $repository): Response
+    public function classHeader(SchoolClassHeaderRepository $classHeaderRepository): Response
     {
         return $this->render('institution_setup/class_header.html.twig', [
-            'classHeader' => $repository->findAll()
+            'classHeader' => $classHeaderRepository->findAll()
         ]);
     }
 

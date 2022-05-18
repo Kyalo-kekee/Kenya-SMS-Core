@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
 {% endblock %}
 {% block title %}Users!{% endblock %}
-{% block page_title %}Institution classs{% endblock %}
+{% block page_title %}Classes / Course Level{% endblock %}
 {% block body %}
     <div class="row layout-top-spacing" id="cancel-row">
 
@@ -13,7 +13,7 @@
 
             <div class="widget-content widget-content-area br-6">
                 <div class="col-1 pull-right p-2" style="right: -90%">
-                    <a id="" class="btn btn-dark mb-2 mr-2 rounded-circle" href="{{ path('app_add_class') }}">
+                    <a id="" class="btn btn-dark mb-2 mr-2 rounded-circle" href="{{ path('app_add_class', {'action': 'add_class', 'id': ''}) }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-plus">
@@ -22,25 +22,27 @@
                         </svg>
                     </a>
                 </div>
-                <table id="zero-config" class="table table-striped" style="width:100%">
+                <table id="zero-config" class="table table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Max Capacity</th>
-                        <th>MinCapacity</th>
-                        <th>HasSections</th>
+                        <th>Level ID</th>
+                        <th>No. of Classrooms</th>
+                        <th>Remarks</th>
+                        <th>Color ID</th>
                         <th class="no-content">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for class in classHeader %}
-                        <tr>
+                        <tr class='clickable-row' data-href='' style="cursor: pointer">
                             <td>{{ class.ClassName }} </td>
-                            <td>{{ class.MaximumStudentCapacity }}</td>
-                            <td>{{ class.MinimumStudentCapacity }}</td>
-                            <td>{{ class.HasStreams }}</td>
+                            <td>{{ class.levelID }}</td>
+                            <td>{{ class.numberOfClassRooms }}</td>
+                            <td>{{ class.remarks }}</td>
+                            <td> <span class="badge badge-pills" style='background: {{class.classColorID}}'>{{class.classColorID}}</span></td>
                             <td>
-                                <a href="{{ path('app_class_header_details', {'id': class.Id, 'mode': 'details'}) }}">more...</a>
+                                <a href="{{ path('app_class_header_details', {'mode': 'x', 'id': 'x'}) }}">more...</a>
                                 <a>delete</a>
                             </td>
                         </tr>
@@ -54,6 +56,13 @@
 {% block page_level_script %}
     {# BEGIN PAGE LEVEL SCRIPTS #}
     <script src="{{ asset('theme/plugins/table/datatable/datatables.js') }}"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
     <script>
         $('#zero-config').DataTable({
             "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
@@ -70,8 +79,8 @@
                 "sLengthMenu": "Results :  _MENU_",
             },
             "stripeClasses": [],
-            "lengthMenu": [7, 10, 20, 50],
-            "pageLength": 20
+            "lengthMenu": [5, 10, 20, 50],
+            "pageLength": 5
         });
     </script>
     {# END PAGE LEVEL SCRIPTS #}

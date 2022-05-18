@@ -15,10 +15,10 @@ class SchoolClassHeader
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 72)]
+    #[ORM\Column(type: 'string', length: 72, unique: true)]
     private $ClassName;
 
-    #[ORM\Column(type: 'string', length: 4)]
+    #[ORM\Column(type: 'string', length: 4,unique: true)]
     private $LevelID;
 
     #[ORM\Column(type: 'integer', nullable: true)]
