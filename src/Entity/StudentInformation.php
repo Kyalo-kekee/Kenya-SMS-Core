@@ -11,7 +11,7 @@ class StudentInformation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private $Id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $FirstName;
@@ -55,9 +55,6 @@ class StudentInformation
     #[ORM\Column(type: 'string', length: 4, nullable: true)]
     private $EntryGrade;
 
-    #[ORM\ManyToOne(targetEntity: InstitutionSetup::class, inversedBy: 'StudentsInfo')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $SchoolID;
 
     #[ORM\ManyToOne(targetEntity: SchoolClassRoomsHeader::class, inversedBy: 'ClassRoomStudents')]
     #[ORM\JoinColumn(nullable: false)]
@@ -68,7 +65,7 @@ class StudentInformation
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->Id;
     }
 
     public function getFirstName(): ?string
@@ -239,10 +236,6 @@ class StudentInformation
         return $this;
     }
 
-    public function getSchoolID(): ?InstitutionSetup
-    {
-        return $this->SchoolID;
-    }
 
     public function setSchoolID(?InstitutionSetup $SchoolID): self
     {

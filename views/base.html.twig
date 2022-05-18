@@ -68,7 +68,7 @@
                                     </a>
                                     <div class="page-header">
                                         <div class="page-title">
-                                            <h3>{{title}}</h3>
+                                            <h3>{%block page_title%}{%endblock%}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
 <script src="{{asset('theme/plugins/apex/apexcharts.min.js')}}"></script>
 <script src="{{asset('theme/assets/js/dashboard/dash_1.js')}}"></script>
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-
+{% block page_level_script %}{%endblock%}
 </body>
 
 </html>

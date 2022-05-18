@@ -12,8 +12,8 @@ class InstitutionSetup
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'string')]
-    private $Id;
+    #[ORM\Column(type: 'integer')]
+    private $id;
 
     #[ORM\Column(type: 'string', length: 22)]
     private $IDInitials;
@@ -51,13 +51,7 @@ class InstitutionSetup
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
     private $State;
 
-    #[ORM\OneToMany(mappedBy: 'SchoolID', targetEntity: StudentInformation::class)]
-    private $StudentsInfo;
 
-    public function __construct()
-    {
-        $this->StudentsInfo = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

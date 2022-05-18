@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block page_level_css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/dt-global_style.css') }}">
+{% endblock %}
+
+{% block page_title %}School Information{% endblock %}
+{% block body %}
+    <div class="row layout-top-spacing" id="cancel-row">
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+            <div class="widget-content widget-content-area br-6">
+                {{ form_start(Schoolform) }}
+
+                <div class=" col-md-10 p-4">
+                    <div class="form-row">
+                        <td>
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.Name,'School Name')}}
+                            {{form_row(Schoolform.Name)}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.IDInitials,'Initials')}}
+                            {{form_row(Schoolform.IDInitials)}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.CellPhone1,'Cell Phone 1')}}
+                            {{form_row(Schoolform.CellPhone1)}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.CellPhone2,'Cell Phone 2')}}
+                            {{form_row(Schoolform.CellPhone2)}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.Email,'School Email')}}
+                            {{form_row(Schoolform.Email)}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.WebsiteURl,'Website')}}
+                            {{form_row(Schoolform.WebsiteURl)}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.LogoURL,'LogoUrl')}}
+                            {{form_row(Schoolform.LogoURL)}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.City,'City')}}
+                            {{form_row(Schoolform.City)}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.Zip,'Zip')}}
+                            {{form_row(Schoolform.Zip)}}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.State,'State')}}
+                            {{form_row(Schoolform.State)}}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            {{form_label(Schoolform.NoOfLevels,'How many levels does the school have')}}
+                            {{form_row(Schoolform.NoOfLevels)}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{form_label(Schoolform.NoOfStreamsPerLevel,'How many Streams in each level')}}
+                            {{form_row(Schoolform.NoOfStreamsPerLevel)}}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <button type="submit" class="btn btn-sm bg-info" >Create School</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                {{ form_row(Schoolform._token) }}
+                {{ form_end(Schoolform,{'render_rest':false}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block page_level_script %}
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="{{ asset('theme/plugins/table/datatable/datatables.js') }}"></script>
+    <script>
+        $('#zero-config').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": {
+                    "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search...",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "stripeClasses": [],
+            "lengthMenu": [7, 10, 20, 50],
+            "pageLength": 7
+        });
+    </script>
+{% endblock %}
