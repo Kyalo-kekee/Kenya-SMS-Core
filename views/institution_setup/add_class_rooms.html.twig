@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Class Information{% endblock %}
+
+{% block page_title %}Class Information{% endblock %}
+{%block page_actions%}
+    <a href="{{ path('app_class_header') }}">
+        <img src="{{ asset('enterprise/icons8-move-selection-to-top-row-30.png') }}">
+    </a>
+{%endblock%}
+{% block body %}
+<div class="row layout-top-spacing">
+    {{ include('feedback_flash_messages.html.twig') }}
+    <div class="col-lg-1 col-1 layout-spacing"></div>
+    <div class="col-lg-10 col-10 layout-spacing">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-header">
+                <div class="row">
+                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                        <div class="p-2">
+                            <span class="badge badge-success">{{classModel.ClassName}} : Add a Class Room/ Stream</span>
+                            <i class="pill" style="background: {{classModel.ClassColorID}}">{{classModel.ClassColorID}}</i>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content widget-content-area p-2 mt-0 mb-2" style="border: 1px dotted coral">
+                {{form_start(classRoomForm)}}
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{form_label(classRoomForm.SectionName,'Section/Stream ID')}}
+                        {{form_row(classRoomForm.SectionName)}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{form_label(classRoomForm.MaxCapacity,'MaxCapacity')}}
+                        {{form_row(classRoomForm.MaxCapacity)}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{form_label(classRoomForm.HasBothGenders,'Contains Both Gender?')}}
+                        {{form_row(classRoomForm.HasBothGenders)}}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-info">Create Class Room</button>
+                {{ form_row(classRoomForm._token) }}
+                {{ form_end(classRoomForm,{'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

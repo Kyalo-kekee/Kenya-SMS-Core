@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
 {% endblock %}
-{% block title %}Users!{% endblock %}
+{% block title %}Class Header!{% endblock %}
 {% block page_title %}Classes / Course Level{% endblock %}
 {% block body %}
     <div class="row layout-top-spacing" id="cancel-row">
@@ -35,14 +35,16 @@
                     </thead>
                     <tbody>
                     {% for class in classHeader %}
-                        <tr class='clickable-row' data-href='' style="cursor: pointer">
+                        <tr class='clickable-row' data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
                             <td>{{ class.ClassName }} </td>
                             <td>{{ class.levelID }}</td>
                             <td>{{ class.numberOfClassRooms }}</td>
                             <td>{{ class.remarks }}</td>
                             <td> <span class="badge badge-pills" style='background: {{class.classColorID}}'>{{class.classColorID}}</span></td>
                             <td>
-                                <a href="{{ path('app_class_header_details', {'mode': 'x', 'id': 'x'}) }}">more...</a>
+                                <a href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}">
+                                    <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
+                                </a>
                                 <a>delete</a>
                             </td>
                         </tr>
@@ -75,7 +77,7 @@
                 },
                 "sInfo": "Showing page _PAGE_ of _PAGES_",
                 "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                "sSearchPlaceholder": "Search...",
+                "sSearchPlaceholder": "Search Classes",
                 "sLengthMenu": "Results :  _MENU_",
             },
             "stripeClasses": [],

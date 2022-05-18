@@ -6,14 +6,18 @@ use App\Entity\ClassHeader;
 use App\Entity\ClassHeaderDetails;
 use App\Entity\InstitutionSetup;
 use App\Entity\SchoolClassHeader;
+use App\Entity\SchoolClassRoomsHeader;
 use App\Form\ClassHeaderType;
 use App\Form\SchoolClassHeaderFormType;
+use App\Form\SchoolClassRoomsFormType;
 use App\Form\SchoolHeaderFormType;
 use App\Form\SchoolInformationFormType;
 use App\Repository\ClassHeaderRepository;
 use App\Repository\InstitutionSetupRepository;
 use App\Repository\SchoolClassHeaderRepository;
+use App\Repository\SchoolClassRoomsHeaderRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,6 +35,51 @@ class InstitutionSetupController extends AbstractController
         ]);
     }
 
+    #[Route('/school-setup/class-header/{action}/{id}', name: 'app_classrooms_add')]
+    public function addClassRooms(
+        ManagerRegistry             $registry,
+        SchoolClassHeaderRepository $schoolClassHeaderRepository,
+        Request                     $request,
+        string                      $action = 'add',
+        string                      $id = null
+    ): Response
+    {
+        $classRoom = new SchoolClassRoomsHeader();
+
+        /*for relation*/
+        $classParent = $schoolClassHeaderRepository->find($id);
+
+        $form = $this->createForm(SchoolClassRoomsFormType::class, $classRoom);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $classRoom->setClassID($classParent);
+            $classRoom->setMaxCapacity($form->get('MaxCapacity')->getData());
+            $classRoom->setSectionName($form->get('SectionName')->getData());
+            $classRoom->setHasBothGenders($form->get('HasBothGenders')->getData());
+
+
+            try {
+                $entityManager = $registry->getManager();
+                $entityManager->persist($classRoom);
+                $entityManager->flush();
+
+                $this ->addFlash('success', 'A new Class Room added to: '.$classParent ->getClassName());
+
+            } catch (\Exception $exception) {
+                $this->addFlash('fail', $exception ->getMessage());
+            }
+        }
+        return $this ->render('institution_setup/add_class_rooms.html.twig',[
+
+            'classRoomForm' => $form ->createView(),
+            'classModel' => $classParent
+        ]);
+
+
+    }
+
     #[Route('/school-setup/school/{action}/{id}', name: 'app_school_edit_school_information')]
     public function addSchoolInformation(
         Request                    $request,
@@ -38,7 +87,7 @@ class InstitutionSetupController extends AbstractController
         EntityManagerInterface     $entityManager,
         string                     $action = 'add',
         string                     $id = null
-    )
+    ): Response
     {
         $school = match ($action) {
             'add' => new InstitutionSetup(),
@@ -134,11 +183,14 @@ class InstitutionSetupController extends AbstractController
         ]);
     }
 
-    #[Route('/class-header-details/{mode}/{id}', name: 'app_class_header_details')]
-    public function classHeaderDetails(ClassHeaderRepository $repository, $mode = 'detail', $id = null): Response
+    #[Route('/class-header-details/{id}', name: 'app_class_header_details')]
+    public function classHeaderDetails(SchoolClassHeaderRepository $classHeaderRepository, $id = null): Response
     {
+        $classParent = $classHeaderRepository->find($id);
+        $classRooms = $classParent ->getClassRooms();
+
         return $this->render('institution_setup/class_header_details.html.twig', [
-            'classHeader' => $repository->find($id)
+            'classHeader' => $classParent
         ]);
     }
 }

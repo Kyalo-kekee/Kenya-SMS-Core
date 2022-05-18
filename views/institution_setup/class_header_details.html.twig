@@ -1,73 +1,81 @@
 {% extends 'base.html.twig' %}
 {% block page_level_css %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/assets/css/widgets/modules-widgets.css') }}">
+    <link href="{{asset('theme/assets/css/pages/privacy/privacy.css')}}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block title %}Class Header Details{% endblock %}
 {% block page_title %}Class Dashboard{% endblock %}
 {% block body %}
-<div class="row layout-top-spacing" id="cancel-row">
-    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
-    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 layout-spacing">
+<div id="headerWrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12 text-center">
+                <h2 class="main-heading">Privacy Policy</h2>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <div class="widget widget-account-invoice-three">
+<div id="privacyWrapper" class="">
+    <div class="privacy-container">
+        <div class="privacyContent">
 
-            <div class="widget-heading">
-                <div class="wallet-usr-info">
-                    <div class="usr-name">
-                        <span> {{ classHeader.ClassName }}</span>
-                    </div>
-                    <div class="add">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
-                    </div>
+            <div class="d-flex justify-content-between privacy-head">
+                <div class="privacyHeader">
+                    <h1>Terms of Service</h1>
+                    <p>Updated Sep 15, 2020</p>
                 </div>
-                <div class="wallet-balance">
-                    <p>Total Number of Students</p>
-                    <h5 class=""><span class="w-currency"></span>0</h5>
+
+                <div class="get-privacy-terms align-self-center">
+                    <button class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Print</button>
                 </div>
+
             </div>
 
-            <div class="widget-amount">
+            <div class="privacy-content-container">
 
-                <div class="w-a-info funds-received">
-                    <span>Last Mean Score <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></span>
-                    <p>7.1</p>
-                </div>
+                <section>
+                    <h5>Please read our policy carefully</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                <div class="w-a-info funds-spent">
-                    <span>Current Mean score <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    <p>6.0</p>
-                </div>
-            </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </section>
 
-            <div class="widget-content">
+                <h5 class="policy-info-ques">What personal data we collect and why we collect it</h5>
 
-                <div class="bills-stats">
-                    <span>C+</span>
-                </div>
+                <section>
 
-                <div class="invoice-list">
+                    <h5>Media</h5>
 
-                    {#<div class="inv-detail">
-                        <div class="info-detail-1">
-                            <p>Netflix</p>
-                            <p><span class="w-currency">$</span> <span class="bill-amount">13.85</span></p>
-                        </div>
-                        <div class="info-detail-2">
-                            <p>BlueHost VPN</p>
-                            <p><span class="w-currency">$</span> <span class="bill-amount">15.66</span></p>
-                        </div>
-                    </div>#}
+                    <p>If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p>
+                </section>
 
-                    <div class="inv-action">
-                        <a href="javascript:void(0);" class="btn btn-outline-primary view-details">View Students</a>
-                        <a href="javascript:void(0);" class="btn btn-outline-primary pay-now">View Performance</a>
-                    </div>
-                </div>
+                <section>
+
+                    <h5> Cookies </h5>
+
+                    <p> If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
+
+                    <p> If you have an account and you log in to this site, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
+
+                    <p> When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select “Remember Me”, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
+
+                    <p> If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p>
+
+                </section>
+
+                <section>
+                    <h5> Embedded content from other websites.</h5>
+
+                    <p> Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
+
+                    <p> These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
+                </section>
+
             </div>
 
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block page_level_script %}

@@ -22,7 +22,7 @@ class SchoolClassRoomsHeader
     #[ORM\Column(type: 'integer')]
     private $MaxCapacity;
 
-    #[ORM\Column(type: 'string', length: 72)]
+    #[ORM\Column(type: 'string', length: 72,unique: true)]
     private $SectionName;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
@@ -30,6 +30,9 @@ class SchoolClassRoomsHeader
 
     #[ORM\OneToMany(mappedBy: 'ClassRoomID', targetEntity: StudentInformation::class)]
     private $ClassRoomStudents;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $TotalNumberOfStudents;
 
     public function __construct()
     {
@@ -115,6 +118,18 @@ class SchoolClassRoomsHeader
                 $classRoomStudent->setClassRoomID(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTotalNumberOfStudents(): ?int
+    {
+        return $this->TotalNumberOfStudents;
+    }
+
+    public function setTotalNumberOfStudents(?int $TotalNumberOfStudents): self
+    {
+        $this->TotalNumberOfStudents = $TotalNumberOfStudents;
 
         return $this;
     }
