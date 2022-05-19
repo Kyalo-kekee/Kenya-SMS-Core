@@ -1,85 +1,110 @@
 {% extends 'base.html.twig' %}
 {% block page_level_css %}
-    <link href="{{asset('theme/assets/css/pages/privacy/privacy.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('theme/assets/css/widgets/modules-widgets.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
 {% endblock %}
 {% block title %}Class Header Details{% endblock %}
-{% block page_title %}Class Dashboard{% endblock %}
+{% block page_title %}Class Rooms {% endblock %}
 {% block body %}
-<div id="headerWrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-12 text-center">
-                <h2 class="main-heading">Privacy Policy</h2>
+    <div class="row sales layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-activity-three">
+
+                <div class="widget-heading">
+                    <h5 class="badge badge-success">{{ classHeader.className }}</h5>
+
+                    <div class="task-action">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" id="pendingTask" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-more-horizontal">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="pendingTask"
+                                 style="will-change: transform;">
+                                <a class="dropdown-item" href="{{ path('app_class_header') }}">Back to classes</a>
+                                <a class="dropdown-item" href="{{ path('app_classrooms_add', {'action': 'add', 'id': classHeader.id}) }}">Add Room/Stream/Section</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-content">
+                    <div class="card col-4 p-2 mb-2">
+                        <h5>Class Rooms</h5>
+
+                    </div>
+
+                    <div class="mt-container mx-auto">
+                        <table id="class-rooms" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Section/ Stream Name</th>
+                                <th>Max Capacity</th>
+                                <th>Total Number of Student</th>
+                                <th>Has both genders</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for classRoom in classHeader.classRooms %}
+                                <tr>
+                                    <td>
+                                        {{ classRoom.SectionName }}
+                                    </td>
+                                    <td>
+                                        {{ classRoom.MaxCapacity }}
+                                    </td>
+                                    <td>
+                                        {{ classRoom.TotalNumberOfStudents }}
+                                    </td>
+                                    <td>
+                                        {{ classRoom.HasBothGenders }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="privacyWrapper" class="">
-    <div class="privacy-container">
-        <div class="privacyContent">
-
-            <div class="d-flex justify-content-between privacy-head">
-                <div class="privacyHeader">
-                    <h1>Terms of Service</h1>
-                    <p>Updated Sep 15, 2020</p>
-                </div>
-
-                <div class="get-privacy-terms align-self-center">
-                    <button class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg> Print</button>
-                </div>
-
-            </div>
-
-            <div class="privacy-content-container">
-
-                <section>
-                    <h5>Please read our policy carefully</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </section>
-
-                <h5 class="policy-info-ques">What personal data we collect and why we collect it</h5>
-
-                <section>
-
-                    <h5>Media</h5>
-
-                    <p>If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p>
-                </section>
-
-                <section>
-
-                    <h5> Cookies </h5>
-
-                    <p> If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
-
-                    <p> If you have an account and you log in to this site, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
-
-                    <p> When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select “Remember Me”, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
-
-                    <p> If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p>
-
-                </section>
-
-                <section>
-                    <h5> Embedded content from other websites.</h5>
-
-                    <p> Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
-
-                    <p> These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
-                </section>
-
-            </div>
-
-        </div>
-    </div>
 {% endblock %}
 
 {% block page_level_script %}
     <script src="{{ asset('theme/assets/js/widgets/modules-widgets.js') }}"></script>
+    <script src="{{ asset('theme/plugins/table/datatable/datatables.js') }}"></script>
+
+    <script>
+        $('#class-rooms').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": {
+                    "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search Classes",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "stripeClasses": [],
+            "lengthMenu": [5, 10, 20, 50],
+            "pageLength": 5
+        });
+    </script>
 {% endblock %}
 
 

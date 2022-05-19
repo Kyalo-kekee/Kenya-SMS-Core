@@ -2,17 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\ClassHeader;
-use App\Entity\ClassHeaderDetails;
 use App\Entity\InstitutionSetup;
 use App\Entity\SchoolClassHeader;
 use App\Entity\SchoolClassRoomsHeader;
-use App\Form\ClassHeaderType;
 use App\Form\SchoolClassHeaderFormType;
 use App\Form\SchoolClassRoomsFormType;
-use App\Form\SchoolHeaderFormType;
 use App\Form\SchoolInformationFormType;
-use App\Repository\ClassHeaderRepository;
 use App\Repository\InstitutionSetupRepository;
 use App\Repository\SchoolClassHeaderRepository;
 use App\Repository\SchoolClassRoomsHeaderRepository;
@@ -25,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InstitutionSetupController extends AbstractController
 {
+
 
 
     #[Route('/school-setup/school-information', name: 'app_school_information')]
@@ -65,15 +61,15 @@ class InstitutionSetupController extends AbstractController
                 $entityManager->persist($classRoom);
                 $entityManager->flush();
 
-                $this ->addFlash('success', 'A new Class Room added to: '.$classParent ->getClassName());
+                $this->addFlash('success', 'A new Class Room added to: ' . $classParent->getClassName());
 
             } catch (\Exception $exception) {
-                $this->addFlash('fail', $exception ->getMessage());
+                $this->addFlash('fail', $exception->getMessage());
             }
         }
-        return $this ->render('institution_setup/add_class_rooms.html.twig',[
+        return $this->render('institution_setup/add_class_rooms.html.twig', [
 
-            'classRoomForm' => $form ->createView(),
+            'classRoomForm' => $form->createView(),
             'classModel' => $classParent
         ]);
 
@@ -134,7 +130,6 @@ class InstitutionSetupController extends AbstractController
     #[Route('/school-setup/class/{action}/{id}', name: 'app_add_class')]
     public function createSchoolClass(
         Request                     $request,
-        EntityManagerInterface      $entityManager,
         SchoolClassHeaderRepository $schoolClassHeaderRepository,
         string                      $action,
         string                      $id = null
@@ -157,8 +152,7 @@ class InstitutionSetupController extends AbstractController
 
             try {
 
-                $entityManager->persist($classModel);
-                $entityManager->flush();
+               $schoolClassHeaderRepository ->add($classModel);
                 $feedback = match ($action) {
                     'add_class' => 'Class created',
                     'edit' => 'Class updated'
@@ -184,13 +178,19 @@ class InstitutionSetupController extends AbstractController
     }
 
     #[Route('/class-header-details/{id}', name: 'app_class_header_details')]
-    public function classHeaderDetails(SchoolClassHeaderRepository $classHeaderRepository, $id = null): Response
+    public function classHeaderDetails(
+        SchoolClassHeaderRepository $classHeaderRepository,
+        SchoolClassRoomsHeaderRepository $classRoomsHeaderRepository,
+                                    $id = null
+    ): Response
     {
         $classParent = $classHeaderRepository->find($id);
-        $classRooms = $classParent ->getClassRooms();
+        //$classRooms = $classHeaderRepository ->getClassRooms($classParent, $classRoomsHeaderRepository);
+       // dd($classRooms);
 
         return $this->render('institution_setup/class_header_details.html.twig', [
-            'classHeader' => $classParent
+            'classHeader' => $classParent,
+
         ]);
     }
 }

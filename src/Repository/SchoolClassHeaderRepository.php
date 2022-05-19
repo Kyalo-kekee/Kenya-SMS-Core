@@ -45,6 +45,21 @@ class SchoolClassHeaderRepository extends ServiceEntityRepository
         }
     }
 
+    public function getClassRooms(SchoolClassHeader $entity,SchoolClassRoomsHeaderRepository $repository)
+    {
+        return $repository ->createQueryBuilder('cRooms')
+            ->andWhere('cRooms.ClassID= :class_headerId')
+            ->setParameter('class_headerId', $entity ->getId())
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    public function canAddRoom()
+    {
+
+    }
+
     // /**
     //  * @return SchoolClassHeader[] Returns an array of SchoolClassHeader objects
     //  */
