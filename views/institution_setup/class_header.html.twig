@@ -35,7 +35,7 @@
                     </thead>
                     <tbody>
                     {% for class in classHeader %}
-                        <tr class='clickable-row' data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
+                        <tr class='clickable-row1' onclick="ShowClassRooms('{{path('app_class_header_details',{'id':class.id})}}')" data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
                             <td>{{ class.ClassName }} </td>
                             <td>{{ class.levelID }}</td>
                             <td>{{ class.numberOfClassRooms }}</td>
@@ -59,11 +59,10 @@
     {# BEGIN PAGE LEVEL SCRIPTS #}
     <script src="{{ asset('theme/plugins/table/datatable/datatables.js') }}"></script>
     <script>
-        jQuery(document).ready(function($) {
-            $(".clickable-row").click(function() {
-                window.location = $(this).data("href");
-            });
-        });
+        function ShowClassRooms(path){
+            window.location = path;
+        }
+
     </script>
     <script>
         $('#zero-config').DataTable({
