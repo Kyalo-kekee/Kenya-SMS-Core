@@ -9,5 +9,7 @@
 /vendor/
 .idea
 /migrations/
+/public/theme/
+
 
 ###< symfony/framework-bundle ###
