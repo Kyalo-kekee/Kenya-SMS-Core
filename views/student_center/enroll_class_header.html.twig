@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% block page_level_css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+{% endblock %}
+{% block title %}Student Center - Enroll Student!{% endblock %}
+{% block page_title %}Register/Enroll Student{% endblock %}
+{% block body %}
+    <div class="row layout-top-spacing" id="cancel-row">
+
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+
+            <div class="widget-content widget-content-area br-6">
+                <h5 class="badge badge-success"> Select a class to register a student</h5>
+                <table id="zero-config" class="table table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Level ID & Class Rooms</th>
+                        <th class="no-content">Add Room</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for class in classHeader %}
+                        <tr class='clickable-row1' onclick="ShowClassRooms('{{path('app_class_header_details',{'id':class.id})}}')" data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
+                            <td>{{ class.ClassName }} </td>
+                            <td>{{ class.levelID }}</td>
+                            <td><a class="bs-tooltip" title="Add room" href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}">
+                                    <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
+                                </a></td>
+                            <tr>
+                                <td style="background: {{class.classColorID}}"></td>
+                                  <td><table class="table table-bordered table-sm table-hover">
+                                        {%for rooms in class.classRooms %}
+                                        <tr>
+                                            <td>{{rooms.SectionName }}</td>
+                                            <td><a href="" class="bs-tooltip" title="Add a student to {{rooms.SectionName}}"><img src="{{ asset('enterprise/icons8-writer-male-32.png') }}"></a></td>
+                                        </tr>
+                                        {%endfor%}
+                                    </table>
+                                  </td>
+                             </tr>
+
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block page_level_script %}
+    {# BEGIN PAGE LEVEL SCRIPTS #}
+    <script src="{{ asset('theme/plugins/table/datatable/datatables.js') }}"></script>
+    <script>
+        function ShowClassRooms(path){
+            window.location = path;
+        }
+
+    </script>
+    <script>
+        $('#zero-config').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": {
+                    "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search Classes",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "stripeClasses": [],
+            "lengthMenu": [5, 10, 20, 50],
+            "pageLength": 5
+        });
+    </script>
+    {# END PAGE LEVEL SCRIPTS #}
+{% endblock %}
+
