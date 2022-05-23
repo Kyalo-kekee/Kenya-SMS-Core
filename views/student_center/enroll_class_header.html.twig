@@ -18,22 +18,23 @@
                     <tr>
                         <th>Name</th>
                         <th>Level ID & Class Rooms</th>
-                        <th class="no-content">Add Room</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for class in classHeader %}
                         <tr class='clickable-row1' onclick="ShowClassRooms('{{path('app_class_header_details',{'id':class.id})}}')" data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
-                            <td>{{ class.ClassName }} </td>
+                            <td style="border-right: 2px solid lightgrey">{{ class.ClassName }} </td>
                             <td>{{ class.levelID }}</td>
-                            <td><a class="bs-tooltip" title="Add room" href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}">
-                                    <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
-                                </a></td>
+                            <td></td>
                             <tr>
-                                <td style="background: {{class.classColorID}}"></td>
-                                  <td><table class="table table-bordered table-sm table-hover">
+                                <td style="">
+                                    <a class="bs-tooltip" title="Add room" href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}">
+                                        <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
+                                    </a>
+                                </td>
+                                  <td><table class="table table-bordered table-sm dt-no-sorting">
                                         {%for rooms in class.classRooms %}
-                                        <tr>
+                                        <tr style="border-left: 2px solid {{class.classColorID}}">
                                             <td>{{rooms.SectionName }}</td>
                                             <td><a href="" class="bs-tooltip" title="Add a student to {{rooms.SectionName}}"><img src="{{ asset('enterprise/icons8-writer-male-32.png') }}"></a></td>
                                         </tr>
