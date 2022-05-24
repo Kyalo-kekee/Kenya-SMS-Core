@@ -16,7 +16,7 @@ class StudentInformation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $Id;
+    private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $FirstName;
@@ -77,9 +77,30 @@ class StudentInformation
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $CertificateAttachmentSize2;
 
+    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'ImageUrl', size: 'ImageSize')]
+    private ?File $PhotoFile;
+
+    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize')]
+    private ?File $CertificateFile1;
+
+    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize2')]
+    private ?File $CertificateFile2;
+
+    #[ORM\ManyToMany(targetEntity: CourseHeader::class, inversedBy: 'EnrolledStudents')]
+    private $EntrySubjects;
+
+    public function __construct()
+    {
+        $this->EntrySubjects = new ArrayCollection();
+    }
+
+
+
+
+
     public function getId(): ?int
     {
-        return $this->Id;
+        return $this->id;
     }
 
     public function getFirstName(): ?string
@@ -321,20 +342,7 @@ class StudentInformation
     /*
  * STUDENT PHOTO & ATTACHMENTS
  * */
-    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'ImageUrl', size: 'ImageSize')]
-    private ?File $PhotoFile;
-    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize')]
-    private ?File $CertificateFile1;
-    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize2')]
-    private ?File $CertificateFile2;
 
-    #[ORM\ManyToMany(targetEntity: CourseHeader::class, inversedBy: 'EnrolledStudents')]
-    private $EntrySubjects;
-
-    public function __construct()
-    {
-        $this->EntrySubjects = new ArrayCollection();
-    }
 
     public function setPhotoFile(?File $file = null): void
     {

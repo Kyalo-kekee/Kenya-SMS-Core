@@ -15,10 +15,10 @@ class CourseHeader
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 10, unique: true)]
+    #[ORM\Column(type: 'string', length: 10)]
     private $CourseID;
 
-    #[ORM\Column(type: 'string', length: 255,unique: true)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $CourseName;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -39,10 +39,12 @@ class CourseHeader
     #[ORM\ManyToMany(targetEntity: StudentInformation::class, mappedBy: 'EntrySubjects')]
     private $EnrolledStudents;
 
+
     public function __construct()
     {
         $this->CourseModules = new ArrayCollection();
         $this->EnrolledStudents = new ArrayCollection();
+
     }
 
     public function getId(): ?int
