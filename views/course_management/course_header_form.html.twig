@@ -17,7 +17,7 @@
                 <div class="widget-header">
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                            <h4>Enter Class Details</h4>
+                            <h4>Enter Subject Details</h4>
                         </div>
                     </div>
                 </div>
@@ -31,20 +31,24 @@
                         </div>
                         <div class="form-group col-md-4">
                             {{form_label(courseForm.CourseID,'Course ID')}}
-                            {{form_row(courseForm.CourseID)}}
+                            {{form_row(courseForm.CourseID,{'attr':{'class':'form-control'}})}}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             {{form_label(courseForm.CourseDuration,'Duration')}}
-                            {{form_row(courseForm.CourseDuration)}}
+                            {{form_row(courseForm.CourseDuration,{'attr':{'class':'form-control'}})}}
                         </div>
+
+                    </div>
+                    <div class="form-row">
                         <div class="form-group col-md-4">
-                            {{form_label(courseForm.HasModules,'Does this subject/co')}}
-                            {{form_row(courseForm.HasModules)}}
+                            {{form_label(courseForm.HasModules,'Does this subject contain modules')}}
+                            {{form_row(courseForm.HasModules,{'attr':{'class':'new-control'}})}}
                         </div>
                     </div>
-                    {{form_end(courseForm,'render_rest':false)}}
+                    <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                    {{form_end(courseForm,{'render_rest':false})}}
                 </div>
             </div>
         </div>
