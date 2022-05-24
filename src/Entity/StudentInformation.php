@@ -3,9 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\StudentInformationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: StudentInformationRepository::class)]
+#[Vich\Uploadable]
 class StudentInformation
 {
     #[ORM\Id]
@@ -62,6 +67,15 @@ class StudentInformation
 
     #[ORM\Column(type: 'string', length: 10)]
     private $DOB;
+
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private $UpdatedAt;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $CertificateAttachmentSize;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $CertificateAttachmentSize2;
 
     public function getId(): ?int
     {
@@ -264,6 +278,131 @@ class StudentInformation
     public function setDOB(string $DOB): self
     {
         $this->DOB = $DOB;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->UpdatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $UpdatedAt): self
+    {
+        $this->UpdatedAt = $UpdatedAt;
+
+        return $this;
+    }
+
+    public function getCertificateAttachmentSize(): ?string
+    {
+        return $this->CertificateAttachmentSize;
+    }
+
+    public function setCertificateAttachmentSize(?string $CertificateAttachmentSize): self
+    {
+        $this->CertificateAttachmentSize = $CertificateAttachmentSize;
+
+        return $this;
+    }
+
+    public function getCertificateAttachmentSize2(): ?string
+    {
+        return $this->CertificateAttachmentSize2;
+    }
+
+    public function setCertificateAttachmentSize2(?string $CertificateAttachmentSize2): self
+    {
+        $this->CertificateAttachmentSize2 = $CertificateAttachmentSize2;
+
+        return $this;
+    }
+
+    /*
+ * STUDENT PHOTO & ATTACHMENTS
+ * */
+    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'ImageUrl', size: 'ImageSize')]
+    private ?File $PhotoFile;
+    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize')]
+    private ?File $CertificateFile1;
+    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize2')]
+    private ?File $CertificateFile2;
+
+    #[ORM\ManyToMany(targetEntity: CourseHeader::class, inversedBy: 'EnrolledStudents')]
+    private $EntrySubjects;
+
+    public function __construct()
+    {
+        $this->EntrySubjects = new ArrayCollection();
+    }
+
+    public function setPhotoFile(?File $file = null): void
+    {
+        $this->PhotoFile = $file;
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->UpdatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function setCertificateFile1(?File $file = null): void
+    {
+        $this->CertificateFile1 = $file;
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->UpdatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function setCertificateFile2(?File $file = null): void
+    {
+        $this->CertificateFile2 = $file;
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->UpdatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function CertificateFile1(): ?File
+    {
+        return $this->CertificateFile1;
+    }
+
+    public function CertificateFile2(): ?File
+    {
+        return $this->CertificateFile2;
+    }
+
+    public function getPhotoFile(): ?File
+    {
+        return $this->PhotoFile;
+    }
+    /*
+     * =========END PHOTO & ATTACHMENTS========*/
+
+    /**
+     * @return Collection<int, CourseHeader>
+     */
+    public function getEntrySubjects(): Collection
+    {
+        return $this->EntrySubjects;
+    }
+
+    public function addEntrySubject(CourseHeader $entrySubject): self
+    {
+        if (!$this->EntrySubjects->contains($entrySubject)) {
+            $this->EntrySubjects[] = $entrySubject;
+        }
+
+        return $this;
+    }
+
+    public function removeEntrySubject(CourseHeader $entrySubject): self
+    {
+        $this->EntrySubjects->removeElement($entrySubject);
 
         return $this;
     }

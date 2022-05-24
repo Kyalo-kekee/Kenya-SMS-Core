@@ -36,9 +36,13 @@ class CourseHeader
     #[ORM\OneToMany(mappedBy: 'CourseId', targetEntity: CourseModuleHeader::class, orphanRemoval: true)]
     private $CourseModules;
 
+    #[ORM\ManyToMany(targetEntity: StudentInformation::class, mappedBy: 'EntrySubjects')]
+    private $EnrolledStudents;
+
     public function __construct()
     {
         $this->CourseModules = new ArrayCollection();
+        $this->EnrolledStudents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -143,6 +147,33 @@ class CourseHeader
             if ($findCourseModule->getCourseId() === $this) {
                 $findCourseModule->setCourseId(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StudentInformation>
+     */
+    public function getEnrolledStudents(): Collection
+    {
+        return $this->EnrolledStudents;
+    }
+
+    public function addEnrolledStudent(StudentInformation $enrolledStudent): self
+    {
+        if (!$this->EnrolledStudents->contains($enrolledStudent)) {
+            $this->EnrolledStudents[] = $enrolledStudent;
+            $enrolledStudent->addEntrySubject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnrolledStudent(StudentInformation $enrolledStudent): self
+    {
+        if ($this->EnrolledStudents->removeElement($enrolledStudent)) {
+            $enrolledStudent->removeEntrySubject($this);
         }
 
         return $this;
