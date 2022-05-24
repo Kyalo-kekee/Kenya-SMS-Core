@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\CourseHeader;
+use App\Entity\SchoolClassHeader;
 use App\Entity\StudentInformation;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,19 +27,25 @@ class StudentInformationFormType extends AbstractType
             ->add('EntryMarks',null,['label'=>false])
             ->add('EntryGrade',null,['label'=>false])
             ->add('DOB',null,['label'=>false])
-            ->add('EntrySubjects')
+            ->add('EntrySubjects',EntityType::class,array(
+                'label'=>false,
+                'class'=>CourseHeader::class,
+                'choice_label' => 'CourseName',
+                'multiple' => true,
+                'expanded' => true,
+                'choice_value' => 'Id',
+                'attr'=>['class'=> ''],
+            ))
             /*attachments*/
             ->add(
 
                 'PhotoFile',
                 VichFileType::class,
                 [
-                    'label' => 'Student Image',
+                    'label' => '',
                     'required' => false,
                     'allow_delete' => true,
                     'delete_label' => 'delete picture',
-                    'download_uri' => '...',
-                    'download_label' => 'download file',
                     'asset_helper' => true,
                 ]
             )

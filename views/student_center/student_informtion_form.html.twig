@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student Information{% endblock %}
+{% block page_level_css %}
+    <link href="{{ asset('theme/assets/css/scrollspyNav.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('theme/assets/css/components/tabs-accordian/custom-tabs.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <style>
+        .checkbox-margin label{
+            margin-left: 5px !important;
+            padding: 3px;
+        }
+
+        .entry-subjects{
+
+            z-index: 1000;
+        }
+        .profile{
+            position: absolute;
+            right: 2%;
+        }
+        @media only screen and (max-width: 720px) {
+            .profile{
+                position: relative;
+                width: 100%;
+
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block page_title %}Student Information{% endblock %}
+{% block page_actions %}
+    <a href="{{ path('app_class_header') }}">
+        <img src="{{ asset('enterprise/icons8-move-selection-to-top-row-30.png') }}">
+    </a>
+{% endblock %}
+{% block body %}
+    <div class="row layout-top-spacing">
+        <div class="col-lg-12 col-12 layout-spacing">
+            <div class="statbox widget box box-shadow" style="border:  1px dotted coral">
+                {{form_start(studentForm)}}
+                <div class="widget-content widget-content-area " style="">
+                    <ul class="nav nav-tabs mb-3 mt-3  " id="borderTop" role="tablist" style="border: 1px solid grey">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="border-top-home-tab" data-toggle="tab"
+                               href="#border-top-home" role="tab" aria-controls="border-top-home" aria-selected="true">
+
+                                Basic Information</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="border-top-profile-tab" data-toggle="tab" href="#border-top-profile"
+                               role="tab" aria-controls="border-top-profile" aria-selected="false">
+
+                                Subject Selection</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="border-top-contact-tab" data-toggle="tab" href="#border-top-contact"
+                               role="tab" aria-controls="border-top-contact" aria-selected="false">
+                                Attachments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="border-top-setting-tab" data-toggle="tab" href="#border-top-setting"
+                               role="tab" aria-controls="border-top-setting" aria-selected="false">
+                                Hostel & Service</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="borderTopContent">
+
+                        <div class="tab-pane fade show active" id="border-top-home" role="tabpanel"
+                             aria-labelledby="border-top-home-tab">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-8 mr-0 p-2" style="border: 1px solid lightblue">
+                                    <div class="form-row" >
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            {{form_label(studentForm.FirstName,'FirstName')}}
+                                            {{form_row(studentForm.FirstName,{'attr':{'class':'form-control-sm'}})}}
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            {{form_label(studentForm.MiddleName,'Middle Name')}}
+                                            {{form_row(studentForm.MiddleName,{'attr':{'class':'form-control-sm'}})}}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            {{form_label(studentForm.LastName,'Last Name')}}
+                                            {{form_row(studentForm.LastName, {'attr':{'class':'form-control-sm'}})}}
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            {{form_label(studentForm.EnrollDate,'Enroll Date')}}
+                                            {{form_row(studentForm.EnrollDate, {'attr':{'class':'form-control'}})}}
+                                        </div>
+
+                                    </div>
+                                    <div class="row m-1">
+
+                                        <h6 class="skill-item">Guardian Information</h6>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 col-sm-12">
+                                            {{form_label(studentForm.GuardianName,'Gurdian Name')}}
+                                            {{form_row(studentForm.GuardianName, {'attr':{'class':'form-control-sm'}})}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 col-sm-12">
+                                            {{form_label(studentForm.GuardianPhoneNumber1,'Cell Phone')}}
+                                            {{form_row(studentForm.GuardianPhoneNumber1, {'attr':{'class':'form-control-sm'}})}}
+                                        </div>
+                                        <div class="form-group col-md-4 col-sm-12">
+                                            {{form_label(studentForm.GuardianPhoneNumber2,'Cell Phone (other)')}}
+                                            {{form_row(studentForm.GuardianPhoneNumber2, {'attr':{'class':'form-control-sm'}})}}
+                                        </div>
+                                        <div class="form-group col-md-4 col-sm-12">
+                                            {{form_label(studentForm.GuardianEmail,'Email')}}
+                                            {{form_row(studentForm.GuardianEmail, {'attr':{'class':'form-control-sm'}})}}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {#PROFILE PICTURE ROW#}
+                                <div class="form-group col-md-3 badge outline-badge-warning profile-img profile" >
+                                    <div class="form-row">
+                                        <div class="w-profile-view p-2">
+                                            <img src="{{asset('enterprise/icons8-avatar-64.png')}}" alt="admin-profile" class="img-fluid">
+                                            <div class="w-profile-content">
+                                                <h6></h6>
+                                                <p>Student Image</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12 custom-file-container">
+                                            {{form_row(studentForm.PhotoFile)}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="border-top-profile" role="tabpanel"
+                             aria-labelledby="border-top-profile-tab">
+
+                                <div style="" class="col-md-10 p-2 entry-subjects">
+                                    <h3 class="header badge badge-classic">Select Subjects</h3>
+                                    <hr>
+                                    {{form_row(studentForm.EntrySubjects,{'attr':{'class':'checkbox-margin bagde outline-badge-info'}})}}
+                                </div>
+                        </div>
+                        <div class="tab-pane fade" id="border-top-contact" role="tabpanel"
+                             aria-labelledby="border-top-contact-tab">
+                            <p>kjskskas</p>
+                        </div>
+                        <div class="tab-pane fade" id="border-top-setting" role="tabpanel"
+                             aria-labelledby="border-top-setting-tab">
+
+                        </div>
+
+                    </div>
+                </div>
+                {{form_row(studentForm._token)}}
+                {{form_end(studentForm,{'render_rest':false})}}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block page_level_script %}
+    <script src="{{ asset('theme/assets/js/scrollspyNav.js') }}"></script>
+{% endblock %}

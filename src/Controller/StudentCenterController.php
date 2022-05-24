@@ -7,6 +7,7 @@ use App\Form\StudentInformationFormType;
 use App\Repository\ClassHeaderRepository;
 use App\Repository\CourseHeaderRepository;
 use App\Repository\SchoolClassHeaderRepository;
+use App\Repository\SchoolClassRoomsHeaderRepository;
 use App\Repository\StudentInformationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,6 +27,7 @@ class StudentCenterController extends AbstractController
     #[Route('student-center/select-class/{class_room_id}/', name: 'app_student_information_form')]
     public function enrollNewStudentClassHeader(
         StudentInformationRepository $studentInformationRepository,
+        SchoolClassRoomsHeaderRepository $classRoomsHeaderRepository,
         CourseHeaderRepository       $courseHeaderRepository,
         Request                      $request,
         string                       $class_room_id,
@@ -34,6 +36,8 @@ class StudentCenterController extends AbstractController
         $student = new StudentInformation();
         $form = $this->createForm(StudentInformationFormType::class, $student);
         $form->handleRequest($request);
+        //map student to classroom
+        $student ->setClassRoomID($classRoomsHeaderRepository->find($class_room_id));
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -64,16 +68,16 @@ class StudentCenterController extends AbstractController
 
         }
 
-        return $this->render('student_center/enroll_class_header.html.twig', [
-            'classHeader' => null
+        return $this->render('student_center/student_informtion_form.html.twig', [
+            'studentForm' => $form->createView()
         ]);
     }
 
-    #[Route('student-center/select-class/enroll', name: 'app_enroll_class_header')]
-    public  function enrollSelectClass(ClassHeaderRepository $classHeaderRepository): Response
+    #[Route('student-center/classroom/enroll', name: 'app_enroll_class_header')]
+    public  function enrollSelectClass(SchoolClassHeaderRepository $schoolClassHeaderRepository): Response
     {
         return $this->render('student_center/enroll_class_header.html.twig', [
-            'classHeader' => $classHeaderRepository->findAll()
+            'classHeader' => $schoolClassHeaderRepository->findAll()
         ]);
     }
 }

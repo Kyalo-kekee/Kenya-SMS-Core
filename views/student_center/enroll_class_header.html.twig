@@ -36,7 +36,10 @@
                                         {%for rooms in class.classRooms %}
                                         <tr style="border-left: 2px solid {{class.classColorID}}">
                                             <td>{{rooms.SectionName }}</td>
-                                            <td><a href="" class="bs-tooltip" title="Add a student to {{rooms.SectionName}}"><img src="{{ asset('enterprise/icons8-writer-male-32.png') }}"></a></td>
+                                            <td><a href="{{ path('app_student_information_form', {'class_room_id': rooms.id}) }}" class="bs-tooltip" title="Add a student to {{rooms.SectionName}}">
+                                                    <img src="{{ asset('enterprise/icons8-writer-male-32.png') }}">
+                                                </a>
+                                            </td>
                                         </tr>
                                         {%endfor%}
                                     </table>
