@@ -34,11 +34,11 @@ class CourseHeader
     private $HasModules;
 
     #[ORM\OneToMany(mappedBy: 'CourseId', targetEntity: CourseModuleHeader::class, orphanRemoval: true)]
-    private $FindCourseModules;
+    private $CourseModules;
 
     public function __construct()
     {
-        $this->FindCourseModules = new ArrayCollection();
+        $this->CourseModules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -121,24 +121,24 @@ class CourseHeader
     /**
      * @return Collection<int, CourseModuleHeader>
      */
-    public function getFindCourseModules(): Collection
+    public function getCourseModules(): Collection
     {
-        return $this->FindCourseModules;
+        return $this->CourseModules;
     }
 
-    public function addFindCourseModule(CourseModuleHeader $findCourseModule): self
+    public function addCourseModule(CourseModuleHeader $findCourseModule): self
     {
-        if (!$this->FindCourseModules->contains($findCourseModule)) {
-            $this->FindCourseModules[] = $findCourseModule;
+        if (!$this->CourseModules->contains($findCourseModule)) {
+            $this->CourseModules[] = $findCourseModule;
             $findCourseModule->setCourseId($this);
         }
 
         return $this;
     }
 
-    public function removeFindCourseModule(CourseModuleHeader $findCourseModule): self
+    public function removeCourseModule(CourseModuleHeader $findCourseModule): self
     {
-        if ($this->FindCourseModules->removeElement($findCourseModule)) {
+        if ($this->CourseModules->removeElement($findCourseModule)) {
             // set the owning side to null (unless already changed)
             if ($findCourseModule->getCourseId() === $this) {
                 $findCourseModule->setCourseId(null);

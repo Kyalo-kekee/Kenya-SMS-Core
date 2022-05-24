@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Class Information{% endblock %}
+
+{% block page_title %}Create a subject/course{% endblock %}
+{%block page_actions%}
+    <a href="{{ path('app_class_header') }}">
+        <img src="{{ asset('enterprise/icons8-move-selection-to-top-row-30.png') }}">
+    </a>
+{%endblock%}
+{% block body %}
+    <div class="row layout-top-spacing">
+        {{ include('feedback_flash_messages.html.twig') }}
+        <div class="col-lg-1 col-1 layout-spacing"></div>
+        <div class="col-lg-10 col-10 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            <h4>Enter Class Details</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content widget-content-area border-top-tab">
+                    {{form_start(courseForm)}}
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                          {{form_label(courseForm.CourseName,'Subject/Course Name')}}
+                            {{form_row(courseForm.CourseName,{'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{form_label(courseForm.CourseID,'Course ID')}}
+                            {{form_row(courseForm.CourseID)}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            {{form_label(courseForm.CourseDuration,'Duration')}}
+                            {{form_row(courseForm.CourseDuration)}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{form_label(courseForm.HasModules,'Does this subject/co')}}
+                            {{form_row(courseForm.HasModules)}}
+                        </div>
+                    </div>
+                    {{form_end(courseForm,'render_rest':false)}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{%endblock%}
