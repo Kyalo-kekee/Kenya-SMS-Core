@@ -21,12 +21,6 @@ class CoursesFormType extends AbstractType
             ->add('CourseDuration',null,[
                 'label'=>false
             ])
-            ->add('CreatedAt',null,[
-                'label'=>false
-            ])
-            ->add('UpdatedAt',null,[
-                'label'=>false
-            ])
             ->add('HasModules',null,[
                 'label'=>false
             ])

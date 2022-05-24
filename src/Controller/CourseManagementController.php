@@ -13,10 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class CourseManagementController extends AbstractController
 {
     #[Route('/course/management', name: 'app_course_management')]
-    public function index(): Response
+    public function index(CourseHeaderRepository $courseHeaderRepository): Response
     {
-        return $this->render('course_management/index.html.twig', [
+        return $this->render('course_management/course_header.html.twig', [
             'controller_name' => 'CourseManagementController',
+            'courses' =>$courseHeaderRepository ->findAll()
         ]);
     }
 
@@ -40,11 +41,14 @@ class CourseManagementController extends AbstractController
             $course->setCourseID($form->get('CourseID')->getData());
             $course->setCourseName($form->get('CourseName')->getData());
             $course->setCreatedAt(new \DateTimeImmutable());
-            $course->setUpdatedAt(new \DateTimeImmutable());
+            $course->setUpdatedAt(new \DateTimeImmutable('now'));
             $course->setHasModules($form->get('HasModules')->getData());
 
             try {
                 $courseHeaderRepository->add($course);
+                ($action == 'add') ?
+                    $this->addFlash('success', 'subject saved') :
+                    $this->addFlash('success', 'subject updated');
             } catch (\Exception $e) {
                 $this->addFlash('fail', $e->getMessage());
             }

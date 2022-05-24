@@ -16,7 +16,7 @@ class CourseModuleHeader
     #[ORM\Column(type: 'string', length: 10)]
     private $ModuleID;
 
-    #[ORM\ManyToOne(targetEntity: CourseHeader::class, inversedBy: 'FindCourseModules')]
+    #[ORM\ManyToOne(targetEntity: CourseHeader::class, inversedBy: 'CourseModules')]
     #[ORM\JoinColumn(nullable: false)]
     private $CourseId;
 
@@ -24,7 +24,7 @@ class CourseModuleHeader
     private $ModuleName;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    private $CreatedAt;
+    private $CreatedAt ;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $UpdatedAt;
@@ -78,7 +78,7 @@ class CourseModuleHeader
         return $this->CreatedAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $CreatedAt): self
+    public function setCreatedAt(\DateTimeImmutable $CreatedAt ): self
     {
         $this->CreatedAt = $CreatedAt;
 
@@ -90,7 +90,7 @@ class CourseModuleHeader
         return $this->UpdatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $UpdatedAt): self
+    public function setUpdatedAt(?\DateTimeImmutable $UpdatedAt = new \DateTimeImmutable()): self
     {
         $this->UpdatedAt = $UpdatedAt;
 

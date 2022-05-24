@@ -4,9 +4,7 @@
 
 {% block page_title %}Create a subject/course{% endblock %}
 {%block page_actions%}
-    <a href="{{ path('app_class_header') }}">
-        <img src="{{ asset('enterprise/icons8-move-selection-to-top-row-30.png') }}">
-    </a>
+
 {%endblock%}
 {% block body %}
     <div class="row layout-top-spacing">
@@ -48,6 +46,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                    {{form_row(courseForm._token)}}
                     {{form_end(courseForm,{'render_rest':false})}}
                 </div>
             </div>

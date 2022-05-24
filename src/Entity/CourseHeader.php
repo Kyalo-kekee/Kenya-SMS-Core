@@ -15,10 +15,10 @@ class CourseHeader
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 10)]
+    #[ORM\Column(type: 'string', length: 10, unique: true)]
     private $CourseID;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255,unique: true)]
     private $CourseName;
 
     #[ORM\Column(type: 'string', length: 255)]
