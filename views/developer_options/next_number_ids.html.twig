@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block page_level_css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('theme/plugins/table/datatable/datatables.css') }}">
+{% endblock %}
+{% block title %}Dev Options Next ID!{% endblock %}
+{% block page_title %}Custom ID Generator{% endblock %}
+{% block body %}
+    <div class="row layout-top-spacing" id="cancel-row">
+
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+
+            <div class="widget-content widget-content-area br-6">
+                <div class="col-1 pull-right p-2" style="right: -90%">
+                    <a id="" class="btn btn-dark mb-2 mr-2 rounded-circle" href="{{ path('app_add_class', {'action': 'add_class', 'id': ''}) }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-plus">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </a>
+                </div>
+                <table id="zero-config" class="table table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
+                    <thead>
+                    <tr>
+                        <th>Object Namespace</th>
+                        <th>PrefixId</th>
+                        <th>Start Value</th>
+                        <th>Current Value</th>
+                        <th>Force Random</th>
+                        <th class="no-content">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for nextObj in NextObject %}
+                        <tr class='clickable-row1' onclick="ShowClassRooms('{{path('app_class_header_details',{'id':class.id})}}')" data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
+                            <td>{{nextObj.ObjectSignatureNamespace}}</td>
+                            <td>{{nextObj.PrefixID}}</td>
+                            <td>{{nextObj.StartValue}}</td>
+                            <td>{{nextObj.NextValueSlot}}</td>
+                            <td>{{nextObj.ToForceRandomIdGeneration}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block page_level_script %}
+    {# BEGIN PAGE LEVEL SCRIPTS #}
+    <script src="{{ asset('theme/plugins/table/datatable/datatables.js') }}"></script>
+    <script>
+        $('#zero-config').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": {
+                    "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search Classes",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "stripeClasses": [],
+            "lengthMenu": [5, 10, 20, 50],
+            "pageLength": 5
+        });
+    </script>
+    {# END PAGE LEVEL SCRIPTS #}
+{% endblock %}
+
