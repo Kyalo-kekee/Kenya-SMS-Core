@@ -89,6 +89,9 @@
     "nikic/php-parser": {
         "version": "v4.13.2"
     },
+    "pragmarx/random": {
+        "version": "v0.2.2"
+    },
     "psr/cache": {
         "version": "3.0.0"
     },

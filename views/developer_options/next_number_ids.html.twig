@@ -12,39 +12,67 @@
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
             <div class="widget-content widget-content-area br-6">
-                <div class="col-1 pull-right p-2" style="right: -90%">
-                    <a id="" class="btn btn-dark mb-2 mr-2 rounded-circle" href="{{ path('app_add_class', {'action': 'add_class', 'id': ''}) }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-plus">
-                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                        </svg>
-                    </a>
+                {{ form_start(nextObjectForm) }}
+                <div class="row">
+                    <div class="col-md-12 p-2 badge outline-badge-info">
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th> <small>fully qualified object namespace</small></th>
+                                <th>PrefixId</th>
+                                <th>Start Value</th>
+                                <th>Force Random</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    {{ form_row(nextObjectForm.ObjectSignatureNamespace) }}
+
+
+                                </td>
+                                <td>{{ form_row(nextObjectForm.PrefixID) }}</td>
+                                <td>{{ form_row(nextObjectForm.StartValue) }}</td>
+                                <td>{{ form_row(nextObjectForm.ToForceRandomIdGeneration) }}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-sm btn-info">save</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <table id="zero-config" class="table table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
-                    <thead>
-                    <tr>
-                        <th>Object Namespace</th>
-                        <th>PrefixId</th>
-                        <th>Start Value</th>
-                        <th>Current Value</th>
-                        <th>Force Random</th>
-                        <th class="no-content">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for nextObj in NextObject %}
-                        <tr class='clickable-row1' onclick="ShowClassRooms('{{path('app_class_header_details',{'id':class.id})}}')" data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
-                            <td>{{nextObj.ObjectSignatureNamespace}}</td>
-                            <td>{{nextObj.PrefixID}}</td>
-                            <td>{{nextObj.StartValue}}</td>
-                            <td>{{nextObj.NextValueSlot}}</td>
-                            <td>{{nextObj.ToForceRandomIdGeneration}}</td>
+                {{ form_row(nextObjectForm._token) }}
+                {{ form_end(nextObjectForm,{'render_rest':false}) }}
+                <div class="row"></div>
+                <br>
+                <div class="m-0 p-2" style="border: 1px solid lightgrey">
+                    <table id="zero-config" class="table table-bordered table-hover p-2 mb-4"
+                           style="width:100%; border: 1px dotted coral">
+                        <thead>
+                        <tr>
+                            <th>Object Namespace</th>
+                            <th>PrefixId</th>
+                            <th>Start Value</th>
+                            <th>Current Value</th>
+                            <th>Force Random</th>
+                            <th class="no-content">Actions</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for nextObj in NextObject %}
+                            <tr>
+                                <td>{{ nextObj.ObjectSignatureNamespace }}</td>
+                                <td>{{ nextObj.PrefixID }}</td>
+                                <td>{{ nextObj.StartValue }}</td>
+                                <td>{{ nextObj.NextValueSlot }}</td>
+                                <td>{{ nextObj.ToForceRandomIdGeneration }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
