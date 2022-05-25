@@ -11,8 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 class CourseHeader
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: 'App\Service\NextEntityKey')]
+    #[ORM\Column(type: 'string')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 10)]

@@ -11,8 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 class SchoolClassHeader
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: 'App\Service\NextEntityKey')]
+    #[ORM\Column(type: 'string')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 72, unique: true)]
@@ -44,7 +45,7 @@ class SchoolClassHeader
         $this->ClassRooms = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
