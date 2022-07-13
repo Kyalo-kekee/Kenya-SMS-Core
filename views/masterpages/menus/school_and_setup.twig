@@ -1,0 +1,27 @@
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div class="sidebar-menu" id="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="#" onclick="loadMainMenu('school_setup')"><i class="fas fa-home back-icon"></i> <span>Main Menu</span></a>
+                </li>
+                <li class="menu-title">School & Setup</li>
+                <li class="submenu ">
+                    <a href="#"><i class="fas fa-wrench" aria-hidden="true"></i> <span>Setup</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li class="">
+                            <a href="{{path('app_school_information')}}"> School </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_class_header') }}"> Classes </a>
+                        </li>
+                        <li>
+                            <a href=""> Hostels </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

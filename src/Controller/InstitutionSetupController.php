@@ -17,17 +17,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Bridge\Src\Helpers\MenuInfo;
 
 class InstitutionSetupController extends AbstractController
 {
+    public string $menu_item = MenuInfo::MENU_SCHOOL_SETUP;
 
-
+    #[Route('school-setup',name: 'school_setup_home')]
+    public  function  home()
+    {
+        return $this->render('masterpages/blank.twig', [
+            'global_menu'=> false,
+            'menu' => $this->menu_item
+        ]);
+    }
 
     #[Route('/school-setup/school-information', name: 'app_school_information')]
     public function institutionInformation(InstitutionSetupRepository $repository): Response
     {
         return $this->render('institution_setup/school_information.html.twig', [
-            'schools' => $repository->findAll()
+            'schools' => $repository->findAll(),
+            'global_menu' => false,
+            'menu'=> MenuInfo::MENU_SCHOOL_SETUP,
+            'app_school_information' => 'active',
+            'submenu'=>'active'
         ]);
     }
 
@@ -173,9 +186,12 @@ class InstitutionSetupController extends AbstractController
     public function classHeader(SchoolClassHeaderRepository $classHeaderRepository): Response
     {
         return $this->render('institution_setup/class_header.html.twig', [
-            'classHeader' => $classHeaderRepository->findAll()
+            'classHeader' => $classHeaderRepository->findAll(),
+            'global_menu'=>false,
+            'menu'=>MenuInfo::MENU_SCHOOL_SETUP,
+            'app_class_header' =>'active'
         ]);
-    }
+    }k
 
     #[Route('/class-header-details/{id}', name: 'app_class_header_details')]
     public function classHeaderDetails(

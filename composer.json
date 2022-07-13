@@ -47,7 +47,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "Extension\\Db\\": "extension/Db"
+            "Extension\\Db\\": "extension/Db",
+            "Bridge\\Src\\Helpers\\": "Bridge/src/helpers"
         }
     },
     "autoload-dev": {

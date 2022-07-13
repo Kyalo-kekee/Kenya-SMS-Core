@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from preadmin-lite.dreamguystech.com/crypto/template2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Jul 2022 10:53:13 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Cryptocurrency - Admin Template</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="assets/css/select2.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="main-wrapper">
+
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html" class="logo">
+                <img src="assets/img/logo.png" width="35" height="35" alt=""> <span>Crypto</span>
+            </a>
+        </div>
+        <a id="toggle_btn" href="javascript:void(0);"><i class="fas fa-bars"></i></a>
+        <form>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+        </form>
+        <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fas fa-bars"></i></a>
+        <ul class="nav user-menu float-right">
+            <li class="nav-item dropdown d-none d-sm-block">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="far fa-bell"></i> <span class="badge badge-pill bg-danger float-right">1</span></a>
+                <div class="dropdown-menu notifications">
+                    <div class="topnav-dropdown-header">
+                        <span>Notifications</span>
+                    </div>
+                    <div class="drop-scroll">
+                        <ul class="notification-list">
+                            <li class="notification-message">
+                                <a href="activities.html">
+                                    <div class="media">
+<span class="avatar">
+<img alt="John Doe" src="assets/img/user.jpg" class="img-fluid rounded-circle">
+</span>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title"></span></p>
+                                            <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-message">
+                                <a href="activities.html">
+                                    <div class="media">
+                                        <span class="avatar">V</span>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title"></span></p>
+                                            <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-message">
+                                <a href="activities.html">
+                                    <div class="media">
+                                        <span class="avatar">L</span>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title"> module</span></p>
+                                            <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-message">
+                                <a href="activities.html">
+                                    <div class="media">
+                                        <span class="avatar">G</span>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title"></span></p>
+                                            <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="notification-message">
+                                <a href="activities.html">
+                                    <div class="media">
+                                        <span class="avatar">V</span>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
+                                            <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="topnav-dropdown-footer">
+                        <a href="activities.html">View all Notifications</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown has-arrow">
+                <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                    <span class="user-img"><img class="rounded-circle" src="assets/img/user-02.jpg" width="40" alt="Admin"></span>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+                    <a class="dropdown-item" href="settings.html">Settings</a>
+                    <a class="dropdown-item" href="login.html">Logout</a>
+                </div>
+            </li>
+        </ul>
+        <div class="dropdown mobile-user-menu float-right">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="profile.html">My Profile</a>
+                <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+                <a class="dropdown-item" href="settings.html">Settings</a>
+                <a class="dropdown-item" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner slimscroll">
+            <div id="sidebar-menu" class="sidebar-menu">
+                <ul>
+                    <li class="menu-title">Main</li>
+                    <li class="active">
+                        <a href="index.html"><p class="material-icons m-0">
+                            pie_chart_outline
+                        </p> <span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="wallet.html"><p class="material-icons m-0">
+                            credit_card
+                        </p><span>My Wallet</span></a>
+                    </li>
+                    <li>
+                        <a href="transactions.html"><p class="material-icons m-0">
+                            credit_score
+                        </p><span>Transaction</span></a>
+                    </li>
+                    <li>
+                        <a href="exchange.html"><i class="fas fa-coins"></i><span>Exchange</span></a>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-shopping-cart" aria-hidden="true"></i> <span> Buy & Sell </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="buy-crypto.html">Buy Crypto</a></li>
+                            <li><a href="sell-crypto.html">Sell Crypto</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="trading.html"><i class="fas fa-chart-line" aria-hidden="true"></i> <span>Trade Book</span></a>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><p class="material-icons m-0">
+                            grid_view
+                        </p> <span> Apps </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li>
+                                <a href="chat.html"><i class="fas fa-comments"></i> <span>Chat</span> <span class="badge badge-pill text-white bg-primary float-right">5</span></a>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fas fa-video camera"></i> <span> Calls</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="voice-call.html">Voice Call</a></li>
+                                    <li><a href="video-call.html">Video Call</a></li>
+                                    <li><a href="incoming-call.html">Incoming Call</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="calendar.html"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fas fa-envelope"></i> <span> Email</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="compose.html">Compose Mail</a></li>
+                                    <li><a href="inbox.html">Inbox</a></li>
+                                    <li><a href="mail-view.html">Mail View</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-calculator"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="invoices.html">Invoices</a></li>
+                            <li><a href="payments.html">Payments</a></li>
+                            <li><a href="expenses.html">Expenses</a></li>
+                            <li><a href="taxes.html">Taxes</a></li>
+                            <li><a href="provident-fund.html">Provident Fund</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="calendar.html"><i class="far fa-calendar"></i> <span>Calendar</span></a>
+                    </li>
+                    <li>
+                        <a href="activities.html"><i class="fas fa-network-wired"></i> <span>Activities</span></a>
+                    </li>
+                    <li>
+                        <a href="invoices.html"><i class="fas fa-book"></i> <span>Invoice</span></a>
+                    </li>
+                    <li>
+                        <a href="market.html"><i class="fas fa-rocket" aria-hidden="true"></i> <span>Marketcap</span></a>
+                    </li>
+                    <li>
+                        <a href="transactions.html"><i class="fas fa-retweet" aria-hidden="true"></i> <span>Transactions</span></a>
+                    </li>
+                    <li>
+                        <a href="wallet.html"><i class="fas fa-briefcase" aria-hidden="true"></i> <span>Wallet</span></a>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="employees.html">Employees List</a></li>
+                            <li><a href="leaves.html">Leaves</a></li>
+                            <li><a href="holidays.html">Holidays</a></li>
+                            <li><a href="attendance.html">Attendance</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-book"></i> <span> Payroll </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="salary.html"> Employee Salary </a></li>
+                            <li><a href="salary-view.html"> Payslip </a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-file-invoice"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="expense-reports.html"> Expense Report </a></li>
+                            <li><a href="invoice-reports.html"> Invoice Report </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a>
+                    </li>
+                    <li class="menu-title">UI Elements</li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-laptop"></i> <span> Components</span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="uikit.html">UI Kit</a></li>
+                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="tabs.html">Tabs</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fab fa-wpforms"></i> <span> Forms</span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="form-basic-inputs.html">Basic Inputs</a></li>
+                            <li><a href="form-input-groups.html">Input Groups</a></li>
+                            <li><a href="form-horizontal.html">Horizontal Form</a></li>
+                            <li><a href="form-vertical.html">Vertical Form</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-table"></i> <span> Tables</span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="tables-basic.html">Basic Tables</a></li>
+                            <li><a href="tables-datatables.html">Data Table</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-chart-area" aria-hidden="true"></i><span> Charts</span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="morris.html">Morris chart</a></li>
+                            <li><a href="chartjs.html">Am4charts</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-title">Extras</li>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-columns"></i> <span>Pages</span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li><a href="login.html"> Login </a></li>
+                            <li><a href="register.html"> Register </a></li>
+                            <li><a href="forgot-password.html"> Forgot Password </a></li>
+                            <li><a href="change-password2.html"> Change Password </a></li>
+                            <li><a href="lock-screen.html"> Lock Screen </a></li>
+                            <li><a href="profile.html"> Profile </a></li>
+                            <li><a href="error-404.html">404 Error </a></li>
+                            <li><a href="error-500.html">500 Error </a></li>
+                            <li><a href="blank-page.html"> Blank Page </a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="javascript:void(0);"><i class="fas fa-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                            <li class="submenu">
+                                <a href="javascript:void(0);"><span>Level 1</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+                                    <li class="submenu">
+                                        <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
+                                        <ul style="display: none;">
+                                            <li><a href="javascript:void(0);">Level 3</a></li>
+                                            <li><a href="javascript:void(0);">Level 3</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"><span>Level 1</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-wrapper bg-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="dashboard-header">
+                        <div class="title-dashboard">
+                            <h1>Dashboard</h1>
+                            <p>Buy & Sell Crypto in minutes</p>
+                        </div>
+                        <div class="dashboard-select">
+                            <form>
+                                <div class="form-group">
+                                    <select class="select form-control">
+                                        <option>This week</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </form>
+                            <a href="index-list.html">
+                                Change view
+                                <span class="material-icons">
+format_list_bulleted
+</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card db-widgets">
+                                <div class="card-header pb-0">
+                                    <div class="media">
+                                        <img src="assets/img/bitcoin.png" class="mr-2" alt="Bitcoin">
+                                        <div class="media-body">
+                                            <h5>Bitcoin</h5>
+                                            <h6>12/02/21</h6>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="bitCoinBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="bitCoinBtn">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <h2>$550</h2>
+                                    <div id="db-chart1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card db-widgets">
+                                <div class="card-header pb-0">
+                                    <div class="media">
+                                        <img src="assets/img/ethereum.png" class="mr-2" alt="Bitcoin">
+                                        <div class="media-body">
+                                            <h5>Ethereum</h5>
+                                            <h6>12/02/21</h6>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="eteremBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="eteremBtn">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <h2>$200</h2>
+                                    <div id="db-chart2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card db-widgets">
+                                <div class="card-header pb-0">
+                                    <div class="media">
+                                        <img src="assets/img/ripple.png" class="mr-2" alt="Bitcoin">
+                                        <div class="media-body">
+                                            <h5>Ripple</h5>
+                                            <h6>12/02/21</h6>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="rippleBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="rippleBtn">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <h2>$820</h2>
+                                    <div id="db-chart3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card chart-card">
+                                <div class="card-header">
+                                    <h2>Sell Order</h2>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="sellOrderBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="sellOrderBtn">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="sellorder-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card chart-card">
+                                <div class="card-header">
+                                    <h2>Earnings Chart</h2>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="earningBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="earningBtn">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="earnings-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card chart-card">
+                                <div class="card-header xs-no-flex">
+                                    <h2>Market Overview</h2>
+                                    <select class="select form-control">
+                                        <option>31/01/2020 - 06/02/2020</option>
+                                        <option>31/01/2020 - 06/02/2020</option>
+                                    </select>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div id="market-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 d-flex">
+                            <div class="card chart-card mb-0 flex-fill">
+                                <div class="card-header">
+                                    <h2>Transaction history</h2>
+                                </div>
+                                <div class="card-body pt-0 pb-0">
+                                    <div class="table table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Reciever</th>
+                                                <th>Type</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/img/bitcoin.png" alt="Bitcoin"> Bitcoin
+                                                </td>
+                                                <td>Buying</td>
+                                                <td>13 Dec 2020</td>
+                                                <td>$75.67</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/img/ethereum.png" alt="Bitcoin"> Ethereum
+                                                </td>
+                                                <td>Selling</td>
+                                                <td>14 Dec 2020</td>
+                                                <td>$250.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/img/bitcoin.png" alt="Bitcoin"> Litecoin
+                                                </td>
+                                                <td>Selling</td>
+                                                <td>07 Dec 2020</td>
+                                                <td>$19.50</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/img/ethereum.png" alt="Bitcoin"> Binance Coin
+                                                </td>
+                                                <td>Buying</td>
+                                                <td>06 Dec 2020</td>
+                                                <td>$350</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/img/bitcoin.png" alt="Bitcoin"> Bitcon
+                                                </td>
+                                                <td>Selling</td>
+                                                <td>31 Nov 2020</td>
+                                                <td>$430</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex wlt">
+                            <div class="card chart-card mb-0 flex-fill">
+                                <div class="card-header">
+                                    <h2>Wallets</h2>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="wallet-sec">
+                                        <div class="usd-sec">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <select class="select form-control">
+                                                    <option>USD</option>
+                                                    <option>USD</option>
+                                                </select>
+                                                <h4>$159 001. 542</h4>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h5>Market Value</h5>
+                                                <h5>Total Balance</h5>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table>
+                                                <tr>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="assets/img/bitcoin.png" alt="BitCoin">
+                                                        <div>
+                                                            <h5>Bitcoin</h5>
+                                                            <h6>BTC</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h4>5.041500</h4>
+                                                        <h6>$58759.92</h6>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="assets/img/ethereum.png" alt="BitCoin">
+                                                        <div>
+                                                            <h5>Ethereum</h5>
+                                                            <h6>ETH</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h4>5.041500</h4>
+                                                        <h6>$58759.92</h6>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="assets/img/ripple.png" alt="BitCoin">
+                                                        <div>
+                                                            <h5>Ripple</h5>
+                                                            <h6>LTC</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h4>5.041500</h4>
+                                                        <h6>$58759.92</h6>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="assets/js/select2.min.js"></script>
+
+<script src="assets/js/jquery.slimscroll.js"></script>
+
+<script src="assets/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="assets/js/chartdata.js"></script>
+<script src="assets/plugins/amchart/js/responsive.min.js"></script>
+
+<script src="assets/js/app.js"></script>
+</body>
+
+<!-- Mirrored from preadmin-lite.dreamguystech.com/crypto/template2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Jul 2022 10:53:42 GMT -->
+</html>

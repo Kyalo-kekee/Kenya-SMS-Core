@@ -1,0 +1,32 @@
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">Main</li>
+                <li class="active">
+                    <a href="{{ path('app_home') }}"><p class="material-icons m-0">
+                            pie_chart_outline
+                        </p> <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="#" data-target="student_center" onclick="loadChildMenu('student_center')"><img src="{{ asset('icons/group_94182/Group_Icon_32.png') }}"><span>Student Center</span></a>
+                </li>
+                <li>
+                    <a href="#" data-target="class_management" onclick="loadChildMenu('class_management')"><img src="{{ asset('icons/classroom.png') }}" height="32"><span>Class Management</span></a>
+                </li>
+                <li>
+                    <a href="#" data-target="exam_center" onclick="loadChildMenu('exam_center')"><img src="{{ asset('icons/system_calendar_99751/System_Calendar_Icon_32.png') }}"><span>Exam Center</span></a>
+                </li>
+
+                <li>
+                    <a href="#" data-target="school_setup" onclick="loadChildMenu('school_setup')"><img src="{{ asset('icons/school_101151/School_Icon_32.png') }}"> <span>School & Setup</span></a>
+                </li>
+                <li>
+                    <a href="#" data-target="settings" onclick="loadChildMenu('settings')"><img src="{{ asset('icons/system_taskbar_start_menu_99793/System_Taskbar_Start_Menu_Icon_32.png') }}"> <span>Settings</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

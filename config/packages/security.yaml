@@ -40,7 +40,7 @@ security:
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/recover, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/school-setup/, roles: ROLE_USER }
+        - { path: ^/school-setup/, roles: PUBLIC_ACCESS}
 
 when@test:
     security:

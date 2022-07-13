@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from preadmin-lite.dreamguystech.com/crypto/template2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Jul 2022 10:53:13 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>School Management System</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('enterprise/favicon_io/favicon-16x16(1).png') }}">
+
+    <link rel="stylesheet" href="{{ asset('site/assets/css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('site/assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/assets/plugins/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="{{ asset('site/assets/css/dataTables.bootstrap4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('site/assets/css/select2.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('site/assets/css/style.css') }}">
+
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    {% block page_level_css %} {% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<div class="main-wrapper">
+    {{ include('masterpages/header.twig') }}
+    {{ include('masterpages/menus/base_menu.twig') }}
+    {% if global_menu == true %}
+        {{ include('masterpages/menus/base_menu.twig') }}
+    {% else %}
+        <div id="main-menu" style="display: none">
+            {{ include('masterpages/menus/base_menu.twig') }}
+        </div>
+        <div id="child-menu">
+            {{ include(menu) }}
+        </div>
+
+    {% endif %}
+    <div id="exam_center" style="display: none">{{ include('masterpages/menus/exam_center.twig') }}</div>
+    <div id="school_setup" style="display: none">{{include('masterpages/menus/school_and_setup.twig')  }}</div>
+    <div id="settings" style="display: none">{{ include('masterpages/menus/settings.twig') }}</div>
+    <div id="class_management" style="display: none">{{ include('masterpages/menus/class_management.twig') }}</div>
+    <div id="student_center" style="display: none">{{ include('masterpages/menus/student_center.twig') }}</div>
+
+
+
+    <div class="page-wrapper bg-wrapper">
+        <div class="content">
+            {{include('feedback_flash_messages.html.twig')}}
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+
+</div>
+
+{# include javascript #}
+<script src="{{ asset('site/assets/js/jquery-3.6.0.min.js') }}"></script>
+
+<script src="{{ asset('site/assets/js/bootstrap.bundle.min.js') }}"></script>
+
+<script src="{{ asset('site/assets/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('site/assets/js/dataTables.bootstrap4.min.js') }}"></script>
+
+<script src="{{ asset('site/assets/js/select2.min.js') }}"></script>
+
+<script src="{{ asset('site/assets/js/jquery.slimscroll.js') }}"></script>
+
+{#<script src="assets/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="assets/js/chartdata.js"></script>
+<script src="assets/plugins/amchart/js/responsive.min.js"></script>#}
+
+<script src="{{ asset('site/assets/js/app.js') }}"></script>
+<script>
+
+</script>
+<script src="{{ asset('menu.js') }}"></script>
+{% block page_level_script %}{%endblock%}
+</body>
