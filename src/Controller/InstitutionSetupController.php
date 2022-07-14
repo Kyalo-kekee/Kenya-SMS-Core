@@ -136,7 +136,10 @@ class InstitutionSetupController extends AbstractController
         return $this->render('institution_setup/setupSchool.html.twig',
             [
                 'Schoolform' => $form->createView(),
-                'title' => 'Institution Setup'
+                'title' => 'Institution Setup',
+                'global_menu' => false,
+                'menu' => MenuInfo::MENU_SCHOOL_SETUP
+
             ]);
     }
 

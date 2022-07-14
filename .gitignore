@@ -11,6 +11,6 @@
 /migrations/
 /public/theme/
 /public/DataTables
-
+/public/site
 
 ###< symfony/framework-bundle ###
