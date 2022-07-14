@@ -10,6 +10,7 @@
 .idea
 /migrations/
 /public/theme/
+/public/DataTables
 
 
 ###< symfony/framework-bundle ###

@@ -81,7 +81,9 @@ class InstitutionSetupController extends AbstractController
         return $this->render('institution_setup/add_class_rooms.html.twig', [
 
             'classRoomForm' => $form->createView(),
-            'classModel' => $classParent
+            'classModel' => $classParent,
+            'global_menu'=> false,
+            'menu' => MenuInfo::MENU_SCHOOL_SETUP
         ]);
 
 
@@ -156,7 +158,7 @@ class InstitutionSetupController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $classModel->setClassName($form->get('ClassName')->getData());
             $classModel->setClassColorID($form->get('ClassColorID')->getData());
-            $classModel->setCreatedBy($this->getUser()->getUserIdentifier());
+            $classModel->setCreatedBy('dev');
             $classModel->setLevelID($form->get('LevelID')->getData());
             $classModel->setRemarks($form->get('Remarks')->getData());
             $classModel->setStatus($form->get('Status')->getData());
@@ -176,7 +178,9 @@ class InstitutionSetupController extends AbstractController
 
         }
         return $this->render('institution_setup/add_class_information.html.twig', [
-            'classForm' => $form->createView()
+            'classForm' => $form->createView(),
+            'global_menu'=>false,
+            'menu' => MenuInfo::MENU_SCHOOL_SETUP
         ]);
     }
 
@@ -204,6 +208,8 @@ class InstitutionSetupController extends AbstractController
 
         return $this->render('institution_setup/class_header_details.html.twig', [
             'classHeader' => $classParent,
+            'global_menu' => false,
+            'menu' =>MenuInfo::MENU_SCHOOL_SETUP
 
         ]);
     }
