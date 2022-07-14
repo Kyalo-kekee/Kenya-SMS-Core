@@ -9,12 +9,12 @@ var menu = {
 
 function loadMainMenu(Tohide)
 {
-    alert('hello-world')
+    $('#'+Tohide).hide()
     $('#child-menu').hide()
- menu.main_menu.show(500)
+    menu.main_menu.show()
 }
 
 function loadChildMenu(child) {
     menu.main_menu.hide()
-    $('#'+child).show(1000)
+    $('#'+child).show()
 }

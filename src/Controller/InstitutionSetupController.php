@@ -39,8 +39,6 @@ class InstitutionSetupController extends AbstractController
             'schools' => $repository->findAll(),
             'global_menu' => false,
             'menu'=> MenuInfo::MENU_SCHOOL_SETUP,
-            'app_school_information' => 'active',
-            'submenu'=>'active'
         ]);
     }
 
@@ -191,7 +189,7 @@ class InstitutionSetupController extends AbstractController
             'menu'=>MenuInfo::MENU_SCHOOL_SETUP,
             'app_class_header' =>'active'
         ]);
-    }k
+    }
 
     #[Route('/class-header-details/{id}', name: 'app_class_header_details')]
     public function classHeaderDetails(
