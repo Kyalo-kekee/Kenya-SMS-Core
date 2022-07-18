@@ -11,6 +11,7 @@ use App\Form\SchoolInformationFormType;
 use App\Repository\InstitutionSetupRepository;
 use App\Repository\SchoolClassHeaderRepository;
 use App\Repository\SchoolClassRoomsHeaderRepository;
+use App\Service\PopulatePageData;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Bridge\Src\Helpers\MenuInfo;
+
 
 class InstitutionSetupController extends AbstractController
 {
@@ -180,11 +182,15 @@ class InstitutionSetupController extends AbstractController
 
 
         }
-        return $this->render('institution_setup/add_class_information.html.twig', [
-            'classForm' => $form->createView(),
-            'global_menu'=>false,
-            'menu' => MenuInfo::MENU_SCHOOL_SETUP
-        ]);
+
+        return $this->render('institution_setup/add_class_information.html.twig',
+            (new PopulatePageData(
+                InstitutionSetup::class,
+                MenuInfo::MENU_SCHOOL_SETUP,
+                true,
+                ['classForm' => $form ->createView()]
+            )) ->get()
+        );
     }
 
     #[Route('/institution-setup/class-header', name: 'app_class_header')]
