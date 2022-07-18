@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'masterpages/layout.twig' %}
 
 {% block title %}Student Information{% endblock %}
 {% block page_level_css %}
+    <link rel="stylesheet" href="{{ asset('theme/assets/css/main.css') }}">
     <link href="{{ asset('theme/assets/css/scrollspyNav.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('theme/assets/css/components/tabs-accordian/custom-tabs.css') }}" rel="stylesheet"
           type="text/css"/>
@@ -30,16 +31,21 @@
 {% endblock %}
 
 {% block page_title %}Student Information{% endblock %}
-{% block page_actions %}
-    <a href="{{ path('app_class_header') }}">
-        <img src="{{ asset('enterprise/icons8-move-selection-to-top-row-30.png') }}">
-    </a>
-{% endblock %}
 {% block body %}
     <div class="row layout-top-spacing">
         <div class="col-lg-12 col-12 layout-spacing">
+
+            {% block page_actions %}
+                <a href="{{ path('app_class_header') }}">
+                    <img src="{{ asset('enterprise/icons8-move-selection-to-top-row-30.png') }}">
+                </a>
+            {% endblock %}
             <div class="statbox widget box box-shadow" style="border:  1px dotted coral">
+
                 {{form_start(studentForm)}}
+                <div class="pull-right" style="margin-right:-90%">
+                    <button class="btn btn-sm btn-primary"><i class="fa fa-save"></i></button>
+                </div>
                 <div class="widget-content widget-content-area " style="">
                     <ul class="nav nav-tabs mb-3 mt-3  " id="borderTop" role="tablist" style="border: 1px solid grey">
                         <li class="nav-item">
@@ -121,7 +127,7 @@
 
                                 </div>
                                 {#PROFILE PICTURE ROW#}
-                                <div class="form-group col-md-3 badge outline-badge-warning profile-img profile" >
+                                <div class="form-group col-md-3 badge outline-badge-warning out profile " >
                                     <div class="form-row">
                                         <div class="w-profile-view p-2">
                                             <img src="{{asset('enterprise/icons8-avatar-64.png')}}" alt="admin-profile" class="img-fluid">
@@ -149,7 +155,12 @@
                         </div>
                         <div class="tab-pane fade" id="border-top-contact" role="tabpanel"
                              aria-labelledby="border-top-contact-tab">
-                            <p>kjskskas</p>
+                            <div class="form-group col-md-12 custom-file-container card-box outline-badge-warning">
+                                {{form_row(studentForm.CertificateFile1)}}
+                            </div>
+                            <div class="form-group col-md-12 custom-file-container card-box outline-badge-warning">
+                                {{form_row(studentForm.CertificateFile2)}}
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="border-top-setting" role="tabpanel"
                              aria-labelledby="border-top-setting-tab">

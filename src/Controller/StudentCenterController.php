@@ -9,6 +9,8 @@ use App\Repository\CourseHeaderRepository;
 use App\Repository\SchoolClassHeaderRepository;
 use App\Repository\SchoolClassRoomsHeaderRepository;
 use App\Repository\StudentInformationRepository;
+use App\Service\PopulatePageData;
+use Bridge\Src\Helpers\MenuInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class StudentCenterController extends AbstractController
 {
     #[Route('/student/center', name: 'app_student_center')]
-    public function index(): Response
+    public function index(StudentInformationRepository $informationRepository): Response
     {
         return $this->render('student_center/index.html.twig', [
             'controller_name' => 'StudentCenterController',
@@ -55,8 +57,8 @@ class StudentCenterController extends AbstractController
 
             /*file uploading*/
             $student->setPhotoFile($form->get('PhotoFile')->getData(''));
-            $student->setCertificateAttachment1($form->get('CertificateAttachment1')->getData());
-            $student->setCertificateAttachment2($form->get('CertificateAttachment2')->getData());
+            $student->setCertificateAttachment1($form->get('CertificateFile1')->getData());
+            $student->setCertificateAttachment2($form->get('CertificateFile1')->getData());
 
             try {
                 $studentInformationRepository->add($student);
@@ -68,16 +70,30 @@ class StudentCenterController extends AbstractController
 
         }
 
-        return $this->render('student_center/student_informtion_form.html.twig', [
-            'studentForm' => $form->createView()
-        ]);
+        return $this->render('student_center/student_informtion_form.html.twig',
+            (new PopulatePageData(
+                StudentCenterController::class,
+                MenuInfo::MENU_STUDENT_CENTER,
+                true,
+                [
+                    'studentForm' => $form->createView()
+                ]
+            ))->get()
+        );
     }
 
     #[Route('student-center/classroom/enroll', name: 'app_enroll_class_header')]
     public  function enrollSelectClass(SchoolClassHeaderRepository $schoolClassHeaderRepository): Response
     {
-        return $this->render('student_center/enroll_class_header.html.twig', [
-            'classHeader' => $schoolClassHeaderRepository->findAll()
-        ]);
+        return $this->render('student_center/enroll_class_header.html.twig',
+            (new PopulatePageData(
+                StudentCenterController::class,
+                MenuInfo::MENU_STUDENT_CENTER,
+                true,
+                [
+                    'classHeader' => $schoolClassHeaderRepository->findAll()
+                ]
+            ))->get()
+        );
     }
 }

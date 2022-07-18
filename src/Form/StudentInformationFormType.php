@@ -54,7 +54,7 @@ class StudentInformationFormType extends AbstractType
                 'CertificateFile1',
                 VichFileType::class,
                 [
-                    'label' => 'Student Image',
+                    'label' => 'Attachment 1',
                     'required' => false,
                     'allow_delete' => true,
                     'delete_label' => 'delete picture',
