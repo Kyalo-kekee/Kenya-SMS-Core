@@ -19,11 +19,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class StudentCenterController extends AbstractController
 {
     #[Route('/student/center', name: 'app_student_center')]
-    public function index(StudentInformationRepository $informationRepository): Response
+    public function index(): Response
     {
         return $this->render('student_center/index.html.twig', [
             'controller_name' => 'StudentCenterController',
         ]);
+    }
+
+    #[Route('/student/center/student-header/', name: 'app_student_header')]
+    public function studentHeader(StudentInformationRepository $studentInformationRepository)
+    {
+        return $this->render('student_center/index.html.twig',
+            (new PopulatePageData(
+                StudentCenterController::class,
+                MenuInfo::MENU_STUDENT_CENTER,
+                true,
+                [
+                    'students' => $studentInformationRepository ->findAll(),
+                ]
+            ))->get()
+        );
     }
 
     #[Route('student-center/select-class/{class_room_id}/', name: 'app_student_information_form')]

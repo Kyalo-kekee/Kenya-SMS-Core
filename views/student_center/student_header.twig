@@ -1,0 +1,81 @@
+{% extends 'masterpages/layout.twig' %}
+{% block page_level_css %}
+{% endblock %}
+{% block title %}Class Header!{% endblock %}
+{% block page_title %}Classes / Course Level{% endblock %}
+{% block body %}
+    <div class="row layout-top-spacing" id="cancel-row">
+
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+
+            <div class="card-box mb-0">
+                <div class="card-block">
+                    <div class="col-1 pull-right p-2" style="right: -90%">
+                        <a id="" class="btn btn-dark mb-2 mr-2 rounded-circle"
+                           href="{{ path('app_add_class', {'action': 'add_class', 'id': ''}) }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-plus">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="btn-controls"></div>
+                    <table id="class-header" class="table table-bordered table-hover  "
+                           style="width:100%; ">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Class ID</th>
+                            <th>Enroll Date</th>
+                            <th>Profile</th>
+                            <th class="no-content">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <td>{{ student.FirstName }}  {{ student.LastName }}</td>
+                                <td>{{ student.ClassRoomID }}</td>
+                                <td>{{ student.EnrollDate }}</td>
+                                <td>{{ student.Photofile}}</td>
+                                <td>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block page_level_script %}
+    {# BEGIN PAGE LEVEL SCRIPTS #}
+    <script>
+        function ShowClassRooms(path) {
+            window.location = path;
+        }
+
+        $(document).ready(function () {
+            var table = $('#class-header').DataTable({
+                responsive: true,
+                dom: 'lfrtiBp',
+                colReorder: true,
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
+            });
+        });
+        table.buttons().container()
+            .appendTo($('.col-sm-6:eq(0)', table.table().container()));
+    </script>
+
+    {# END PAGE LEVEL SCRIPTS #}
+{% endblock %}
+

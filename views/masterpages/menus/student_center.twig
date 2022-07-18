@@ -6,13 +6,16 @@
                     <a href="#" style="border-bottom: 2px solid coral;border-left: 2px solid coral; color: white" onclick="loadMainMenu('student_center')"><i class="fas fa-home back-icon"></i> <span>Main Menu</span></a>
                 </li>
                 <li class="menu-title " style="border-bottom: 1px solid coral; color: white">Student Center</li>
+
+                <li>
+                    <a href="{{ path('app_student_header') }}"> Students </a>
+                </li>
                 <li>
                     <a href="{{ path('app_enroll_class_header') }}"> Enroll Student </a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-shopping-cart" aria-hidden="true"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-
 
                     </ul>
                 </li>
