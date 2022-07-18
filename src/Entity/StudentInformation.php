@@ -89,6 +89,18 @@ class StudentInformation
     #[ORM\ManyToMany(targetEntity: CourseHeader::class, inversedBy: 'EnrolledStudents')]
     private $EntrySubjects;
 
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    private $StudentEmail;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $StudentHomeAddress;
+
+    #[ORM\Column(type: 'string', length: 32, nullable: true)]
+    private $StudentGender;
+
+    #[ORM\Column(type: 'string', length: 13, nullable: true)]
+    private $StudentPhoneNumber;
+
     public function __construct()
     {
         $this->EntrySubjects = new ArrayCollection();
@@ -411,6 +423,54 @@ class StudentInformation
     public function removeEntrySubject(CourseHeader $entrySubject): self
     {
         $this->EntrySubjects->removeElement($entrySubject);
+
+        return $this;
+    }
+
+    public function getStudentEmail(): ?string
+    {
+        return $this->StudentEmail;
+    }
+
+    public function setStudentEmail(?string $StudentEmail): self
+    {
+        $this->StudentEmail = $StudentEmail;
+
+        return $this;
+    }
+
+    public function getStudentHomeAddress(): ?string
+    {
+        return $this->StudentHomeAddress;
+    }
+
+    public function setStudentHomeAddress(?string $StudentHomeAddress): self
+    {
+        $this->StudentHomeAddress = $StudentHomeAddress;
+
+        return $this;
+    }
+
+    public function getStudentGender(): ?string
+    {
+        return $this->StudentGender;
+    }
+
+    public function setStudentGender(?string $StudentGender): self
+    {
+        $this->StudentGender = $StudentGender;
+
+        return $this;
+    }
+
+    public function getStudentPhoneNumber(): ?string
+    {
+        return $this->StudentPhoneNumber;
+    }
+
+    public function setStudentPhoneNumber(?string $StudentPhoneNumber): self
+    {
+        $this->StudentPhoneNumber = $StudentPhoneNumber;
 
         return $this;
     }

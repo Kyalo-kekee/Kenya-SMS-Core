@@ -7,6 +7,7 @@ use App\Entity\SchoolClassHeader;
 use App\Entity\StudentInformation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
@@ -20,6 +21,10 @@ class StudentInformationFormType extends AbstractType
             ->add('MiddleName',null,['label'=>false])
             ->add('LastName',null,['label'=>false])
             ->add('EnrollDate',null,['label'=>false])
+            ->add('StudentEmail',null,['label'=>false])
+            ->add('StudentGender',null,['label'=>false])
+            ->add('StudentPhoneNumber',null,['label'=>false])
+            ->add('StudentHomeAddress',TextareaType::class,['label'=>false])
             ->add('GuardianName',null,['label'=>false])
             ->add('GuardianPhoneNumber1',null,['label'=>false])
             ->add('GuardianPhoneNumber2',null,['label'=>false])

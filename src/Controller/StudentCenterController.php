@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\SchoolClassRoomsHeader;
 use App\Entity\StudentInformation;
 use App\Form\StudentInformationFormType;
 use App\Repository\ClassHeaderRepository;
@@ -26,10 +27,10 @@ class StudentCenterController extends AbstractController
         ]);
     }
 
-    #[Route('/student/center/student-header/', name: 'app_student_header')]
+    #[Route('/student-center/student-header/', name: 'app_student_header')]
     public function studentHeader(StudentInformationRepository $studentInformationRepository)
     {
-        return $this->render('student_center/index.html.twig',
+        return $this->render('student_center/student_header.twig',
             (new PopulatePageData(
                 StudentCenterController::class,
                 MenuInfo::MENU_STUDENT_CENTER,
@@ -107,6 +108,58 @@ class StudentCenterController extends AbstractController
                 true,
                 [
                     'classHeader' => $schoolClassHeaderRepository->findAll()
+                ]
+            ))->get()
+        );
+    }
+
+    #[Route('/student-center/student-information-view/{class_room_id}/{student_id}', name: 'app_student_information_view')]
+    public  function studentInformationView(
+        StudentInformationRepository $studentInformationRepository,
+        string $class_room_id,
+        string $student_id
+    )
+    {
+        return $this->render('student_center/student_details.twig',
+            (new PopulatePageData(
+                StudentCenterController::class,
+                MenuInfo::MENU_STUDENT_CENTER,
+                true,
+                [
+                    'student' => $studentInformationRepository->find($student_id)
+                ]
+            ))->get()
+        );
+    }
+
+    #[Route('/student-center/classroom-view/',  name: 'app_class_room_view')]
+    public function classRoomsView(SchoolClassHeaderRepository $schoolClassHeaderRepository)
+    {
+        return $this->render('student_center/classroom_view.twig',
+            (new PopulatePageData(
+                StudentCenterController::class,
+                MenuInfo::MENU_STUDENT_CENTER,
+                true,
+                [
+                    'classHeader' => $schoolClassHeaderRepository->findAll()
+                ]
+            ))->get()
+        );
+    }
+
+    #[Route('/student-center/classroom-students-view/{room_id}', name: 'app_classroom_students')]
+    public function classRoomStudentsView(
+        SchoolClassRoomsHeaderRepository $schoolClassRoomsHeaderRepository,
+        string $room_id,
+    )
+    {
+        return $this->render('student_center/classroom_student.twig',
+            (new PopulatePageData(
+                StudentCenterController::class,
+                MenuInfo::MENU_STUDENT_CENTER,
+                true,
+                [
+                    'classroom' => $schoolClassRoomsHeaderRepository ->find($room_id),
                 ]
             ))->get()
         );

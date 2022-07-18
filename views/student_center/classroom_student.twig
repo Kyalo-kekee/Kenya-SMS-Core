@@ -37,7 +37,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for student in students %}
+                        {% for student in classroom.ClassRoomStudents %}
                             <tr>
                                 <td>{{ student.FirstName }}  {{ student.LastName }}</td>
                                 <td>{{ student.ClassRoomID.SectionName }}</td>

@@ -10,11 +10,11 @@ vich_uploader:
 
     mappings:
         student_information:
-            uri_prefix: /uploads/courses
+            uri_prefix: /uploads/student_information/
             upload_destination: '%kernel.project_dir%/public/uploads/student_information/'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
         school_information:
-            uri_prefix: /uploads/assignment
+            uri_prefix: /uploads/school_information
             upload_destination: '%kernel.project_dir%/public/uploads/school_information'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

@@ -7,10 +7,10 @@
 {% block body %}
     <div class="row">
         <div class="col-sm-7 col-6">
-            <h4 class="page-title">Enroll Student</h4>
+            <h4 class="page-title">Classrooms</h4>
         </div>
         <div class="col-sm-5 col-6 text-right m-b-30">
-            <a href="{{ path('app_student_header') }}" class="btn btn-primary btn-rounded"><i class="fas fa-plus"></i> View Students</a>
+            <a href="{{ path('app_student_header') }}" class="btn btn-primary btn-rounded"><i class="fas fa-plus"></i> View All Students</a>
         </div>
     </div>
 
@@ -20,7 +20,7 @@
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
             <div class="widget-content widget-content-area br-6">
-                <h5 class="badge badge-success"> Select a class to register a student</h5>
+                <h4 class="badge badge-success p-2" style="font-size: 1em"> Select a classroom to view students</h4>
                 <table id="zero-config" class="table table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
                     <thead>
                     <tr>
@@ -34,25 +34,25 @@
                             <td style="border-right: 2px solid lightgrey">{{ class.ClassName }} </td>
                             <td>{{ class.levelID }}</td>
                             <td></td>
-                            <tr>
-                                <td style="">
-                                    <a class="bs-tooltip" title="Add room" href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}">
-                                        <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
-                                    </a>
-                                </td>
-                                  <td><table id="inner" class="table table-bordered table-sm dt-no-sorting">
-                                        {%for rooms in class.classRooms %}
+                        <tr>
+                            <td style="">
+                                <a class="bs-tooltip" title="Add room" href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}">
+                                    <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
+                                </a>
+                            </td>
+                            <td><table id="inner" class="table table-bordered table-sm dt-no-sorting">
+                                    {%for rooms in class.classRooms %}
                                         <tr style="border-left: 2px solid {{class.classColorID}}">
                                             <td>{{rooms.SectionName }}</td>
-                                            <td><a href="{{ path('app_student_information_form', {'class_room_id': rooms.id}) }}" class="bs-tooltip" title="Add a student to {{rooms.SectionName}}">
-                                                    <img src="{{ asset('enterprise/icons8-writer-male-32.png') }}">
+                                            <td><a href="{{ path('app_classroom_students',{'room_id' : rooms.id}) }}" class="bs-tooltip" title="Add a student to {{rooms.SectionName}}">
+                                                    <img src="{{ asset('icons/list/icons8-list-of-parts-30.png') }}">
                                                 </a>
                                             </td>
                                         </tr>
-                                        {%endfor%}
-                                    </table>
-                                  </td>
-                             </tr>
+                                    {%endfor%}
+                                </table>
+                            </td>
+                        </tr>
 
 
                         </tr>
