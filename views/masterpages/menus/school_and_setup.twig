@@ -7,7 +7,7 @@
                 </li>
                 <li class="menu-title">School & Setup</li>
                 <li class="submenu ">
-                    <a href="#"><i class="fas fa-wrench" aria-hidden="true"></i> <span>Setup</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><img src="{{ asset('enterprise/collection.png') }}" width="32" height="32"><span>Setup</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li class="">
                             <a href="{{path('app_school_information')}}"> School </a>
@@ -16,10 +16,25 @@
                             <a href="{{ path('app_class_header') }}"> Classes </a>
                         </li>
                         <li>
-                            <a href=""> Hostels </a>
+                            <a href=""> Teachers </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_course_management') }}"> subjects </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_create_course', {'action': 'add', 'id': ''}) }}">Add Subject </a>
                         </li>
                     </ul>
                 </li>
+                <li class="submenu ">
+                    <a href="#"><img src="{{ asset('icons/icons8-code-folder-48.png') }}" width="32" height="32"> <span>Developer Options</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('app_id_generator', {'action': 'add', 'id': ''}) }}"> Custom ID Generation </a>
+                        </li>
+                    </ul>
+                </li>
+
 
             </ul>
         </div>

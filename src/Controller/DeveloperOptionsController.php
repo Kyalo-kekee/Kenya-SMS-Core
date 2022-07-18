@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\GetNextNumberIDS;
 use App\Form\GetNextEntityIDSFormType;
 use App\Repository\GetNextNumberIDSRepository;
+use App\Service\PopulatePageData;
+use Bridge\Src\Helpers\MenuInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,11 +51,17 @@ class DeveloperOptionsController extends AbstractController
                 $this->addFlash('fail', $e->getMessage());
             }
         }
-        return $this->render('developer_options/next_number_ids.html.twig', [
-            'controller_name' => 'DeveloperOptionsController',
-            'nextObjectForm' => $form->createView(),
-            'NextObject' => $getNextNumberIDSRepository->findAll()
-        ]);
+        return $this->render('developer_options/next_number_ids.html.twig',
+            (new PopulatePageData(
+                DeveloperOptionsController::class,
+                MenuInfo::MENU_SCHOOL_SETUP,
+                true,
+                [
+                    'nextObjectForm' => $form->createView(),
+                    'NextObject' => $getNextNumberIDSRepository->findAll()
+                ]
+            ))->get()
+        );
 
     }
 }

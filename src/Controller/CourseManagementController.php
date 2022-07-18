@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\CourseHeader;
 use App\Form\CoursesFormType;
 use App\Repository\CourseHeaderRepository;
+use App\Service\PopulatePageData;
+use Bridge\Src\Helpers\MenuInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +17,15 @@ class CourseManagementController extends AbstractController
     #[Route('/course/management', name: 'app_course_management')]
     public function index(CourseHeaderRepository $courseHeaderRepository): Response
     {
-        return $this->render('course_management/course_header.html.twig', [
-            'controller_name' => 'CourseManagementController',
-            'courses' =>$courseHeaderRepository ->findAll()
-        ]);
+
+        return $this->render('course_management/course_header.html.twig',
+            (new PopulatePageData(
+                CourseManagementController::class,
+                MenuInfo::MENU_SCHOOL_SETUP,
+                true,
+                ['courses' => $courseHeaderRepository ->findAll()]
+            ))->get()
+        );
     }
 
     #[Route('course-subject-management/{action}/{id}', name: 'app_create_course')]
@@ -54,9 +61,15 @@ class CourseManagementController extends AbstractController
             }
         }
 
-        return $this->render('course_management/course_header_form.html.twig', [
-            'controller_name' => 'CourseManagementController',
-            'courseForm' => $form->createView()
-        ]);
+        return $this->render('course_management/course_header_form.html.twig',
+            (new PopulatePageData(
+                CourseManagementController::class,
+                MenuInfo::MENU_SCHOOL_SETUP,
+                true,
+                [
+                    'courseForm' => $form ->createView()
+                ]
+            ))->get()
+        );
     }
 }
