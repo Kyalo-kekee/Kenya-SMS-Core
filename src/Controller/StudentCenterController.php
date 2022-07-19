@@ -13,6 +13,7 @@ use App\Repository\StudentInformationRepository;
 use App\Service\PopulatePageData;
 use Bridge\Src\Helpers\MenuInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -74,8 +75,9 @@ class StudentCenterController extends AbstractController
 
             /*file uploading*/
             $student->setPhotoFile($form->get('PhotoFile')->getData(''));
-            $student->setCertificateAttachment1($form->get('CertificateFile1')->getData());
-            $student->setCertificateAttachment2($form->get('CertificateFile1')->getData());
+       //     dd($form->get('CertificateFile1')->getData());
+            $student->setCertificateFile1($form->get('CertificateFile1')->getData());
+            $student->setCertificateFile2($form->get('CertificateFile1')->getData());
 
             try {
                 $studentInformationRepository->add($student);
