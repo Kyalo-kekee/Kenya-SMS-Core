@@ -36,26 +36,27 @@ class StudentCenterController extends AbstractController
                 MenuInfo::MENU_STUDENT_CENTER,
                 true,
                 [
-                    'students' => $studentInformationRepository ->findAll(),
+                    'students' => $studentInformationRepository->findAll(),
                 ]
             ))->get()
         );
     }
 
-    #[Route('student-center/select-class/{class_room_id}/', name: 'app_student_information_form')]
+    #[Route('student-center/select-class/{class_room_id}/{student_id}', name: 'app_student_information_form')]
     public function enrollNewStudentClassHeader(
-        StudentInformationRepository $studentInformationRepository,
+        StudentInformationRepository     $studentInformationRepository,
         SchoolClassRoomsHeaderRepository $classRoomsHeaderRepository,
-        CourseHeaderRepository       $courseHeaderRepository,
-        Request                      $request,
-        string                       $class_room_id,
+        CourseHeaderRepository           $courseHeaderRepository,
+        Request                          $request,
+        string                           $class_room_id,
+        string                           $student_id = null,
     ): Response
     {
-        $student = new StudentInformation();
+        $student = is_null($student_id) ? new StudentInformation() : $studentInformationRepository ->find($student_id);
         $form = $this->createForm(StudentInformationFormType::class, $student);
         $form->handleRequest($request);
         //map student to classroom
-        $student ->setClassRoomID($classRoomsHeaderRepository->find($class_room_id));
+        $student->setClassRoomID($classRoomsHeaderRepository->find($class_room_id));
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -78,12 +79,10 @@ class StudentCenterController extends AbstractController
 
             try {
                 $studentInformationRepository->add($student);
-                $this->addFlash('success','student records updated');
+                $this->addFlash('success', 'student records updated');
             } catch (\Exception $e) {
                 $this->addFlash('fail', $e->getMessage());
             }
-
-
         }
 
         return $this->render('student_center/student_informtion_form.html.twig',
@@ -99,7 +98,7 @@ class StudentCenterController extends AbstractController
     }
 
     #[Route('student-center/classroom/enroll', name: 'app_enroll_class_header')]
-    public  function enrollSelectClass(SchoolClassHeaderRepository $schoolClassHeaderRepository): Response
+    public function enrollSelectClass(SchoolClassHeaderRepository $schoolClassHeaderRepository): Response
     {
         return $this->render('student_center/enroll_class_header.html.twig',
             (new PopulatePageData(
@@ -114,10 +113,10 @@ class StudentCenterController extends AbstractController
     }
 
     #[Route('/student-center/student-information-view/{class_room_id}/{student_id}', name: 'app_student_information_view')]
-    public  function studentInformationView(
+    public function studentInformationView(
         StudentInformationRepository $studentInformationRepository,
-        string $class_room_id,
-        string $student_id
+        string                       $class_room_id,
+        string                       $student_id
     )
     {
         return $this->render('student_center/student_details.twig',
@@ -132,7 +131,7 @@ class StudentCenterController extends AbstractController
         );
     }
 
-    #[Route('/student-center/classroom-view/',  name: 'app_class_room_view')]
+    #[Route('/student-center/classroom-view/', name: 'app_class_room_view')]
     public function classRoomsView(SchoolClassHeaderRepository $schoolClassHeaderRepository)
     {
         return $this->render('student_center/classroom_view.twig',
@@ -150,7 +149,7 @@ class StudentCenterController extends AbstractController
     #[Route('/student-center/classroom-students-view/{room_id}', name: 'app_classroom_students')]
     public function classRoomStudentsView(
         SchoolClassRoomsHeaderRepository $schoolClassRoomsHeaderRepository,
-        string $room_id,
+        string                           $room_id,
     )
     {
         return $this->render('student_center/classroom_student.twig',
@@ -159,7 +158,7 @@ class StudentCenterController extends AbstractController
                 MenuInfo::MENU_STUDENT_CENTER,
                 true,
                 [
-                    'classroom' => $schoolClassRoomsHeaderRepository ->find($room_id),
+                    'classroom' => $schoolClassRoomsHeaderRepository->find($room_id),
                 ]
             ))->get()
         );

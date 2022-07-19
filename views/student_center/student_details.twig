@@ -10,7 +10,7 @@
                 <h4 class="page-title">My Profile</h4>
             </div>
             <div class="col-sm-5 col-6 text-right m-b-30">
-                <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fas fa-plus"></i> Edit Profile</a>
+                <a href="{{ path('app_student_information_form', {'class_room_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}" class="btn btn-primary btn-rounded"><i class="fas fa-plus"></i> Edit Profile</a>
             </div>
         </div>
         <div class="card-box profile-header">
