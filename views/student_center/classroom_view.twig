@@ -1,6 +1,6 @@
 {% extends 'masterpages/layout.twig' %}
 {% block page_level_css %}
-<link rel="stylesheet" href="{{ asset('theme/bootstrap/css/bootstrap.min.css') }}">
+
 {% endblock %}
 {% block title %}Student Center - Enroll Student!{% endblock %}
 {% block page_title %}Register/Enroll Student{% endblock %}
@@ -19,10 +19,10 @@
 
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
-            <div class="widget-content widget-content-area br-6">
+            <div class="card-box br-6">
                 <h4 class="badge badge-success p-2" style="font-size: 1em"> Select a classroom to view students</h4>
-                <table id="zero-config" class="table table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
-                    <thead>
+                <table id="class-rooms-header" class=" table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
+                    <thead style="background-color: #95999c;color: whitesmoke;text-align: center">
                     <tr>
                         <th>Name</th>
                         <th>Level ID & Class Rooms</th>
@@ -40,11 +40,11 @@
                                     <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
                                 </a>
                             </td>
-                            <td><table id="inner" class="table table-bordered table-sm dt-no-sorting">
+                            <td><table id="inner" class="table table-striped table-sm ">
                                     {%for rooms in class.classRooms %}
                                         <tr style="border-left: 2px solid {{class.classColorID}}">
                                             <td>{{rooms.SectionName }}</td>
-                                            <td><a  href="{{ path('app_classroom_students',{'room_id' : rooms.id}) }}" class="btn btn-sm btn-outline-primary bs-tooltip-auto" title="Add a student to {{rooms.SectionName}}">
+                                            <td class="text-right"><a  href="{{ path('app_classroom_students',{'room_id' : rooms.id}) }}" class="btn btn-sm btn-outline-primary bs-tooltip-auto" title="Add a student to {{rooms.SectionName}}">
                                                    {# <img src="{{ asset('icons/list/icons8-list-of-parts-30.png') }}" style="height: 16px;width: 16px">#}
                                                     <i class="fa fa-list-ul"></i>
                                                 </a>
@@ -74,9 +74,17 @@
     </script>
     <script>
         $(document).ready(function () {
-            $('#zero-config').DataTable();
-            $('#inner').DataTable();
+            var table = $('#class-rooms-header').DataTable({
+                responsive: true,
+                dom: 'lfrtiBp',
+                colReorder: true,
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
+            });
         });
+        table.buttons().container()
+            .appendTo($('.col-sm-6:eq(0)', table.table().container()));
     </script>
     {# END PAGE LEVEL SCRIPTS #}
 {% endblock %}

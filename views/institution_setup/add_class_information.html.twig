@@ -13,7 +13,14 @@
 </a>
 {%endblock%}
 {% block body %}
-
+    <div class="row">
+        <div class="col-sm-7 col-6">
+            <h4 class="page-title">Add a class</h4>
+        </div>
+        <div class="col-sm-5 col-6 text-right m-b-30">
+            <a href="{{ path('app_class_header') }}" class="btn btn-primary btn-rounded"><i class="fas fa-plus"></i> View All classes</a>
+        </div>
+    </div>
     <div class="row layout-top-spacing">
         {{ include('feedback_flash_messages.html.twig') }}
         <div class="col-lg-1 col-1 layout-spacing"></div>

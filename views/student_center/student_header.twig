@@ -1,5 +1,6 @@
 {% extends 'masterpages/layout.twig' %}
 {% block page_level_css %}
+    <link rel="stylesheet" href="{{ asset('theme/bootstrap/css/bootstrap.min.cs') }}">
 {% endblock %}
 {% block title %}Class Header!{% endblock %}
 {% block page_title %}Classes / Course Level{% endblock %}
@@ -25,10 +26,10 @@
                     </div>
 
                     <div class="btn-controls"></div>
-                    <table id="student-header" class="table table-bordered table-hover  "
+                    <table id="student-header" class="table-bordered "
                            style="width:100%; ">
-                        <thead>
-                        <tr>
+                        <thead style="background-color: #95999c;color: whitesmoke;text-align: center">
+                        <tr >
                             <th>Name</th>
                             <th>Class ID</th>
                             <th>Enroll Date</th>
@@ -44,8 +45,9 @@
                                 <td>{{ student.EnrollDate |date("m/d/Y m:h:i") }}</td>
                                 <td><img src="{{ vich_uploader_asset(student) }}" height="32", width="32"></td>
                                 <td>
-                                    <a class="btn btn-outline-warning btn-sm" href="{{ path('app_student_information_view', {'class_room_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}">
-                                        <img src="{{ asset('icons/list/icons8-list-of-parts-16.png') }}"></a>
+                                    <a class="btn btn-outline-primary btn-sm" href="{{ path('app_student_information_view', {'class_room_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}">
+                                        <i class="fa fa-list-ul "></i>
+                                    </a>
                                 </td>
                             </tr>
                         {% endfor %}
