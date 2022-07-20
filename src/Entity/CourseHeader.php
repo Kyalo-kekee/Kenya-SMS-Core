@@ -39,6 +39,12 @@ class CourseHeader
     #[ORM\ManyToMany(targetEntity: StudentInformation::class, mappedBy: 'EntrySubjects')]
     private $EnrolledStudents;
 
+    #[ORM\Column(type: 'string', length: 32)]
+    private $CompanyID;
+
+    #[ORM\Column(type: 'string', length: 32)]
+    private $BranchID;
+
 
     public function __construct()
     {
@@ -177,6 +183,30 @@ class CourseHeader
         if ($this->EnrolledStudents->removeElement($enrolledStudent)) {
             $enrolledStudent->removeEntrySubject($this);
         }
+
+        return $this;
+    }
+
+    public function getCompanyID(): ?string
+    {
+        return $this->CompanyID;
+    }
+
+    public function setCompanyID(string $CompanyID): self
+    {
+        $this->CompanyID = $CompanyID;
+
+        return $this;
+    }
+
+    public function getBranchID(): ?string
+    {
+        return $this->BranchID;
+    }
+
+    public function setBranchID(string $BranchID): self
+    {
+        $this->BranchID = $BranchID;
 
         return $this;
     }

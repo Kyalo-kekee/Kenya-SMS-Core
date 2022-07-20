@@ -34,6 +34,12 @@ class SchoolClassRoomsHeader
     #[ORM\Column(type: 'integer', nullable: true)]
     private $TotalNumberOfStudents;
 
+    #[ORM\Column(type: 'string', length: 32)]
+    private $CompanyID;
+
+    #[ORM\Column(type: 'string', length: 32)]
+    private $BranchID;
+
     public function __construct()
     {
         $this->ClassRoomStudents = new ArrayCollection();
@@ -130,6 +136,30 @@ class SchoolClassRoomsHeader
     public function setTotalNumberOfStudents(?int $TotalNumberOfStudents): self
     {
         $this->TotalNumberOfStudents = $TotalNumberOfStudents;
+
+        return $this;
+    }
+
+    public function getCompanyID(): ?string
+    {
+        return $this->CompanyID;
+    }
+
+    public function setCompanyID(string $CompanyID): self
+    {
+        $this->CompanyID = $CompanyID;
+
+        return $this;
+    }
+
+    public function getBranchID(): ?string
+    {
+        return $this->BranchID;
+    }
+
+    public function setBranchID(string $BranchID): self
+    {
+        $this->BranchID = $BranchID;
 
         return $this;
     }

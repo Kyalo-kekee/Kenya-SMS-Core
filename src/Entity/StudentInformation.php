@@ -101,6 +101,12 @@ class StudentInformation
     #[ORM\Column(type: 'string', length: 13, nullable: true)]
     private $StudentPhoneNumber;
 
+    #[ORM\Column(type: 'string', length: 32)]
+    private $CompanyID;
+
+    #[ORM\Column(type: 'string', length: 32)]
+    private $BranchID;
+
     public function __construct()
     {
         $this->EntrySubjects = new ArrayCollection();
@@ -471,6 +477,30 @@ class StudentInformation
     public function setStudentPhoneNumber(?string $StudentPhoneNumber): self
     {
         $this->StudentPhoneNumber = $StudentPhoneNumber;
+
+        return $this;
+    }
+
+    public function getCompanyID(): ?string
+    {
+        return $this->CompanyID;
+    }
+
+    public function setCompanyID(string $CompanyID): self
+    {
+        $this->CompanyID = $CompanyID;
+
+        return $this;
+    }
+
+    public function getBranchID(): ?string
+    {
+        return $this->BranchID;
+    }
+
+    public function setBranchID(string $BranchID): self
+    {
+        $this->BranchID = $BranchID;
 
         return $this;
     }

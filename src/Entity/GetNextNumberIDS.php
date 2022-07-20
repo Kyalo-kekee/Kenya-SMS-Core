@@ -32,6 +32,12 @@ class GetNextNumberIDS
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $UpdatedAt;
 
+    #[ORM\Column(type: 'string', length: 32)]
+    private $CompanyID;
+
+    #[ORM\Column(type: 'string', length: 32)]
+    private $BranchID;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +111,30 @@ class GetNextNumberIDS
     public function setUpdatedAt(?\DateTimeImmutable $UpdatedAt): self
     {
         $this->UpdatedAt = $UpdatedAt;
+
+        return $this;
+    }
+
+    public function getCompanyID(): ?string
+    {
+        return $this->CompanyID;
+    }
+
+    public function setCompanyID(string $CompanyID): self
+    {
+        $this->CompanyID = $CompanyID;
+
+        return $this;
+    }
+
+    public function getBranchID(): ?string
+    {
+        return $this->BranchID;
+    }
+
+    public function setBranchID(string $BranchID): self
+    {
+        $this->BranchID = $BranchID;
 
         return $this;
     }
