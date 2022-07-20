@@ -6,6 +6,14 @@
 {% block page_title %}School Information{% endblock %}
 {% block body %}
     <div class="row">
+        <div class="col-sm-7 col-6">
+            <h4 class="page-title">School Information</h4>
+        </div>
+        <div class="col-sm-5 col-6 text-right m-b-30">
+            <a href="{{ path('app_school_edit_school_information', {'action': 'edit', 'id': schools[0].id}) }}" class="btn btn-primary btn-rounded"><i class="fas fa-plus"></i> View All Students</a>
+        </div>
+    </div>
+    <div class="row">
 
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
             <div class="card-box mb-0">

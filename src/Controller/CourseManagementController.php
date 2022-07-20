@@ -10,6 +10,7 @@ use Bridge\Src\Helpers\MenuInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CourseManagementController extends AbstractController
@@ -23,7 +24,7 @@ class CourseManagementController extends AbstractController
                 CourseManagementController::class,
                 MenuInfo::MENU_SCHOOL_SETUP,
                 true,
-                ['courses' => $courseHeaderRepository ->findAll()]
+                ['courses' => $courseHeaderRepository->findAll()]
             ))->get()
         );
     }
@@ -32,6 +33,7 @@ class CourseManagementController extends AbstractController
     public function createCourse(
         Request                $request,
         CourseHeaderRepository $courseHeaderRepository,
+        Session           $session,
         string                 $action = 'add',
         string                 $id = null): Response
     {
@@ -44,12 +46,16 @@ class CourseManagementController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $course ->setCompanyID($session->get('CompanyID'));
+            $course->setBranchID($session->get('BranchID'));
             $course->setCourseDuration($form->get('CourseDuration')->getData());
             $course->setCourseID($form->get('CourseID')->getData());
             $course->setCourseName($form->get('CourseName')->getData());
             $course->setCreatedAt(new \DateTimeImmutable());
             $course->setUpdatedAt(new \DateTimeImmutable('now'));
             $course->setHasModules($form->get('HasModules')->getData());
+
+
 
             try {
                 $courseHeaderRepository->add($course);
@@ -67,7 +73,7 @@ class CourseManagementController extends AbstractController
                 MenuInfo::MENU_SCHOOL_SETUP,
                 true,
                 [
-                    'courseForm' => $form ->createView()
+                    'courseForm' => $form->createView()
                 ]
             ))->get()
         );
