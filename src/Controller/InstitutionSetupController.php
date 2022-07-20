@@ -63,6 +63,8 @@ class InstitutionSetupController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $classRoom ->setCompanyID($request->getSession()->get('CompanyID'));
+            $classRoom->setBranchID($request->getSession()->get('BranchID'));
             $classRoom->setClassID($classParent);
             $classRoom->setMaxCapacity($form->get('MaxCapacity')->getData());
             $classRoom->setSectionName($form->get('SectionName')->getData());
@@ -108,6 +110,8 @@ class InstitutionSetupController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
+                $school ->setCompanyID($request->getSession()->get('CompanyID'));
+                $school->setBranchID($request->getSession()->get('BranchID'));
                 $school->setName($form->get('Name')->getData());
                 $school->setCellPhone1($form->get('CellPhone1')->getData());
                 $school->setCellPhone2($form->get('CellPhone2')->getData());
@@ -161,6 +165,8 @@ class InstitutionSetupController extends AbstractController
         $form = $this->createForm(SchoolClassHeaderFormType::class, $classModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $classModel ->setCompanyID($request->getSession()->get('CompanyID'));
+            $classModel->setBranchID($request->getSession()->get('BranchID'));
             $classModel->setClassName($form->get('ClassName')->getData());
             $classModel->setClassColorID($form->get('ClassColorID')->getData());
             $classModel->setCreatedBy('dev');

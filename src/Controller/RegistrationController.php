@@ -35,6 +35,9 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user ->setCompanyID($request->getSession()->get('CompanyID'));
+            $user->setBranchID($request->getSession()->get('BranchID'));
             $user->setDesignation($form->get('Designation')->getData());
             $user->setSalutation($form->get('Salutation')->getData());
             $user->setFirstName($form->get('FirstName')->getData());

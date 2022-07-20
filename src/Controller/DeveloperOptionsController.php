@@ -10,6 +10,7 @@ use Bridge\Src\Helpers\MenuInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DeveloperOptionsController extends AbstractController
@@ -26,6 +27,7 @@ class DeveloperOptionsController extends AbstractController
     public function nextEntityNumber(
         Request                    $request,
         GetNextNumberIDSRepository $getNextNumberIDSRepository,
+        Session                    $session,
         string                     $action = 'add',
         string                     $id = null
     ): Response
@@ -38,6 +40,8 @@ class DeveloperOptionsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $nextEntity->setCompanyID($session->get('CompanyID'));
+            $nextEntity->setBranchID($session->get('BranchID'));
             $nextEntity->setObjectSignatureNamespace($form->get('ObjectSignatureNamespace')->getData());
             $nextEntity->setPrefixID($form->get('PrefixID')->getData());
             $nextEntity->setStartValue($form->get('StartValue')->getData());

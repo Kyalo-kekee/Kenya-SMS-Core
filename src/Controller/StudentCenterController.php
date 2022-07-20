@@ -60,7 +60,8 @@ class StudentCenterController extends AbstractController
         $student->setClassRoomID($classRoomsHeaderRepository->find($class_room_id));
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $student ->setCompanyID($request->getSession()->get('CompanyID'));
+            $student->setBranchID($request->getSession()->get('BranchID'));
             $student->setFirstName($form->get('FirstName')->getData());
             $student->setMiddleName($form->get('MiddleName')->getData());
             $student->setLastName($form->get('LastName')->getData());
