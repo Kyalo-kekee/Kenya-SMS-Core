@@ -1,6 +1,6 @@
 {% extends 'masterpages/layout.twig' %}
 {% block page_level_css %}
-
+<link rel="stylesheet" href="{{ asset('theme/bootstrap/css/bootstrap.min.css') }}">
 {% endblock %}
 {% block title %}Student Center - Enroll Student!{% endblock %}
 {% block page_title %}Register/Enroll Student{% endblock %}
@@ -44,8 +44,9 @@
                                     {%for rooms in class.classRooms %}
                                         <tr style="border-left: 2px solid {{class.classColorID}}">
                                             <td>{{rooms.SectionName }}</td>
-                                            <td><a href="{{ path('app_classroom_students',{'room_id' : rooms.id}) }}" class="bs-tooltip" title="Add a student to {{rooms.SectionName}}">
-                                                    <img src="{{ asset('icons/list/icons8-list-of-parts-30.png') }}">
+                                            <td><a  href="{{ path('app_classroom_students',{'room_id' : rooms.id}) }}" class="btn btn-sm btn-outline-primary bs-tooltip-auto" title="Add a student to {{rooms.SectionName}}">
+                                                   {# <img src="{{ asset('icons/list/icons8-list-of-parts-30.png') }}" style="height: 16px;width: 16px">#}
+                                                    <i class="fa fa-list-ul"></i>
                                                 </a>
                                             </td>
                                         </tr>
