@@ -22,6 +22,7 @@
                         <table id="class-rooms" class="table table-striped">
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Section/ Stream Name</th>
                                 <th>Max Capacity</th>
                                 <th>Total Number of Student</th>
@@ -31,6 +32,7 @@
                             <tbody>
                             {% for classRoom in classHeader.classRooms %}
                                 <tr>
+                                    <td>{{ classRoom.id }}</td>
                                     <td>
                                         {{ classRoom.SectionName }}
                                     </td>

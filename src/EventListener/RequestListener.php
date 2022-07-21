@@ -3,6 +3,7 @@
 namespace App\EventListener;
 
 use App\Service\SystemSQL;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionFactory;
@@ -26,15 +27,15 @@ class RequestListener
 
     public function setSessionMetaData()
     {
+        $rsm = new ResultSetMapping();
+        $rsm->addScalarResult('CompanyID','CompanyID');
+        $rsm->addScalarResult('BranchID','BranchID');
+
 
         if (!$this->session->has('CompanyID') && !$this->session->has('BranchID')) {
             $result = $this->query->execSQLProcedure(
                 'GetCompanyInformation_MS_1',
-                [],
-                [
-                    'CompanyID' => 'CompanyID',
-                    'BranchID' => 'BranchID'
-                ]
+            $rsm
             );
             $this->session->set('CompanyID', $result[0]['CompanyID']);
             $this->session->set('BranchID', $result[0]['BranchID']);

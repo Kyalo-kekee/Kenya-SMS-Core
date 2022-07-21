@@ -13,9 +13,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class MshuleUser implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $userID;
+    #[ORM\GeneratedValue(strategy: "CUSTOM")]
+    #[ORM\CustomIdGenerator(class: "App\Service\CompanyNextNumbers")]
+    #[ORM\Column(type: 'string',length: 72)]
+    private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $username;
@@ -59,9 +60,9 @@ class MshuleUser implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 32)]
     private $BranchID;
 
-    public function getUserID(): ?int
+    public function getId(): ?string
     {
-        return $this->userID;
+        return $this->id;
     }
 
     public function getUsername(): ?string

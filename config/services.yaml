@@ -26,9 +26,9 @@ services:
     Symfony\Component\HttpFoundation\Request:
 
     App\EventListener\RequestListener:
-
         tags:
             - { name: kernel.event_listener, event: kernel.request }
+
 
 
     # add more service definitions when explicit configuration is needed

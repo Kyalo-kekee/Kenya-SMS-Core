@@ -12,13 +12,13 @@ use App\Repository\InstitutionSetupRepository;
 use App\Repository\SchoolClassHeaderRepository;
 use App\Repository\SchoolClassRoomsHeaderRepository;
 use App\Service\PopulatePageData;
+use Bridge\Src\Helpers\MenuInfo;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Bridge\Src\Helpers\MenuInfo;
 
 
 class InstitutionSetupController extends AbstractController
@@ -44,7 +44,7 @@ class InstitutionSetupController extends AbstractController
         ]);
     }
 
-    #[Route('/school-setup/class-header/{action}/{id}', name: 'app_classrooms_add')]
+    #[Route('/school-setup/class-header/{action}/{id}', name: 'app_classrooms_add', requirements: ['id'=>'.+'])]
     public function addClassRooms(
         ManagerRegistry             $registry,
         SchoolClassHeaderRepository $schoolClassHeaderRepository,
@@ -93,7 +93,7 @@ class InstitutionSetupController extends AbstractController
 
     }
 
-    #[Route('/school-setup/school/{action}/{id}', name: 'app_school_edit_school_information')]
+    #[Route('/school-setup/school/{action}/{id}', name: 'app_school_edit_school_information', requirements: ['id'=> '.+'])]
     public function addSchoolInformation(
         Request                    $request,
         InstitutionSetupRepository $institutionSetupRepository,
@@ -210,7 +210,7 @@ class InstitutionSetupController extends AbstractController
         ]);
     }
 
-    #[Route('/class-header-details/{id}', name: 'app_class_header_details')]
+    #[Route('/class-header-details/{id}', name: 'app_class_header_details', requirements: ['id' => '.+'])]
     public function classHeaderDetails(
         SchoolClassHeaderRepository $classHeaderRepository,
         SchoolClassRoomsHeaderRepository $classRoomsHeaderRepository,

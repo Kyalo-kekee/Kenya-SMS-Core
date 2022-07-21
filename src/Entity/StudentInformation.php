@@ -14,9 +14,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class StudentInformation
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $StudentID;
+    #[ORM\GeneratedValue(strategy: "CUSTOM")]
+    #[ORM\CustomIdGenerator(class: "App\Service\CompanyNextNumbers")]
+    #[ORM\Column(type: 'string',length: 72)]
+    private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $FirstName;
@@ -116,9 +117,9 @@ class StudentInformation
 
 
 
-    public function getStudentID(): ?int
+    public function getId(): ?string
     {
-        return $this->StudentID;
+        return $this->id;
     }
 
     public function getFirstName(): ?string

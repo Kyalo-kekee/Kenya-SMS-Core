@@ -45,7 +45,6 @@ class DeveloperOptionsController extends AbstractController
             $nextEntity->setObjectSignatureNamespace($form->get('ObjectSignatureNamespace')->getData());
             $nextEntity->setPrefixID(
                 $session->get('CompanyID') . '/' .
-                $session->get('BranchID') . '/' .
                 $form->get('PrefixID')->getData() . '/');
 
             try {

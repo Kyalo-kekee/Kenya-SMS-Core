@@ -28,6 +28,7 @@
                            style="width:100%; ">
                         <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Level ID</th>
                             <th>No. of Classrooms</th>
@@ -42,6 +43,7 @@
                                 onclick="ShowClassRooms('{{ path('app_class_header_details',{'id':class.id}) }}')"
                                 data-href='{{ path('app_class_header_details',{'id':class.id}) }}'
                                 style="cursor: pointer">
+                                <td>{{ class.id }}</td>
                                 <td>{{ class.ClassName }} </td>
                                 <td>{{ class.levelID }}</td>
                                 <td>{{ class.numberOfClassRooms }}</td>

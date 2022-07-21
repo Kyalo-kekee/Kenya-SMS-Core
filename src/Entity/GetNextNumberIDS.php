@@ -9,8 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 class GetNextNumberIDS
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: "CUSTOM")]
+    #[ORM\CustomIdGenerator(class: "App\Service\CompanyNextNumbers")]
+    #[ORM\Column(type: 'string',length: 72)]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, unique: true)]
@@ -31,7 +32,7 @@ class GetNextNumberIDS
     #[ORM\Column(type: 'string', length: 32)]
     private $BranchID;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

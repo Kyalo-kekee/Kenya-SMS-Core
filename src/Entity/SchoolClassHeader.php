@@ -12,8 +12,9 @@ class SchoolClassHeader
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
-    #[ORM\Column(type: 'string')]
-    private $SchoolClassHeaderID;
+    #[ORM\CustomIdGenerator(class: "App\Service\CompanyNextNumbers")]
+    #[ORM\Column(type: 'string',length: 72)]
+    private $id;
 
     #[ORM\Column(type: 'string', length: 72, unique: true)]
     private $ClassName;
@@ -50,9 +51,9 @@ class SchoolClassHeader
         $this->ClassRooms = new ArrayCollection();
     }
 
-    public function getSchoolClassHeaderID(): ?string
+    public function getId(): ?string
     {
-        return $this->SchoolClassHeaderID;
+        return $this->id;
     }
 
     public function getClassName(): ?string

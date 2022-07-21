@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\SchoolClassRoomsHeader;
 use App\Entity\StudentInformation;
 use App\Form\StudentInformationFormType;
 use App\Repository\ClassHeaderRepository;
@@ -13,7 +12,6 @@ use App\Repository\StudentInformationRepository;
 use App\Service\PopulatePageData;
 use Bridge\Src\Helpers\MenuInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

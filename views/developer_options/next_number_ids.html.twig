@@ -49,6 +49,7 @@
                            style="width:100%; border: 1px dotted coral">
                         <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Object Namespace</th>
                             <th>PrefixId</th>
                             <th>Next Id Value</th>
@@ -58,6 +59,7 @@
                         <tbody>
                         {% for nextObj in NextObject %}
                             <tr>
+                                <td>{{ nextObj.id}}</td>
                                 <td>{{ nextObj.ObjectSignatureNamespace }}</td>
                                 <td>{{ nextObj.PrefixID }}</td>
                                 <td>{{ nextObj.NextValueSlot }}</td>

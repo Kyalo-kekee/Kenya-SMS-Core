@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 class CourseModuleHeader
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
-    #[ORM\CustomIdGenerator(class: 'App\Service\NextEntityKey')]
-    #[ORM\Column(type: 'string')]
-    private $CourseModuleID;
+    #[ORM\GeneratedValue(strategy: "CUSTOM")]
+    #[ORM\CustomIdGenerator(class: "App\Service\CompanyNextNumbers")]
+    #[ORM\Column(type: 'string',length: 72)]
+    private $id;
 
     #[ORM\Column(type: 'string', length: 10)]
     private $ModuleID;
@@ -39,9 +39,9 @@ class CourseModuleHeader
     #[ORM\Column(type: 'string', length: 32)]
     private $BranchID;
 
-    public function getCourseModuleID(): ?int
+    public function getId(): ?string
     {
-        return $this->CourseModuleID;
+        return $this->id;
     }
 
     public function getModuleID(): ?string

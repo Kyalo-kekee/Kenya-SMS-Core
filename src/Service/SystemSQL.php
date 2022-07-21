@@ -17,16 +17,18 @@ class SystemSQL
 
     public function execSQLProcedure(
         string $storedProcedure,
+        ResultSetMapping $rsm,
         array  $parameters = [],
-        array  $resultMapping = []
+
+
     )
     {
 
-        $rsm = new ResultSetMapping();
-        $this->setScalarResults($rsm, $resultMapping);
-        $commandTxt = $this->entityManager->createNativeQuery($storedProcedure.$this->splitAndCreateParametersString($parameters), $rsm);
+        $commandTxt = $this->entityManager->createNativeQuery($storedProcedure.' '.$this->splitAndCreateParametersString($parameters) , $rsm);
+
         $this ->setProcedureParameters($commandTxt,$parameters);
-        return $commandTxt->getScalarResult();
+
+        return $commandTxt->getResult();
 
     }
 
