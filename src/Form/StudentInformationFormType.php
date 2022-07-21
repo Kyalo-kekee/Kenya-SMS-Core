@@ -54,7 +54,7 @@ class StudentInformationFormType extends AbstractType
                     'asset_helper' => true,
                 ]
             )
-            ->add(
+/*            ->add(
 
                 'CertificateFile1',
                 VichFileType::class,
@@ -81,7 +81,7 @@ class StudentInformationFormType extends AbstractType
                     'download_label' => 'download file',
                     'asset_helper' => true,
                 ]
-            )
+            )*/
         ;
     }
 

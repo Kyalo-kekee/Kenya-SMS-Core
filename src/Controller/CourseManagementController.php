@@ -29,7 +29,7 @@ class CourseManagementController extends AbstractController
         );
     }
 
-    #[Route('course-subject-management/{action}/{id}', name: 'app_create_course')]
+    #[Route('course-subject-management/{action}/{id}', name: 'app_create_course', requirements: ['id'=>'.+'])]
     public function createCourse(
         Request                $request,
         CourseHeaderRepository $courseHeaderRepository,

@@ -41,7 +41,8 @@ class StudentCenterController extends AbstractController
         );
     }
 
-    #[Route('student-center/select-class/{class_room_id}/{student_id}', name: 'app_student_information_form')]
+    #[Route('student-center/select-class/{class_room_id}/{student_id}', name: 'app_student_information_form',
+        requirements: ['class_room_id'=> '.+'])]
     public function enrollNewStudentClassHeader(
         StudentInformationRepository     $studentInformationRepository,
         SchoolClassRoomsHeaderRepository $classRoomsHeaderRepository,
@@ -75,8 +76,8 @@ class StudentCenterController extends AbstractController
             /*file uploading*/
             $student->setPhotoFile($form->get('PhotoFile')->getData(''));
        //     dd($form->get('CertificateFile1')->getData());
-            $student->setCertificateFile1($form->get('CertificateFile1')->getData());
-            $student->setCertificateFile2($form->get('CertificateFile1')->getData());
+            /*$student->setCertificateFile1($form->get('CertificateFile1')->getData());
+            $student->setCertificateFile2($form->get('CertificateFile1')->getData());*/
 
             try {
                 $studentInformationRepository->add($student);

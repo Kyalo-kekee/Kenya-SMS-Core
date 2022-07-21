@@ -72,20 +72,20 @@ class StudentInformation
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $UpdatedAt;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+ /*   #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $CertificateAttachmentSize;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $CertificateAttachmentSize2;
+    private $CertificateAttachmentSize2;*/
 
     #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'ImageUrl', size: 'ImageSize')]
     private ?File $PhotoFile;
 
-    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize')]
+/*    #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize')]
     private ?File $CertificateFile1;
 
     #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'CertificateAttachment1', size: 'CertificateAttachmentSize2')]
-    private ?File $CertificateFile2;
+    private ?File $CertificateFile2;*/
 
     #[ORM\ManyToMany(targetEntity: CourseHeader::class, inversedBy: 'EnrolledStudents')]
     private $EntrySubjects;
