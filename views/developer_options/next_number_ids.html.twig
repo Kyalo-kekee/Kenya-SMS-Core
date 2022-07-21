@@ -18,9 +18,9 @@
                         <table class="table table-sm">
                             <thead>
                             <tr>
-                                <th> <small>fully qualified object namespace</small></th>
+                                <th> <small>fully qualified object namespace/Entity</small></th>
                                 <th>PrefixId</th>
-                                <th>Start Value</th>
+                                <th>Value Slot</th>
                                 <th>Force Random</th>
                                 <th></th>
                             </tr>
@@ -29,11 +29,9 @@
                             <tr>
                                 <td>
                                     {{ form_row(nextObjectForm.ObjectSignatureNamespace) }}
-
-
                                 </td>
                                 <td>{{ form_row(nextObjectForm.PrefixID) }}</td>
-                                <td>{{ form_row(nextObjectForm.StartValue) }}</td>
+                                <td>{{ form_row(nextObjectForm.NextValueSlot) }}</td>
                                 <td>{{ form_row(nextObjectForm.ToForceRandomIdGeneration) }}</td>
                                 <td>
                                     <button type="submit" class="btn btn-sm btn-info">save</button>

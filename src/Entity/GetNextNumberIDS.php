@@ -20,10 +20,7 @@ class GetNextNumberIDS
     #[ORM\Column(type: 'string', length: 10)]
     private $PrefixID;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private $StartValue;
-
-    #[ORM\Column(type: 'integer',nullable: true)]
+    #[ORM\Column(type: 'string',length: 100)]
     private $NextValueSlot ;
 
     #[ORM\Column(type: 'boolean', nullable: true)]

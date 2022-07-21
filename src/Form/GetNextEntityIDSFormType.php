@@ -14,7 +14,6 @@ class GetNextEntityIDSFormType extends AbstractType
         $builder
             ->add('ObjectSignatureNamespace',null,['label'=>false])
             ->add('PrefixID',null,['label'=>false])
-            ->add('StartValue',null,['label'=>false])
             ->add('NextValueSlot',null,['label'=>false])
             ->add('ToForceRandomIdGeneration',null,['label'=>false])
             ->add('UpdatedAt',null,['label'=>false])
