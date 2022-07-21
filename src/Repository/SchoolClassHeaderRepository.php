@@ -49,7 +49,7 @@ class SchoolClassHeaderRepository extends ServiceEntityRepository
     {
         return $repository ->createQueryBuilder('cRooms')
             ->andWhere('cRooms.ClassID= :class_headerId')
-            ->setParameter('class_headerId', $entity ->getId())
+            ->setParameter('class_headerId', $entity ->getSchoolClassHeaderID())
             ->getQuery()
             ->getResult();
 

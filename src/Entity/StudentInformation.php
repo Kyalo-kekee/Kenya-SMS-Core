@@ -16,7 +16,7 @@ class StudentInformation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private $StudentID;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $FirstName;
@@ -116,9 +116,9 @@ class StudentInformation
 
 
 
-    public function getId(): ?int
+    public function getStudentID(): ?int
     {
-        return $this->id;
+        return $this->StudentID;
     }
 
     public function getFirstName(): ?string

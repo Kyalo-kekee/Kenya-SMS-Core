@@ -13,7 +13,7 @@ class CourseHeader
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private $CourseHeaderID;
 
     #[ORM\Column(type: 'string', length: 10)]
     private $CourseID;
@@ -53,9 +53,9 @@ class CourseHeader
 
     }
 
-    public function getId(): ?int
+    public function getCourseHeaderID(): ?int
     {
-        return $this->id;
+        return $this->CourseHeaderID;
     }
 
     public function getCourseID(): ?string

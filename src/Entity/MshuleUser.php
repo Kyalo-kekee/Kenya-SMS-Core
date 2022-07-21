@@ -15,7 +15,7 @@ class MshuleUser implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private $userID;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $username;
@@ -59,9 +59,9 @@ class MshuleUser implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 32)]
     private $BranchID;
 
-    public function getId(): ?int
+    public function getUserID(): ?int
     {
-        return $this->id;
+        return $this->userID;
     }
 
     public function getUsername(): ?string

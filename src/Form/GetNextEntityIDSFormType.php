@@ -12,11 +12,22 @@ class GetNextEntityIDSFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('ObjectSignatureNamespace',null,['label'=>false])
-            ->add('PrefixID',null,['label'=>false])
-            ->add('NextValueSlot',null,['label'=>false])
-            ->add('ToForceRandomIdGeneration',null,['label'=>false])
-            ->add('UpdatedAt',null,['label'=>false])
+            ->add('ObjectSignatureNamespace',null,[
+                'label' => false,
+                'attr'=>['class'=>'form-control form-control-sm']
+            ])
+            ->add('PrefixID',null,[
+                'label' => false,
+                'attr'=>['class'=>'form-control form-control-sm']
+            ])
+            ->add('NextValueSlot',null,[
+                'label' => false,
+                'attr'=>['class'=>'form-control form-control-sm']
+            ])
+            ->add('UpdatedAt',null,[
+                'label' => false,
+                'attr'=>['class'=>'form-control form-control-sm']
+            ])
         ;
     }
 

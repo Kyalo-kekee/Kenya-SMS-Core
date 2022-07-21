@@ -13,7 +13,7 @@ class InstitutionSetup
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private $SchoolID;
 
     #[ORM\Column(type: 'string', length: 22)]
     private $IDInitials;
@@ -59,9 +59,9 @@ class InstitutionSetup
 
 
 
-    public function getId(): ?int
+    public function getSchoolID(): ?int
     {
-        return $this->id;
+        return $this->SchoolID;
     }
 
     public function getIDInitials(): ?string

@@ -16,7 +16,7 @@ class GetNextNumberIDS
     #[ORM\Column(type: 'string', length: 255, unique: true)]
     private $ObjectSignatureNamespace;
 
-    #[ORM\Column(type: 'string', length: 10)]
+    #[ORM\Column(type: 'string', length: 32)]
     private $PrefixID;
 
     #[ORM\Column(type: 'string',length: 100)]

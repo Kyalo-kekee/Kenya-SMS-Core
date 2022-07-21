@@ -43,8 +43,10 @@ class DeveloperOptionsController extends AbstractController
             $nextEntity->setCompanyID($request->getSession()->get('CompanyID'));
             $nextEntity->setBranchID($request->getSession()->get('BranchID'));
             $nextEntity->setObjectSignatureNamespace($form->get('ObjectSignatureNamespace')->getData());
-            $nextEntity->setPrefixID($session->get('CompanyID') .'/'.$session->get('BranchID'));
-            $nextEntity->setStartValue($form->get('StartValue')->getData());
+            $nextEntity->setPrefixID(
+                $session->get('CompanyID') . '/' .
+                $session->get('BranchID') . '/' .
+                $form->get('PrefixID')->getData() . '/');
 
             try {
                 $getNextNumberIDSRepository->add($nextEntity);

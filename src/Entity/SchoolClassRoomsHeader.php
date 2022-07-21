@@ -13,7 +13,7 @@ class SchoolClassRoomsHeader
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private $SchoolClassRoomsHeaderID;
 
     #[ORM\ManyToOne(targetEntity: SchoolClassHeader::class, inversedBy: 'ClassRooms')]
     #[ORM\JoinColumn(nullable: false)]
@@ -45,9 +45,9 @@ class SchoolClassRoomsHeader
         $this->ClassRoomStudents = new ArrayCollection();
     }
 
-    public function getId(): ?string
+    public function getSchoolClassRoomsHeaderID(): ?string
     {
-        return $this->id;
+        return $this->SchoolClassRoomsHeaderID;
     }
 
     public function getClassID(): ?SchoolClassHeader

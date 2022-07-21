@@ -12,7 +12,7 @@ class CourseModuleHeader
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'App\Service\NextEntityKey')]
     #[ORM\Column(type: 'string')]
-    private $id;
+    private $CourseModuleID;
 
     #[ORM\Column(type: 'string', length: 10)]
     private $ModuleID;
@@ -39,9 +39,9 @@ class CourseModuleHeader
     #[ORM\Column(type: 'string', length: 32)]
     private $BranchID;
 
-    public function getId(): ?int
+    public function getCourseModuleID(): ?int
     {
-        return $this->id;
+        return $this->CourseModuleID;
     }
 
     public function getModuleID(): ?string
