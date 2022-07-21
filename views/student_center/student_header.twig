@@ -28,8 +28,9 @@
                     <div class="btn-controls"></div>
                     <table id="student-header" class="table-bordered "
                            style="width:100%; ">
-                        <thead style="background-color: #95999c;color: whitesmoke;text-align: center">
-                        <tr >
+                        <thead style="background-color: #1b2e4b;color: whitesmoke;text-align: center">
+                        <tr>
+                            <th>Student ID</th>
                             <th>Name</th>
                             <th>Class ID</th>
                             <th>Enroll Date</th>
@@ -40,12 +41,13 @@
                         <tbody>
                         {% for student in students %}
                             <tr>
+                                <td>{{ student.id }}</td>
                                 <td>{{ student.FirstName }}  {{ student.LastName }}</td>
                                 <td>{{ student.ClassRoomID.SectionName }}</td>
                                 <td>{{ student.EnrollDate |date("m/d/Y m:h:i") }}</td>
                                 <td><img src="{{ vich_uploader_asset(student) }}" height="32", width="32"></td>
                                 <td>
-                                    <a class="btn btn-outline-primary btn-sm" href="{{ path('app_student_information_view', {'class_room_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}">
+                                    <a class="btn btn-outline-primary btn-sm" href="{{ path('app_student_information_view', {'classroom_id': student.ClassRoomID.Id , 'student_id': student.Id }) }}">
                                         <i class="fa fa-list-ul "></i>
                                     </a>
                                 </td>

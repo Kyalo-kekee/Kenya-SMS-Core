@@ -41,14 +41,14 @@ class StudentCenterController extends AbstractController
         );
     }
 
-    #[Route('student-center/select-class/{class_room_id}/{student_id}', name: 'app_student_information_form',
-        requirements: ['class_room_id'=> '.+'])]
+    #[Route('student-center/select-class/{classroom_id}/join/{student_id}', name: 'app_student_information_form',
+        requirements: ['classroom_id'=> '.+', 'student_id' => '.+'])]
     public function enrollNewStudentClassHeader(
         StudentInformationRepository     $studentInformationRepository,
         SchoolClassRoomsHeaderRepository $classRoomsHeaderRepository,
         CourseHeaderRepository           $courseHeaderRepository,
         Request                          $request,
-        string                           $class_room_id,
+        string                           $classroom_id,
         string                           $student_id = null,
     ): Response
     {
@@ -56,7 +56,7 @@ class StudentCenterController extends AbstractController
         $form = $this->createForm(StudentInformationFormType::class, $student);
         $form->handleRequest($request);
         //map student to classroom
-        $student->setClassRoomID($classRoomsHeaderRepository->find($class_room_id));
+        $student->setClassRoomID($classRoomsHeaderRepository->find($classroom_id));
 
         if ($form->isSubmitted() && $form->isValid()) {
             $student ->setCompanyID($request->getSession()->get('CompanyID'));
@@ -114,13 +114,16 @@ class StudentCenterController extends AbstractController
         );
     }
 
-    #[Route('/student-center/student-information-view/{class_room_id}/{student_id}', name: 'app_student_information_view')]
+    #[Route('/student-center/student-information-view/{classroom_id}/join/{student_id}', name: 'app_student_information_view',
+        requirements: ['student_id'=> '.+', 'classroom_id' => '.+'])]
     public function studentInformationView(
         StudentInformationRepository $studentInformationRepository,
-        string                       $class_room_id,
+        string                       $classroom_id,
         string                       $student_id
     )
     {
+
+        //dd( $studentInformationRepository->find(urldecode($student_id)));
         return $this->render('student_center/student_details.twig',
             (new PopulatePageData(
                 StudentCenterController::class,

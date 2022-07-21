@@ -49,7 +49,7 @@ class StudentInformation
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
     private $ImageSize;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255,nullable: true)]
     private $CertificateAttachment1;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -72,11 +72,11 @@ class StudentInformation
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $UpdatedAt;
 
- /*   #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $CertificateAttachmentSize;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $CertificateAttachmentSize2;*/
+    private $CertificateAttachmentSize2;
 
     #[Vich\UploadableField(mapping: 'student_information', fileNameProperty: 'ImageUrl', size: 'ImageSize')]
     private ?File $PhotoFile;
