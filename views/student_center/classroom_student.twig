@@ -44,10 +44,10 @@
                                 <td>{{ student.EnrollDate |date("m/d/Y m:h:i") }}</td>
                                 <td><img src="{{ vich_uploader_asset(student) }}" height="32", width="32"></td>
                                 <td>
-                                    <a class="btn btn-sm btn-outline-primary" href="{{ path('app_student_information_view', {'class_room_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}">
+                                    <a class="btn btn-sm btn-outline-primary" href="{{ path('app_student_information_view', {'classroom_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}">
                                     <i class="fa fa-list-ul"></i>
                                     </a>
-                                    <a class="btn btn-sm btn-outline-success" href="{{ path('app_student_information_form', {'class_room_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}">
+                                    <a class="btn btn-sm btn-outline-success" href="{{ path('app_student_information_form', {'classroom_id': student.ClassRoomID.Id, 'student_id': student.Id}) }}">
                                         <img src="{{ asset('enterprise/icons8-pencil-16.png') }}"></a>
 
                                 </td>

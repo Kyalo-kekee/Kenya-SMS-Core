@@ -151,7 +151,8 @@ class StudentCenterController extends AbstractController
         );
     }
 
-    #[Route('/student-center/classroom-students-view/{room_id}', name: 'app_classroom_students')]
+    #[Route('/student-center/classroom-students-view/{room_id}', name: 'app_classroom_students',
+    requirements: ['room_id'=>'.+'])]
     public function classRoomStudentsView(
         SchoolClassRoomsHeaderRepository $schoolClassRoomsHeaderRepository,
         string                           $room_id,
