@@ -56,7 +56,7 @@ class DeveloperOptionsController extends AbstractController
         return $this->render('developer_options/next_number_ids.html.twig',
             (new PopulatePageData(
                 DeveloperOptionsController::class,
-                MenuInfo::MENU_SCHOOL_SETUP,
+                MenuInfo::MENU_SYSTEM_SETTINGS,
                 true,
                 [
                     'nextObjectForm' => $form->createView(),

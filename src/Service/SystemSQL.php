@@ -15,37 +15,12 @@ class SystemSQL
         $this->entityManager = $em;
     }
 
-    public function execSQLProcedure(
-        string $storedProcedure,
-        ResultSetMapping $rsm,
-        array  $parameters = [],
-
-
-    )
+    public function execSQLProcedure(string $storedProcedure, ResultSetMapping $rsm, array $parameters = [])
     {
-
-        $commandTxt = $this->entityManager->createNativeQuery($storedProcedure.' '.$this->splitAndCreateParametersString($parameters) , $rsm);
-
-        $this ->setProcedureParameters($commandTxt,$parameters);
-
+        $commandTxt = $this->entityManager->createNativeQuery($storedProcedure . ' ' . $this->splitAndCreateParametersString($parameters), $rsm);
+        $this->setProcedureParameters($commandTxt, $parameters);
         return $commandTxt->getResult();
 
-    }
-
-    public function setScalarResults(ResultSetMapping $rsm, array $field_alias)
-    {
-        if (!empty($field_alias))
-            foreach ($field_alias as $FieldName => $alias) {
-                $rsm->addScalarResult($FieldName, $alias);
-            }
-
-    }
-
-    public function setProcedureParameters(NativeQuery $commandTxt, array $parameters)
-    {
-        foreach ($parameters as $key => $value) {
-            $commandTxt->setParameter(':' . $key, $value);
-        }
     }
 
     public function splitAndCreateParametersString($parameters)
@@ -61,6 +36,22 @@ class SystemSQL
             }
         }
         return $parameters_list;
+    }
+
+    public function setProcedureParameters(NativeQuery $commandTxt, array $parameters)
+    {
+        foreach ($parameters as $key => $value) {
+            $commandTxt->setParameter(':' . $key, $value);
+        }
+    }
+
+    public function setScalarResults(ResultSetMapping $rsm, array $field_alias)
+    {
+        if (!empty($field_alias))
+            foreach ($field_alias as $FieldName => $alias) {
+                $rsm->addScalarResult($FieldName, $alias);
+            }
+
     }
 
 

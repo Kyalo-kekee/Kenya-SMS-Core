@@ -1,16 +1,18 @@
 <div class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
-        <div class="sidebar-menu">
+        <div class="sidebar-menu" id="sidebar-menu">
             <ul>
                 <li>
                     <a href="#" onclick="loadMainMenu('settings')"><i class="fas fa-home back-icon"></i> <span>Main Menu</span></a>
                 </li>
-                <li class="menu-title">Settings</li>
-                <li class="active">
-                    <a href="settings.html"><i class="fas fa-building"></i> <span>Company Settings</span></a>
-                </li>
-                <li>
-                    <a href="localization.html"><i class="fas fa-clock"></i> <span>Localization</span></a>
+                <li class="menu-title">System & Settings</li>
+                <li class="submenu ">
+                    <a href="#"><img src="{{ asset('icons/icons8-code-folder-48.png') }}" width="32" height="32"> <span>Developer Options</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('app_id_generator', {'action': 'add', 'id': ''}) }}"> Custom ID Generation </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
