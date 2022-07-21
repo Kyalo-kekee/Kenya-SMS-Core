@@ -9,9 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 class GetNextNumberIDS
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
-    #[ORM\CustomIdGenerator(class: 'App\Service\NextEntityKey')]
-    #[ORM\Column(type: 'string')]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255, unique: true)]
@@ -22,9 +21,6 @@ class GetNextNumberIDS
 
     #[ORM\Column(type: 'string',length: 100)]
     private $NextValueSlot ;
-
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $ToForceRandomIdGeneration;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $UpdatedAt;

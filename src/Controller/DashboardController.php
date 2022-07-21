@@ -22,7 +22,7 @@ class DashboardController extends AbstractController
                  'Name'=> 'SchoolName'
              ]
          ));*/
-        $result = $dashboardA->execSQLProcedure(
+       /* $result = $dashboardA->execSQLProcedure(
             'GetCompanyInformation_MS_1',
             [
             ],
@@ -31,7 +31,7 @@ class DashboardController extends AbstractController
                 'BranchID' => 'BranchID'
             ]
         );
-        dd($session->get('CompanyID'));
+        dd($session->get('CompanyID'));*/
 
         return $this->render('masterpages/blank.twig', [
             'global_menu'=> true,

@@ -40,14 +40,11 @@ class DeveloperOptionsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $nextEntity->setCompanyID($session->get('CompanyID'));
-            $nextEntity->setBranchID($session->get('BranchID'));
+            $nextEntity->setCompanyID($request->getSession()->get('CompanyID'));
+            $nextEntity->setBranchID($request->getSession()->get('BranchID'));
             $nextEntity->setObjectSignatureNamespace($form->get('ObjectSignatureNamespace')->getData());
-            $nextEntity->setPrefixID($form->get('PrefixID')->getData());
+            $nextEntity->setPrefixID($session->get('CompanyID') .'/'.$session->get('BranchID'));
             $nextEntity->setStartValue($form->get('StartValue')->getData());
-
-
-            $nextEntity->setToForceRandomIdGeneration($form->get('ToForceRandomIdGeneration')->getData());
 
             try {
                 $getNextNumberIDSRepository->add($nextEntity);
