@@ -22,7 +22,7 @@
             <div class="card-box br-6">
                 <h4 class="badge badge-success p-2" style="font-size: 1em"> Select a classroom to view students</h4>
                 <table id="class-rooms-header" class=" table-bordered table-hover p-2 mb-4" style="width:100%; border: 1px dotted coral" >
-                    <thead style="background-color: #95999c;color: whitesmoke;text-align: center">
+                    <thead style="background-color: #1b2e4b;color: whitesmoke;text-align: center">
                     <tr>
                         <th>Name</th>
                         <th>Level ID & Class Rooms</th>
@@ -31,7 +31,7 @@
                     <tbody>
                     {% for class in classHeader %}
                         <tr class='clickable-row1' onclick="ShowClassRooms('{{path('app_class_header_details',{'id':class.id})}}')" data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
-                            <td style="border-right: 2px solid lightgrey">{{ class.ClassName }} </td>
+                            <td style="border-right: 2px solid lightgrey;">{{ class.ClassName }} </td>
                             <td>{{ class.levelID }}</td>
                             <td></td>
                         <tr>
