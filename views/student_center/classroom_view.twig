@@ -31,18 +31,18 @@
                     <tbody>
                     {% for class in classHeader %}
                         <tr class='clickable-row1' onclick="ShowClassRooms('{{path('app_class_header_details',{'id':class.id})}}')" data-href='{{path('app_class_header_details',{'id':class.id})}}' style="cursor: pointer">
-                            <td style="border-right: 2px solid lightgrey;">{{ class.ClassName }} </td>
+                            <td style="border-right: 2px dotted #1b2e4b;">{{ class.ClassName }} </td>
                             <td>{{ class.levelID }}</td>
                             <td></td>
                         <tr>
-                            <td style="">
-                                <a class="bs-tooltip" title="Add room" href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}">
-                                    <span><img src="{{ asset('enterprise/icons8-add-to-collection-32.png') }}"></span>
+                            <td >
+                                <a class="bs-tooltip" title="Add room" href="{{ path('app_classrooms_add', {'action': 'add', 'id': class.id}) }}" >
+                                    <span><i class="fa fa-plus btn btn-sm"></i></span>
                                 </a>
                             </td>
-                            <td><table id="inner" class="table table-striped table-sm ">
+                            <td><table id="inner" class="table-striped  "  style="width:100%; border: 1px dotted coral" >
                                     {%for rooms in class.classRooms %}
-                                        <tr style="border-left: 2px solid {{class.classColorID}}">
+                                        <tr style="border-left: 2px solid {{class.classColorID}};">
                                             <td>{{rooms.SectionName }}</td>
                                             <td class="text-right"><a  href="{{ path('app_classroom_students',{'room_id' : rooms.id}) }}" class="btn btn-sm  bs-tooltip-auto" title="Add a student to {{rooms.SectionName}}">
                                                    {# <img src="{{ asset('icons/list/icons8-list-of-parts-30.png') }}" style="height: 16px;width: 16px">#}

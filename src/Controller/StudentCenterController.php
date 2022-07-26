@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\StudentInformation;
 use App\Form\StudentInformationFormType;
-use App\Repository\ClassHeaderRepository;
 use App\Repository\CourseHeaderRepository;
 use App\Repository\SchoolClassHeaderRepository;
 use App\Repository\SchoolClassRoomsHeaderRepository;
