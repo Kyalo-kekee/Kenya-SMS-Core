@@ -12,5 +12,8 @@
 /public/theme/
 /public/DataTables/
 /public/site/
+/SQL/Database1/.vs/
+/SQL/Database1/
+
 
 ###< symfony/framework-bundle ###

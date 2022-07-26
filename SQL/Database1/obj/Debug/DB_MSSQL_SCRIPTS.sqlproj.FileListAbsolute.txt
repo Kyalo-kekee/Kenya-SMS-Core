@@ -1,0 +1,10 @@
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\bin\Debug\DB_MSSQL_SCRIPTS.dacpac
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\bin\Debug\Database1.dll
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\bin\Debug\Database1.pdb
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\obj\Debug\DB_MSSQL_SCRIPTS.sqlproj.AssemblyReference.cache
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\obj\Debug\Model.xml
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\obj\Debug\refactor.xml
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\obj\Debug\postdeploy.sql
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\obj\Debug\predeploy.sql
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\obj\Debug\Database1.dll
+F:\Ubuscetch\Kenya-SMS-Core\SQL\Database1\obj\Debug\Database1.pdb
