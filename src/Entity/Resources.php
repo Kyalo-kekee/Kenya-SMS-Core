@@ -40,6 +40,9 @@ class Resources
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $UpdatedAt;
 
+    #[ORM\ManyToOne(targetEntity: ResourceGroup::class, inversedBy: 'ResourcesGetID')]
+    private $ResourceGroupID;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +152,18 @@ class Resources
     public function setUpdatedAt(?\DateTimeImmutable $UpdatedAt): self
     {
         $this->UpdatedAt = $UpdatedAt;
+
+        return $this;
+    }
+
+    public function getResourceGroupID(): ?ResourceGroup
+    {
+        return $this->ResourceGroupID;
+    }
+
+    public function setResourceGroupID(?ResourceGroup $ResourceGroupID): self
+    {
+        $this->ResourceGroupID = $ResourceGroupID;
 
         return $this;
     }
