@@ -43,6 +43,9 @@ class Resources
     #[ORM\ManyToOne(targetEntity: ResourceGroup::class, inversedBy: 'ResourcesGetID')]
     private $ResourceGroupID;
 
+    #[ORM\ManyToOne(targetEntity: ResourcePermissions::class, inversedBy: 'Resources')]
+    private $permissions;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -164,6 +167,18 @@ class Resources
     public function setResourceGroupID(?ResourceGroup $ResourceGroupID): self
     {
         $this->ResourceGroupID = $ResourceGroupID;
+
+        return $this;
+    }
+
+    public function getPermissions(): ?ResourcePermissions
+    {
+        return $this->permissions;
+    }
+
+    public function setPermissions(?ResourcePermissions $permissions): self
+    {
+        $this->permissions = $permissions;
 
         return $this;
     }
