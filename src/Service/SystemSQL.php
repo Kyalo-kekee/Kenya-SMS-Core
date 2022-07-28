@@ -17,8 +17,10 @@ class SystemSQL
 
     public function execSQLProcedure(string $storedProcedure, ResultSetMapping $rsm, array $parameters = [])
     {
-        $commandTxt = $this->entityManager->createNativeQuery($storedProcedure . ' ' . $this->splitAndCreateParametersString($parameters), $rsm);
+        $commandTxt = $this->entityManager->createNativeQuery($storedProcedure .' '. $this->splitAndCreateParametersString($parameters), $rsm);
         $this->setProcedureParameters($commandTxt, $parameters);
+
+        //dd($commandTxt->getSQL());
         return $commandTxt->getResult();
 
     }
@@ -30,11 +32,12 @@ class SystemSQL
         foreach ($parameters as $key => $value) {
 
             if ($value != $last) {
-                $parameters_list .= ':' . $key . ',';
+                $parameters_list .= ':' . $key . ' ,';
             } else {
                 $parameters_list .= ':' . $key;
             }
         }
+       // dd($parameters_list);
         return $parameters_list;
     }
 
