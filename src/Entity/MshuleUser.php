@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MshuleUserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -59,6 +61,14 @@ class MshuleUser implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 32)]
     private $BranchID;
+
+    #[ORM\OneToMany(mappedBy: 'UserID', targetEntity: ResourcePermissions::class, orphanRemoval: true)]
+    private $Permissions;
+
+    public function __construct()
+    {
+        $this->Permissions = new ArrayCollection();
+    }
 
     public function getId(): ?string
     {
@@ -258,6 +268,36 @@ class MshuleUser implements UserInterface, PasswordAuthenticatedUserInterface
     public function setBranchID(string $BranchID): self
     {
         $this->BranchID = $BranchID;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ResourcePermissions>
+     */
+    public function getPermissions(): Collection
+    {
+        return $this->Permissions;
+    }
+
+    public function addPermission(ResourcePermissions $permission): self
+    {
+        if (!$this->Permissions->contains($permission)) {
+            $this->Permissions[] = $permission;
+            $permission->setUserID($this);
+        }
+
+        return $this;
+    }
+
+    public function removePermission(ResourcePermissions $permission): self
+    {
+        if ($this->Permissions->removeElement($permission)) {
+            // set the owning side to null (unless already changed)
+            if ($permission->getUserID() === $this) {
+                $permission->setUserID(null);
+            }
+        }
 
         return $this;
     }
