@@ -1,0 +1,57 @@
+{% extends 'masterpages/layout.twig' %}
+{% block page_level_css %}
+
+{% endblock %}
+{% block title %}Users!{% endblock %}
+{% block page_title %}Institution Employees{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-7 col-6">
+            <h4 class="page-title">System Users</h4>
+        </div>
+        <div class="col-sm-5 col-6 text-right m-b-30">
+            <a href="{{ path('app_class_header') }}" class="btn btn-primary btn-rounded"><i class="fas fa-plus"></i>
+                Add User</a>
+        </div>
+    </div>
+    <div class="row layout-top-spacing" id="cancel-row">
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+            <div class="widget-content widget-content-area br-6">
+                <table id="zero-config" class="table table-striped" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Designation</th>
+                        <th>Employee Status</th>
+                        <th>Verification Status</th>
+                        <th class="no-content">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for employee in emp %}
+                        <tr>
+                            <td>{{ employee.Salutation }} {{ employee.FirstName }} {{ employee.LastName }}</td>
+                            <td>{{ employee.Email }}</td>
+                            <td>{{ employee.Designation }}</td>
+                            <td>{{ employee.IsEmployee }}</td>
+                            <td>{{ employee.IsVerified }}</td>
+                            <td>
+                                <a>edit</a>
+                                <a>delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block page_level_script %}
+    {# BEGIN PAGE LEVEL SCRIPTS #}
+
+    {# END PAGE LEVEL SCRIPTS #}
+{% endblock %}
+
